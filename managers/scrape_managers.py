@@ -15,8 +15,7 @@ end_date             : departure date  (YYYY-MM-DD, or '' if still in charge)
 
 Join to match data
 ------------------
-For each match row, find the manager who was in charge of each team on
-that match date:
+For each match row, find the manager in charge of each team on the match date:
 
     match_date = pd.to_datetime(match_row['Date'], dayfirst=True)
     home_mgr = managers[
@@ -27,13 +26,10 @@ that match date:
 
 Usage
 -----
-    pip install requests beautifulsoup4 pandas
-    python scrape_managers.py
-
-Transfermarkt blocks many automated requests. If you get 403 errors:
-  - Add a longer delay (DELAY_SECONDS)
-  - Run with --limit N to scrape only the first N clubs for testing
-  - Clubs with NEEDS_MANUAL in their ID are skipped automatically
+    pip install beautifulsoup4
+    python scrape_managers.py              # full run (~60 clubs, 4 s delay)
+    python scrape_managers.py --limit 5    # test with first 5 clubs
+    python scrape_managers.py --delay 6    # slower crawl if you hit 403s
 """
 
 import csv
@@ -54,8 +50,12 @@ except ImportError:
 # ---------------------------------------------------------------------------
 MAPPING_FILE = Path(__file__).parent / "team_mapping.csv"
 OUTPUT_FILE  = Path(__file__).parent / "managers.csv"
-DELAY_SECONDS = 4          # polite crawl delay between requests
-TM_BASE_URL   = "https://www.transfermarkt.com"
+DELAY_SECONDS = 4
+
+# Correct URL pattern confirmed working: slug is ignored, only ID matters
+TM_URL_TEMPLATE = (
+    "https://www.transfermarkt.com/x/mitarbeiterhistorie/verein/{id}/mitarbeitertyp/trainer"
+)
 
 HEADERS = {
     "User-Agent": (
@@ -67,7 +67,6 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 }
 
-# SSL context that tolerates sites with missing intermediate certs
 SSL_CTX = ssl.create_default_context()
 SSL_CTX.check_hostname = False
 SSL_CTX.verify_mode = ssl.CERT_NONE
@@ -86,122 +85,108 @@ OUTPUT_COLUMNS = [
 # ---------------------------------------------------------------------------
 
 def load_mapping(path: Path) -> list[dict]:
-    """Load team_mapping.csv and filter out clubs with no TM ID."""
     with open(path, encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        rows = list(reader)
-    valid = [r for r in rows if r["transfermarkt_id"] not in ("", "NEEDS_MANUAL")]
+        rows = list(csv.DictReader(f))
+    valid   = [r for r in rows if r["transfermarkt_id"] not in ("", "NEEDS_MANUAL")]
     skipped = [r["football_data_name"] for r in rows if r["transfermarkt_id"] in ("", "NEEDS_MANUAL")]
+    # De-duplicate: same TM id can appear under two football-data names (e.g. Ankaraspor/Osmanlispor)
+    # Keep all entries — we want both name variants to map correctly
     if skipped:
-        print(f"  Skipping {len(skipped)} clubs with no TM profile: {skipped}")
+        print(f"Skipping {len(skipped)} clubs with no TM profile: {skipped}\n")
     return valid
 
 
-def fetch_page(url: str) -> str | None:
-    """Fetch a URL and return the HTML as a string, or None on failure."""
+def fetch_html(url: str) -> str | None:
     req = urllib.request.Request(url, headers=HEADERS)
     try:
         with urllib.request.urlopen(req, context=SSL_CTX, timeout=20) as resp:
             return resp.read().decode("utf-8", errors="replace")
     except Exception as exc:
-        print(f"    FETCH ERROR {url}: {exc}")
+        print(f"    FETCH ERROR: {exc}")
         return None
 
 
 def parse_date(raw: str) -> str:
-    """
-    Convert Transfermarkt date strings to YYYY-MM-DD.
-    Formats seen: 'Jan 1, 2020', '01/01/2020', 'Jan 2020', '2020'
-    Returns '' if unparseable.
-    """
+    """Convert DD/MM/YYYY (Transfermarkt default) to YYYY-MM-DD. Returns '' if empty."""
     raw = raw.strip()
-    if not raw or raw in ("-", "–", "?", "N/A"):
+    if not raw:
         return ""
-    for fmt in ("%b %d, %Y", "%d/%m/%Y", "%m/%d/%Y", "%b %Y", "%Y"):
+    for fmt in ("%d/%m/%Y", "%m/%d/%Y", "%b %d, %Y", "%b %Y", "%Y"):
         try:
             return datetime.strptime(raw, fmt).strftime("%Y-%m-%d")
         except ValueError:
             continue
-    # Last resort: return as-is
-    return raw
+    return raw  # return as-is if unrecognised
 
 
-def parse_manager_table(html: str, football_data_name: str, tm_name: str) -> list[dict]:
+def scrape_club(tm_id: str, fd_name: str, tm_name: str) -> list[dict]:
     """
-    Parse the Transfermarkt /trainer/verein/ page and extract coaching stints.
-    Returns a list of record dicts.
+    Fetch the Transfermarkt manager history page for one club and return
+    a list of coaching-stint dicts.
+
+    Page structure (confirmed):
+      <table class="items">
+        <tbody>
+          <tr class="odd|even">
+            <td>                        ← col 0: manager info (inline table)
+              <a class="hauptlink">Name</a>
+            </td>
+            <td class="zentriert">      ← col 1: nationality flag img
+              <img title="Nationality" />
+            </td>
+            <td class="zentriert">      ← col 2: start date  (DD/MM/YYYY)
+            <td class="zentriert">      ← col 3: end date    (DD/MM/YYYY or empty)
+            ...
+          </tr>
+        </tbody>
+      </table>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    url  = TM_URL_TEMPLATE.format(id=tm_id)
+    html = fetch_html(url)
+    if html is None:
+        return []
+
+    soup    = BeautifulSoup(html, "html.parser")
+    table   = soup.find("table", class_="items")
     records = []
 
-    # The coaching history table has class "items" on Transfermarkt
-    table = soup.find("table", class_="items")
     if not table:
-        # Try any table containing "trainer" rows
-        tables = soup.find_all("table")
-        for t in tables:
-            if t.find("tr") and len(t.find_all("tr")) > 2:
-                table = t
-                break
-
-    if not table:
-        print(f"    WARNING: no manager table found for {football_data_name}")
+        print(f"    WARNING: no <table class='items'> found")
         return records
 
-    rows = table.find_all("tr")
-    for row in rows:
-        cells = row.find_all("td")
-        if len(cells) < 3:
+    for row in table.select("tr.odd, tr.even"):
+        cells = row.find_all("td", recursive=False)
+        if len(cells) < 4:
             continue
 
-        # Extract manager name (usually in a link or the 2nd/3rd cell)
-        manager_name = ""
-        nationality  = ""
-        start_date   = ""
-        end_date     = ""
+        # --- Manager name (col 0) ---
+        # On TM, class="hauptlink" is on the <td>, not the <a>
+        # Find the <a> inside a <td class="hauptlink">
+        name_td  = cells[0].find("td", class_="hauptlink")
+        name_tag = name_td.find("a") if name_td else None
+        # Fallback: any <a> linking to a trainer profile
+        if not name_tag:
+            name_tag = cells[0].find("a", href=lambda h: h and "/profil/trainer/" in h)
+        if not name_tag:
+            continue
+        manager = name_tag.get_text(strip=True)
 
-        # Cell layout varies; try to find the name anchor
-        for cell in cells:
-            link = cell.find("a", href=lambda h: h and "/trainer/" in h)
-            if link:
-                manager_name = link.get_text(strip=True)
-                break
+        # --- Nationality (col 1) ---
+        flag    = cells[1].find("img")
+        nationality = flag.get("title", "").strip() if flag else ""
 
-        if not manager_name:
-            # Fallback: grab text from the first non-empty, non-icon cell
-            texts = [c.get_text(strip=True) for c in cells if c.get_text(strip=True)]
-            manager_name = texts[0] if texts else ""
+        # --- Dates (cols 2 and 3) ---
+        start_date = parse_date(cells[2].get_text(strip=True))
+        end_date   = parse_date(cells[3].get_text(strip=True))
 
-        # Nationality flag img alt text
-        flag = row.find("img", class_=lambda c: c and "flagge" in c)
-        if flag:
-            nationality = flag.get("title", flag.get("alt", "")).strip()
-
-        # Dates — look for cells whose text looks like a date
-        date_cells = []
-        for cell in cells:
-            text = cell.get_text(strip=True)
-            # Simple heuristic: contains digits and slash or comma
-            if any(ch.isdigit() for ch in text) and (
-                "/" in text or "," in text or len(text) == 4
-            ):
-                date_cells.append(text)
-
-        if len(date_cells) >= 2:
-            start_date = parse_date(date_cells[0])
-            end_date   = parse_date(date_cells[1])
-        elif len(date_cells) == 1:
-            start_date = parse_date(date_cells[0])
-
-        if manager_name:
-            records.append({
-                "football_data_name": football_data_name,
-                "transfermarkt_name": tm_name,
-                "manager":            manager_name,
-                "nationality":        nationality,
-                "start_date":         start_date,
-                "end_date":           end_date,
-            })
+        records.append({
+            "football_data_name": fd_name,
+            "transfermarkt_name": tm_name,
+            "manager":            manager,
+            "nationality":        nationality,
+            "start_date":         start_date,
+            "end_date":           end_date,
+        })
 
     return records
 
@@ -211,11 +196,11 @@ def parse_manager_table(html: str, football_data_name: str, tm_name: str) -> lis
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Scrape manager history from Transfermarkt.")
+    parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=None,
-                        help="Scrape only the first N clubs (useful for testing).")
+                        help="Only scrape the first N clubs (for testing).")
     parser.add_argument("--delay", type=float, default=DELAY_SECONDS,
-                        help=f"Seconds to wait between requests (default: {DELAY_SECONDS}).")
+                        help=f"Seconds between requests (default {DELAY_SECONDS}).")
     args = parser.parse_args()
 
     clubs = load_mapping(MAPPING_FILE)
@@ -228,30 +213,22 @@ def main():
     for i, club in enumerate(clubs, 1):
         fd_name = club["football_data_name"]
         tm_name = club["transfermarkt_name"]
-        url     = club["transfermarkt_trainer_url"]
+        tm_id   = club["transfermarkt_id"]
 
-        print(f"[{i}/{total}] {fd_name}  →  {url}")
-
-        html = fetch_page(url)
-        if html is None:
-            print(f"    Skipped (fetch failed).")
-            time.sleep(args.delay)
-            continue
-
-        records = parse_manager_table(html, fd_name, tm_name)
-        print(f"    Found {len(records)} coaching stints.")
+        print(f"[{i}/{total}] {fd_name} (TM id={tm_id})")
+        records = scrape_club(tm_id, fd_name, tm_name)
+        print(f"    {len(records)} coaching stints")
         all_records.extend(records)
 
         if i < total:
             time.sleep(args.delay)
 
-    # Write output
     with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=OUTPUT_COLUMNS)
         writer.writeheader()
         writer.writerows(all_records)
 
-    print(f"\nDone. {len(all_records)} total records written to {OUTPUT_FILE}")
+    print(f"\nDone — {len(all_records)} records written to {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
