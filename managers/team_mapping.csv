@@ -1,0 +1,66 @@
+football_data_name,transfermarkt_name,transfermarkt_id,transfermarkt_trainer_url,seasons_in_data,notes
+A. Sebatspor,–,NEEDS_MANUAL,,1994-1997,Very old/defunct club — no confirmed Transfermarkt profile
+Ad. Demirspor,Adana Demirspor,3840,https://www.transfermarkt.com/adana-demirspor/trainer/verein/3840,,
+Adanaspor,Adanaspor,6,https://www.transfermarkt.com/adanaspor/trainer/verein/6,,
+Akhisar Belediyespor,Akhisarspor,19771,https://www.transfermarkt.com/akhisarspor/trainer/verein/19771,,
+Alanyaspor,Alanyaspor,11282,https://www.transfermarkt.com/alanyaspor/trainer/verein/11282,,
+Altay,Altay SK,2375,https://www.transfermarkt.com/altay-sk/trainer/verein/2375,,
+Ankaragucu,MKE Ankaragücü,868,https://www.transfermarkt.com/ankaragucu/trainer/verein/868,,
+Ankaraspor,Sincan Bld. Ankaraspor (fmr. Ankara BŞB → Osmanlıspor),2944,https://www.transfermarkt.com/ankaraspor/trainer/verein/2944,2004-2009,Same TM entity as Osmanlispor; TM tracks the full lineage under one ID
+Antalya,Antalyaspor,589,https://www.transfermarkt.com/antalyaspor/trainer/verein/589,1994-1995,Early data abbreviates club name as Antalya
+Antalyaspor,Antalyaspor,589,https://www.transfermarkt.com/antalyaspor/trainer/verein/589,,
+Balikesirspor,Balıkesirspor,20698,https://www.transfermarkt.com/balikesirspor/trainer/verein/20698,,
+Besiktas,Beşiktaş JK,114,https://www.transfermarkt.com/besiktas-istanbul/trainer/verein/114,,
+Bodrumspor,Bodrum FK,44006,https://www.transfermarkt.com/bodrumspor/trainer/verein/44006,,
+Bucaspor,Bucaspor,2750,https://www.transfermarkt.com/bucaspor/trainer/verein/2750,,
+Bursaspor,Bursaspor,20,https://www.transfermarkt.com/bursaspor/trainer/verein/20,,
+Buyuksehyr,Başakşehir FK (fmr. İstanbul Büyükşehir Belediyespor),6890,https://www.transfermarkt.com/istanbul-buyuksehir-belediyespor/trainer/verein/6890,,TM URL still uses former name; club is now Başakşehir FK
+Dardanelspor,Çanakkale Dardanel SK,1507,https://www.transfermarkt.com/canakkale-dardanelspor/trainer/verein/1507,,
+Denizlispor,Denizlispor,833,https://www.transfermarkt.com/denizlispor/trainer/verein/833,,
+Diyarbakirspor,Diyarbakırspor,845,https://www.transfermarkt.com/diyarbakirspor/trainer/verein/845,,
+Elazigspor,Elaziğspor,2292,https://www.transfermarkt.com/elazigspor/trainer/verein/2292,,
+Erciyesspor,Kayseri Erciyesspor,6894,https://www.transfermarkt.com/kayseri-erciyesspor/trainer/verein/6894,,
+Erzurum,Erzurumspor (old club),1766,https://www.transfermarkt.com/erzurumspor/trainer/verein/1766,1998-1999,Old Erzurumspor; separate entity from BB Erzurumspor
+Erzurum BB,BB Erzurumspor / Erzurumspor FK,39722,https://www.transfermarkt.com/erzurumspor-fk/trainer/verein/39722,2018-2021,Municipality-backed club founded 2015; promoted to Süper Lig 2017
+Erzurumspor,Erzurumspor (old club),1766,https://www.transfermarkt.com/erzurumspor/trainer/verein/1766,1999-2001,Same entity as the Erzurum entry above
+Eskisehirspor,Eskişehirspor,825,https://www.transfermarkt.com/eskisehirspor/trainer/verein/825,,
+Eyupspor,Eyüpspor,7160,https://www.transfermarkt.com/eyupspor/trainer/verein/7160,,
+Fenerbahce,Fenerbahçe,36,https://www.transfermarkt.com/fenerbahce-istanbul/trainer/verein/36,,
+Galatasaray,Galatasaray,141,https://www.transfermarkt.com/galatasaray-istanbul/trainer/verein/141,,
+Gaziantep,Gaziantep FK,2832,https://www.transfermarkt.com/gaziantep-fk/trainer/verein/2832,,Founded 2011; different club from the defunct Gaziantepspor
+Gaziantepspor,Gaziantepspor (defunct 2020),524,https://www.transfermarkt.com/gaziantepspor/trainer/verein/524,,Club dissolved 2020 after financial collapse
+Genclerbirligi,Gençlerbirliği,820,https://www.transfermarkt.com/genclerbirligi-ankara/trainer/verein/820,,
+Giresunspor,Giresunspor,11688,https://www.transfermarkt.com/giresunspor/trainer/verein/11688,,
+Goztep,Göztepe,1467,https://www.transfermarkt.com/goztepe-izmir/trainer/verein/1467,,football-data.co.uk truncates to Goztep
+Hacettepespor,Hacettepe Spor,10483,https://www.transfermarkt.com/hacettepespor/trainer/verein/10483,,
+Hatayspor,Hatayspor,7775,https://www.transfermarkt.com/hatayspor/trainer/verein/7775,,
+Istanbulspor,İstanbulspor,924,https://www.transfermarkt.com/istanbulspor/trainer/verein/924,,
+Karabukspor,Kardemir Karabükspor,1506,https://www.transfermarkt.com/kardemir-karabukspor/trainer/verein/1506,,
+Karagumruk,Fatih Karagümrük,6646,https://www.transfermarkt.com/fatih-karagumruk/trainer/verein/6646,,
+Karsiyaka,Karşıyaka,2330,https://www.transfermarkt.com/karsiyaka/trainer/verein/2330,,
+Kasimpasa,Kasımpaşa,10484,https://www.transfermarkt.com/kasimpasa/trainer/verein/10484,,
+Kayseri,Kayseri Erciyesspor,6894,https://www.transfermarkt.com/kayseri-erciyesspor/trainer/verein/6894,1994-1998,Early data uses city name Kayseri for Erciyesspor
+Kayserispor,Kayserispor,3205,https://www.transfermarkt.com/kayserispor/trainer/verein/3205,,Distinct club from Kayseri Erciyesspor
+Kocaelispor,Kocaelispor,120,https://www.transfermarkt.com/kocaelispor/trainer/verein/120,,
+Konyaspor,Konyaspor,2293,https://www.transfermarkt.com/konyaspor/trainer/verein/2293,,
+Malatyaspor,Malatyaspor,1264,https://www.transfermarkt.com/malatyaspor/trainer/verein/1264,2001-2006,Old club; distinct from Yeni Malatyaspor (founded 2000)
+Manisaspor,Manisaspor,1267,https://www.transfermarkt.com/manisaspor/trainer/verein/1267,,
+Mersin Idman Yurdu,Mersin Talim Yurdu,3216,https://www.transfermarkt.com/mersin-idmanyurdu/trainer/verein/3216,,
+Oftasspor,–,NEEDS_MANUAL,,1994-1997,Very old/defunct club — no confirmed Transfermarkt profile
+Orduspor,Orduspor,2323,https://www.transfermarkt.com/orduspor/trainer/verein/2323,,
+Osmanlispor,Osmanlıspor FK / SB Ankaraspor,2944,https://www.transfermarkt.com/osmanlispor-fk/trainer/verein/2944,2015-2018,Same TM entity as Ankaraspor; club operated as Osmanlıspor 2015–2019
+P. Ofisi,Petrol Ofisi Spor (defunct),NEEDS_MANUAL,,1994-1998,Dissolved 2010 — no confirmed Transfermarkt profile
+Pendikspor,Pendikspor,3209,https://www.transfermarkt.com/pendikspor/trainer/verein/3209,,
+Rizespor,Çaykur Rizespor,126,https://www.transfermarkt.com/caykur-rizespor/trainer/verein/126,,
+Sakaryaspor,Sakaryaspor,2463,https://www.transfermarkt.com/sakaryaspor/trainer/verein/2463,,
+Samsunspor,Samsunspor,152,https://www.transfermarkt.com/samsunspor/trainer/verein/152,,
+Sariyer,Sarıyer,518,https://www.transfermarkt.com/sariyer/trainer/verein/518,,
+Sekerspor,–,NEEDS_MANUAL,,1994-1997,Very old/defunct club — no confirmed Transfermarkt profile
+Siirt Jet-PA,–,NEEDS_MANUAL,,1994-1997,Very old/defunct club — no confirmed Transfermarkt profile
+Sivasspor,Sivasspor,2381,https://www.transfermarkt.com/sivasspor/trainer/verein/2381,,
+Trabzonspor,Trabzonspor,449,https://www.transfermarkt.com/trabzonspor/trainer/verein/449,,
+Umraniyespor,Ümraniyespor,24245,https://www.transfermarkt.com/umraniyespor/trainer/verein/24245,,
+Vanspor,Vanspor,40181,https://www.transfermarkt.com/vanspor/trainer/verein/40181,,
+Yeni Malatyaspor,Yeni Malatyaspor,19789,https://www.transfermarkt.com/yeni-malatyaspor/trainer/verein/19789,2017-2022,Founded 2000; distinct from old Malatyaspor
+Yozgatspor,Yozgatspor Tic. AS,740,https://www.transfermarkt.com/yozgatspor-tic-as/trainer/verein/740,,
+Zeytinburnu,Zeytinburnuspor,5745,https://www.transfermarkt.com/zeytinburnuspor/trainer/verein/5745,,
