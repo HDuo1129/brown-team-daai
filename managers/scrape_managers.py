@@ -75,6 +75,8 @@ OUTPUT_COLUMNS = [
     "football_data_name",
     "transfermarkt_name",
     "manager",
+    "trainer_id",
+    "trainer_slug",
     "nationality",
     "start_date",
     "end_date",
@@ -159,20 +161,23 @@ def scrape_club(tm_id: str, fd_name: str, tm_name: str) -> list[dict]:
         if len(cells) < 4:
             continue
 
-        # --- Manager name (col 0) ---
+        # --- Manager name + trainer_id (col 0) ---
         # On TM, class="hauptlink" is on the <td>, not the <a>
-        # Find the <a> inside a <td class="hauptlink">
         name_td  = cells[0].find("td", class_="hauptlink")
         name_tag = name_td.find("a") if name_td else None
-        # Fallback: any <a> linking to a trainer profile
         if not name_tag:
             name_tag = cells[0].find("a", href=lambda h: h and "/profil/trainer/" in h)
         if not name_tag:
             continue
         manager = name_tag.get_text(strip=True)
 
+        # Extract trainer ID and slug from href  e.g. /okan-buruk/profil/trainer/23531
+        href = name_tag.get("href", "")
+        trainer_id   = href.split("/")[-1] if href else ""
+        trainer_slug = href.split("/")[1]  if href else ""
+
         # --- Nationality (col 1) ---
-        flag    = cells[1].find("img")
+        flag        = cells[1].find("img")
         nationality = flag.get("title", "").strip() if flag else ""
 
         # --- Dates (cols 2 and 3) ---
@@ -183,6 +188,8 @@ def scrape_club(tm_id: str, fd_name: str, tm_name: str) -> list[dict]:
             "football_data_name": fd_name,
             "transfermarkt_name": tm_name,
             "manager":            manager,
+            "trainer_id":         trainer_id,
+            "trainer_slug":       trainer_slug,
             "nationality":        nationality,
             "start_date":         start_date,
             "end_date":           end_date,
