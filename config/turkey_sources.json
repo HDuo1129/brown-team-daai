@@ -1,0 +1,42 @@
+{
+  "matches_raw": {
+    "source": "football-data.co.uk",
+    "urls": [
+      "https://www.football-data.co.uk/mmz4281/1314/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/1415/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/1516/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/1617/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/1718/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/1819/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/1920/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/2021/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/2122/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/2223/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/2324/T1.csv",
+      "https://www.football-data.co.uk/mmz4281/2425/T1.csv"
+    ]
+  },
+  "manager_spells": {
+    "source": "Transfermarkt",
+    "urls": [
+      "https://www.transfermarkt.com/galatasaray/mitarbeiterhistorie/verein/141/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/fenerbahce-istanbul/mitarbeiterhistorie/verein/36/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/besiktas-jk/mitarbeiterhistorie/verein/114/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/trabzonspor/mitarbeiterhistorie/verein/449/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/istanbul-basaksehir-fk/mitarbeiterhistorie/verein/6890/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/sivasspor/mitarbeiterhistorie/verein/2381/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/konyaspor/mitarbeiterhistorie/verein/2293/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/antalyaspor/mitarbeiterhistorie/verein/589/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/kasimpasa/mitarbeiterhistorie/verein/10484/personalie_id/0/plus/1",
+      "https://www.transfermarkt.com/gaziantep-fk/mitarbeiterhistorie/verein/2832/personalie_id/0/plus/1"
+    ]
+  },
+  "manager_chars": {
+    "source": "Transfermarkt",
+    "urls": []
+  },
+  "team_seasons": {
+    "source": "Transfermarkt",
+    "urls": []
+  }
+}

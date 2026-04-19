@@ -1,0 +1,4 @@
+- Always prioritize data completeness over elegance
+- Fail loudly on bad data
+- Ensure reproducibility
+- All datasets must be joinable via consistent keys

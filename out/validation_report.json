@@ -1,0 +1,108 @@
+{
+  "results": [
+    {
+      "table": "matches_raw",
+      "rows": 3974,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {},
+      "malformed_manager_names": 0,
+      "status": "ok"
+    },
+    {
+      "table": "manager_spells",
+      "rows": 600,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {
+        "manager_name": 600
+      },
+      "malformed_manager_names": 0,
+      "status": "failed_checks"
+    },
+    {
+      "table": "manager_chars",
+      "rows": 345,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {},
+      "malformed_manager_names": 0,
+      "status": "ok"
+    },
+    {
+      "table": "team_seasons",
+      "rows": 225,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {},
+      "malformed_manager_names": 0,
+      "status": "ok"
+    },
+    {
+      "table": "matches_clean",
+      "rows": 3974,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {},
+      "malformed_manager_names": 0,
+      "status": "ok"
+    },
+    {
+      "table": "manager_clean",
+      "rows": 600,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {
+        "manager_name": 600
+      },
+      "malformed_manager_names": 0,
+      "status": "failed_checks"
+    },
+    {
+      "table": "manager_chars_clean",
+      "rows": 345,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {},
+      "malformed_manager_names": 0,
+      "status": "ok"
+    },
+    {
+      "table": "team_seasons_clean",
+      "rows": 225,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {},
+      "malformed_manager_names": 0,
+      "status": "ok"
+    },
+    {
+      "table": "analysis_panel",
+      "rows": 3974,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {},
+      "malformed_manager_names": 0,
+      "status": "ok"
+    },
+    {
+      "table": "manager_panel",
+      "rows": 7948,
+      "schema_ok": true,
+      "missing_columns": [],
+      "duplicate_keys": 0,
+      "missing_critical_values": {},
+      "malformed_manager_names": 0,
+      "status": "ok"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "matches": 3974,
+  "teams": 41,
+  "manager_spells": 600,
+  "manager_changes": 590,
+  "goal_distribution": {
+    "mean_home_goals": 1.5825364871665828,
+    "mean_away_goals": 1.2299949672873678,
+    "mean_total_goals": 2.812531454453951
+  },
+  "coverage_over_time": {
+    "2013/14": 306,
+    "2014/15": 306,
+    "2015/16": 306,
+    "2016/17": 306,
+    "2017/18": 306,
+    "2018/19": 306,
+    "2019/20": 261,
+    "2020/21": 433,
+    "2021/22": 380,
+    "2022/23": 342,
+    "2023/24": 380,
+    "2024/25": 342
+  },
+  "manager_assignment_missing": {
+    "home_manager_missing": 3974,
+    "away_manager_missing": 3974
+  }
+}
