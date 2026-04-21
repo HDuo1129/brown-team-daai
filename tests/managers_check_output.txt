@@ -1,0 +1,290 @@
+managers/managers.csv — Data Quality Check
+Run at: 2026-04-21 02:19:18
+File:   /Users/huangduo/Desktop/brown-team-daai/managers/managers.csv
+
+============================================================
+  1. Basic Shape
+============================================================
+  Rows:    3884
+  Columns: ['football_data_name', 'transfermarkt_name', 'manager', 'trainer_id', 'trainer_slug', 'nationality', 'start_date', 'end_date']
+
+============================================================
+  2. Missing Values
+============================================================
+football_data_name     0
+transfermarkt_name     0
+manager                0
+trainer_id             0
+trainer_slug           0
+nationality            0
+start_date             0
+end_date              41
+  [PASS]  football_data_name: no missing values
+  [PASS]  transfermarkt_name: no missing values
+  [PASS]  manager: no missing values
+  [PASS]  trainer_id: no missing values
+  [PASS]  trainer_slug: no missing values
+  [PASS]  nationality: no missing values
+  [PASS]  start_date: no missing values
+  [PASS]  end_date: 41 missing — expected (current managers still in charge)
+
+============================================================
+  3. Duplicate Rows
+============================================================
+  [PASS]  No fully duplicate rows
+  [PASS]  No duplicate (club, manager, start_date) keys
+
+============================================================
+  4. Date Logic
+============================================================
+  Stints with end_date < start_date: 2
+  [WARN]  2 stints with end_date < start_date (known Transfermarkt data errors):
+     football_data_name        manager  start_date    end_date
+2775          Konyaspor     Erol Togay  1988-10-16  1988-10-13
+3730          Karsiyaka  Hamdi Kayahan  2006-11-07  2006-06-30
+
+============================================================
+  5. Date Format Consistency
+============================================================
+  [PASS]  All start_date values are YYYY-MM-DD format
+  [PASS]  All non-null end_date values are YYYY-MM-DD format
+
+============================================================
+  6. Coverage
+============================================================
+  Unique clubs:    60
+  Unique managers: 1082
+  Nationality filled: 3884 / 3884
+
+  Top 10 clubs by number of manager stints:
+football_data_name
+Altay             123
+Adanaspor         104
+Sakaryaspor       102
+Ankaragucu        100
+Karsiyaka         100
+Ad. Demirspor      99
+Goztep             99
+Eskisehirspor      97
+Genclerbirligi     91
+Bursaspor          90
+
+  Bottom 5 clubs by number of manager stints:
+football_data_name
+Umraniyespor    29
+Vanspor         29
+Erzurum BB      27
+Buyuksehyr      22
+Bodrumspor      18
+
+============================================================
+  7. Tenure Statistics
+============================================================
+  Median tenure:  160 days
+  Mean tenure:    231 days
+  Min tenure:     1 days
+  Max tenure:     4681 days
+
+  Stints shorter than 30 days: 187
+        football_data_name              manager  start_date    end_date  days
+1            Ad. Demirspor        Hilmi Bozkurt  2025-10-25  2025-11-06    12
+21           Ad. Demirspor          Gürcan Aday  2017-11-01  2017-11-27    26
+31           Ad. Demirspor      Nurettin Yılmaz  2014-02-18  2014-03-05    15
+75           Ad. Demirspor         Feridun Köse  1990-02-01  1990-02-23    22
+105              Adanaspor   François Ciccolini  2024-09-01  2024-09-24    23
+108              Adanaspor            Eyüp Arın  2024-01-19  2024-01-30    11
+110              Adanaspor            Eyüp Arın  2023-10-06  2023-11-03    28
+112              Adanaspor          Kemal Kılıç  2023-07-01  2023-07-25    24
+116              Adanaspor            Eyüp Arın  2022-09-12  2022-09-27    15
+123              Adanaspor          Fatih Akyel  2020-09-10  2020-09-19     9
+125              Adanaspor            Eyüp Arın  2020-01-31  2020-02-27    27
+137              Adanaspor            Eyüp Arın  2016-08-18  2016-08-28    10
+143              Adanaspor             Ekrem Al  2013-08-14  2013-08-21     7
+152              Adanaspor            Eyüp Arın  2008-09-26  2008-10-10    14
+234   Akhisar Belediyespor     Behiç Başatuğrul  1999-06-15  1999-06-30    15
+288                  Altay        Serkan Afacan  2023-11-21  2023-12-08    17
+290                  Altay          Özkan Kılıç  2023-09-18  2023-10-12    24
+294                  Altay           Mert Nobre  2022-01-15  2022-01-26    11
+306                  Altay          Ümit Turmuş  2016-10-12  2016-11-09    28
+339                  Altay        Miodrag Jesic  2002-07-20  2002-08-09    20
+373                  Altay        Candan Tarhan  1982-12-15  1983-01-03    19
+401                  Altay        Bayram Dinsel  1960-01-26  1960-02-15    20
+407             Ankaragucu         Mesut Bakkal  2025-04-02  2025-04-18    16
+410             Ankaragucu       Hakan Demirkan  2024-12-21  2024-12-26     5
+419             Ankaragucu        Mustafa Dalcı  2021-01-23  2021-02-09    17
+428             Ankaragucu        Bayram Bektaş  2018-12-19  2019-01-13    25
+519             Ankaraspor       İsmet Taşdemir  2020-10-15  2020-10-30    15
+530             Ankaraspor         Yılmaz Vural  2014-12-25  2015-01-13    19
+542             Ankaraspor        Hayati Soydaş  2003-08-11  2003-09-02    22
+557                Antalya     Alaattin Gülerce  2025-12-17  2026-01-02    16
+570                Antalya  David Badia Cequier  2017-09-20  2017-09-27     7
+573                Antalya         Samuel Eto'o  2015-12-08  2016-01-05    28
+594                Antalya         Cezmi Turhan  2001-08-07  2001-08-31    24
+612                Antalya           Rasim Kara  1986-10-28  1986-11-14    17
+627            Antalyaspor     Alaattin Gülerce  2025-12-17  2026-01-02    16
+640            Antalyaspor  David Badia Cequier  2017-09-20  2017-09-27     7
+643            Antalyaspor         Samuel Eto'o  2015-12-08  2016-01-05    28
+664            Antalyaspor         Cezmi Turhan  2001-08-07  2001-08-31    24
+682            Antalyaspor           Rasim Kara  1986-10-28  1986-11-14    17
+699          Balikesirspor         Veyis Kanber  2024-10-31  2024-11-20    20
+702          Balikesirspor      Mehmet Demirtaş  2023-10-11  2023-11-07    27
+706          Balikesirspor           Yunus İçuz  2022-09-26  2022-10-06    10
+778               Besiktas    Serdar Topraktepe  2023-12-21  2024-01-09    19
+796               Besiktas       Tayfur Havutçu  2007-05-15  2007-05-26    11
+805               Besiktas           Fuat Yaman  1999-02-24  1999-03-17    21
+846             Bodrumspor       Serdar Özdemir  2025-02-03  2025-02-07     4
+875               Bucaspor        Cemil Akkoyun  2015-10-09  2015-10-30    21
+923              Bursaspor          Fatih Tekke  2021-08-25  2021-09-23    29
+935              Bursaspor          Ersel Uzğur  2015-11-30  2015-12-18    18
+976              Bursaspor           Sinan Oral  1985-12-25  1986-01-19    25
+1060           Denizlispor           Şükrü Akar  2024-11-07  2024-11-14     7
+1064           Denizlispor          Kemal Kılıç  2023-03-26  2023-04-10    15
+1066           Denizlispor    Mustafa Gözlükaya  2022-10-24  2022-10-31     7
+1089           Denizlispor       Engin İpekoğlu  2015-01-23  2015-02-16    24
+1099           Denizlispor           Kenan Atik  2011-02-17  2011-03-01    12
+1151        Diyarbakirspor        Murat Yiğiter  2021-03-01  2021-03-12    11
+1220            Elazigspor          Kenan Kamac  2021-09-02  2021-09-21    19
+1227            Elazigspor          Erhan Altın  2019-02-13  2019-03-03    18
+1258            Elazigspor            Ahmet Gül  2004-11-09  2004-11-17     8
+1276            Elazigspor         Adnan Dinçer  1998-02-05  1998-02-20    15
+1371               Erzurum        Atilla Türköz  2005-12-08  2006-01-06    29
+1409            Erzurum BB        İsmail Kartal  2021-03-23  2021-03-28     5
+1411            Erzurum BB       Hüseyin Çimşir  2020-12-02  2020-12-21    19
+1439           Erzurumspor        Atilla Türköz  2005-12-08  2006-01-06    29
+1475         Eskisehirspor       Önder Karaveli  2024-03-12  2024-04-08    27
+1486         Eskisehirspor          Yasin Söğüt  2021-01-21  2021-02-03    13
+1508         Eskisehirspor           Ergin Işık  2006-11-02  2006-11-10     8
+1529         Eskisehirspor        İlhan Mayakan  1995-12-14  1995-12-30    16
+1542         Eskisehirspor        Kamuran Yavuz  1989-02-04  1989-02-20    16
+1572              Eyupspor          Zafer Turan  2023-03-27  2023-04-13    17
+1576              Eyupspor          Hasan Çelik  2019-11-20  2019-11-27     7
+1619            Fenerbahce      Zeki Murat Göle  2025-08-29  2025-09-08    10
+1624            Fenerbahce      Zeki Murat Göle  2021-12-20  2022-01-13    24
+1699           Galatasaray           Orhan Atik  2016-03-01  2016-03-16    15
+1701           Galatasaray     Claudio Taffarel  2015-11-19  2015-11-26     7
+1735           Galatasaray       Fethi Demircan  1975-08-01  1975-08-30    29
+1796         Gaziantepspor      Erol Yaşar Ayas  2019-01-16  2019-02-11    26
+1817         Gaziantepspor        Seçkin Göksel  2009-04-03  2009-04-17    14
+1847         Gaziantepspor          Gürcan Berk  1983-04-11  1983-05-02    21
+1860        Genclerbirligi         Levent Şahin  2026-02-16  2026-03-06    18
+1867        Genclerbirligi         Medet Coşkun  2022-11-01  2022-11-14    13
+1869        Genclerbirligi         Medet Coşkun  2022-09-15  2022-09-27    12
+1883        Genclerbirligi         Yılmaz Vural  2015-12-25  2015-12-31     6
+1884        Genclerbirligi       Mustafa Kaplan  2015-12-18  2015-12-25     7
+1889        Genclerbirligi       Mustafa Kaplan  2014-08-26  2014-09-17    22
+1927        Genclerbirligi       Fehmi Baştüzel  1990-01-02  1990-01-10     8
+1965           Giresunspor            Ümit Özat  2019-01-17  2019-02-05    19
+1968           Giresunspor         Yılmaz Vural  2018-02-08  2018-02-23    15
+1995           Giresunspor         Haluk Seçkin  2003-08-27  2003-09-25    29
+2025                Goztep          Ahmet Balcı  2022-09-11  2022-09-28    17
+2045                Goztep          Erhan Altın  2013-08-15  2013-09-11    27
+2081                Goztep        Aydın Hepanıl  1996-06-18  1996-06-25     7
+2089                Goztep          Ender Konca  1993-11-18  1993-11-30    12
+2101                Goztep         Adnan Süvari  1981-12-09  1982-01-03    25
+2122         Hacettepespor      Murat Bölükbaşı  2021-11-08  2021-11-30    22
+2125         Hacettepespor           Taner Öcal  2021-01-08  2021-01-11     3
+2144         Hacettepespor       Celal Kıprızlı  2010-08-19  2010-09-15    27
+2151         Hacettepespor   Selahattin Diyadin  2005-09-14  2005-09-15     1
+2169             Hatayspor          Gökhan Alaş  2025-08-19  2025-08-24     5
+2171             Hatayspor           Yılmaz Bal  2024-12-24  2025-01-14    21
+2202             Hatayspor         Hasan Yüksel  2004-08-24  2004-09-09    16
+2233          Istanbulspor          Olcay Demir  2023-09-26  2023-10-10    14
+2287          Istanbulspor           Ali Mortaş  1965-12-25  1966-01-17    23
+2300           Karabukspor        Atilla Türköz  2021-09-01  2021-09-21    20
+2330           Karabukspor            Ali Güneş  2005-11-24  2005-12-16    22
+2340           Karabukspor        Hüseyin Özcan  2000-08-31  2000-09-01     1
+2372            Karagumruk     Onur Can Korkmaz  2025-01-07  2025-01-16     9
+2385            Karagumruk         Erkan Zengin  2019-10-16  2019-11-04    19
+2390            Karagumruk     Oktay Derelioğlu  2018-07-05  2018-07-30    25
+2401            Karagumruk          Timuçin Çuğ  2010-11-25  2010-12-10    15
+2405            Karagumruk       Hayati Palancı  2009-02-19  2009-03-13    22
+2407            Karagumruk       Önder Karaveli  2008-09-05  2008-09-29    24
+2412            Karagumruk         Osman Gökhan  2006-09-21  2006-10-06    15
+2449            Karagumruk       Niyazi Civelek  1961-04-06  1961-04-18    12
+2467             Kasimpasa            İrfan Buz  2020-11-16  2020-11-27    11
+2472             Kasimpasa         İlyas Öztürk  2019-05-15  2019-05-27    12
+2478             Kasimpasa           Fuat Kilic  2012-09-24  2012-10-07    13
+2585           Kayserispor     Muhammed Türkmen  2026-02-10  2026-02-25    15
+2596           Kayserispor        Uğur Kulaksız  2021-02-24  2021-03-20    24
+2602           Kayserispor         Samet Aybaba  2019-10-10  2019-10-28    18
+2652           Kocaelispor      Yalçın Kıldıran  2011-11-11  2011-12-02    21
+2656           Kocaelispor      Bülent Baturman  2010-02-05  2010-02-16    11
+2765             Konyaspor         Hüsnü Macuni  1992-11-19  1992-12-10    21
+2785             Konyaspor         Recep Adanır  1966-07-13  1966-07-20     7
+2788            Manisaspor          Hakan Şapçı  2024-11-27  2024-12-19    22
+2797            Manisaspor          Erkan Aslan  2018-08-29  2018-09-24    26
+2799            Manisaspor      Aytekin Viduşlu  2018-03-09  2018-03-28    19
+2909    Mersin Idman Yurdu        Turgut Kafkas  1977-12-09  1977-12-20    11
+2916    Mersin Idman Yurdu          Ted Dumitru  1971-07-01  1971-07-20    19
+2929              Orduspor         Menduh Fidan  2014-11-07  2014-11-24    17
+2930              Orduspor        Levent Devrim  2014-11-07  2014-11-24    17
+2931              Orduspor  Sebahattin Akbayrak  2014-10-16  2014-11-05    20
+2932              Orduspor         Erkan Sözeri  2014-10-02  2014-10-16    14
+2944              Orduspor         Hakkı Bayrak  2008-09-19  2008-10-10    21
+2968              Orduspor          Yener Çelik  1985-09-18  1985-09-24     6
+2969              Orduspor      Muhittin Kıpçak  1985-08-30  1985-09-17    18
+2977              Orduspor          Yener Çelik  1979-09-05  1979-09-18    13
+3004           Osmanlispor       İsmet Taşdemir  2020-10-15  2020-10-30    15
+3015           Osmanlispor         Yılmaz Vural  2014-12-25  2015-01-13    19
+3027           Osmanlispor        Hayati Soydaş  2003-08-11  2003-09-02    22
+3048              Rizespor    Mehmet Ali Karaca  2020-07-16  2020-07-31    15
+3065              Rizespor            Suat Kaya  2009-01-23  2009-02-12    20
+3069              Rizespor         Samet Aybaba  2007-08-09  2007-08-22    13
+3076              Rizespor     Bülent Bayraktar  2005-01-28  2005-01-31     3
+3115           Sakaryaspor      Furkan Köseoğlu  2025-12-07  2025-12-29    22
+3119           Sakaryaspor        Mustafa Dalcı  2025-01-29  2025-02-06     8
+3134           Sakaryaspor       Abdullah Ercan  2019-08-30  2019-09-20    21
+3156           Sakaryaspor       Özcan Kızıltan  2009-08-31  2009-09-29    29
+3159           Sakaryaspor       Hüseyin Kalpar  2008-08-21  2008-09-19    29
+3194           Sakaryaspor          Enver Katip  1988-11-01  1988-11-07     6
+3201           Sakaryaspor           Necdet Niş  1986-01-01  1986-01-22    21
+3219            Samsunspor       Emre Bayraktar  2022-09-13  2022-09-25    12
+3225            Samsunspor   Recep Sermet Boyar  2019-10-27  2019-11-21    25
+3244            Samsunspor          Nafiz Tural  2008-11-09  2008-11-13     4
+3272            Samsunspor       Mehmet Babalık  1991-09-23  1991-09-30     7
+3283            Samsunspor       Fahrettin Genç  1983-04-02  1983-04-08     6
+3285            Samsunspor       Mehmet Babalık  1982-10-01  1982-10-27    26
+3303               Sariyer         Yılmaz Vural  2025-09-17  2025-10-08    21
+3315               Sariyer          Bülent Akan  2022-07-12  2022-07-30    18
+3326               Sariyer           Erbil Uzel  2018-02-15  2018-03-02    15
+3334               Sariyer       Mahmut Kocabal  2014-02-20  2014-03-20    28
+3440           Trabzonspor     İhsan Derelioğlu  2024-08-31  2024-09-02     2
+3443           Trabzonspor     İhsan Derelioğlu  2023-04-05  2023-04-18    13
+3444           Trabzonspor             Orhan Ak  2023-03-08  2023-04-04    27
+3446           Trabzonspor     İhsan Derelioğlu  2020-10-31  2020-11-08     8
+3452           Trabzonspor         Taner Yılmaz  2016-05-14  2016-05-20     6
+3468           Trabzonspor      Orhan Çıkırıkçı  2005-09-26  2005-10-07    11
+3491           Trabzonspor          Şenol Güneş  1986-03-15  1986-03-17     2
+3509          Umraniyespor     Hüsamettin Balcı  2024-12-04  2025-01-01    28
+3549               Vanspor          Cemal Tosun  1996-10-08  1996-10-17     9
+3610            Yozgatspor   Hayrettin Gümüşdağ  2011-03-11  2011-04-04    24
+3611            Yozgatspor         Sadun Hoşbay  2011-02-18  2011-03-11    21
+3616            Yozgatspor       Feridun Dündar  2009-10-02  2009-10-30    28
+3630            Yozgatspor    Mustafa Çapanoğlu  2003-08-20  2003-09-17    28
+3651           Zeytinburnu      Ali Nail Durmuş  2008-08-29  2008-09-26    28
+3683           Zeytinburnu          Metin Türel  1990-11-30  1990-12-18    18
+3686           Zeytinburnu          Vahit İleri  1989-12-28  1990-01-19    22
+3713             Karsiyaka      Hüseyin Hamamcı  2015-12-16  2016-01-07    22
+3751             Karsiyaka        İlyas Sazalan  1996-03-18  1996-04-01    14
+3754             Karsiyaka          Kazim Admis  1995-11-15  1995-11-22     7
+3755             Karsiyaka           Erol Togay  1995-10-24  1995-11-14    21
+3769             Karsiyaka        Mike Ferguson  1990-07-31  1990-08-20    20
+3790           Malatyaspor       Hayati Palancı  2025-10-10  2025-11-07    28
+3791           Malatyaspor       Hayati Palancı  2024-11-03  2024-11-19    16
+3797           Malatyaspor    Mustafa Meteertem  2010-12-10  2010-12-20    10
+3820           Malatyaspor          Erkan Kural  1999-09-10  1999-10-05    25
+3844           Malatyaspor        Özkan Akbulut  1986-09-16  1986-09-28    12
+
+============================================================
+  8. Cross-file: managers.csv vs team_mapping.csv
+============================================================
+  [PASS]  All club names in managers.csv exist in team_mapping.csv
+  [PASS]  All clubs missing stints are expected NEEDS_MANUAL clubs (5 total)
+
+============================================================
+  SUMMARY
+============================================================
+  managers.csv passes all critical data quality checks.
+  2 known Transfermarkt date-order errors (tolerated, documented).
+  5 clubs have no stints — expected (no TM profile found).
+
