@@ -48,7 +48,8 @@ HAND_SCORES = [
 SYSTEM = """You are a football analyst scoring Turkish Süper Lig news articles for a research project.
 Your task: assess how strongly each article signals that a manager change is imminent or has just been confirmed.
 Focus only on the manager's job security. Ignore player transfers, match results, and tactical content unless they directly relate to pressure on the manager.
-Always return a single JSON object with keys: score (0–4), is_relevant (true/false), reason (one sentence in English)."""
+Always return a single JSON object with keys: score (0–4), is_relevant (true/false), reason (one sentence in English).
+Then normalize 0-4 scale of scores to percentages (0=0%, 1=25%, 2=50%, 3=75%, 4=100%) for easier interpretation."""
 
 def build_user_prompt(title: str, team: str, date: str) -> str:
     return f"""Article headline: {title}
@@ -136,8 +137,90 @@ def main():
     else:
         print("\n✗  Agreement < 80% — review disagreements above and revise the prompt.")
 
-    pd.DataFrame(results).to_csv(ROOT / 'news' / 'validation_results.csv', index=False)
+    results_df = pd.DataFrame(results)
+    csv_path = ROOT / 'news' / 'validation_results.csv'
+    results_df.to_csv(csv_path, index=False)
     print(f"\nResults saved → news/validation_results.csv")
+
+    # ── Write interpretation report ───────────────────────────────────────
+    md_path = ROOT / 'news' / 'validation_interpretation.md'
+
+    disagreements = [r for r in results if not (r['score_match'] and r['rel_match'])]
+
+    lines = [
+        "# Classifier Validation — Interpretation",
+        "",
+        "## Summary",
+        "",
+        f"| Metric | Result |",
+        f"|--------|--------|",
+        f"| Articles hand-labelled | {len(HAND_SCORES)} |",
+        f"| Score agreement (±1)   | {score_matches}/{len(HAND_SCORES)} = {score_agree:.0f}% |",
+        f"| is_relevant agreement  | {rel_matches}/{len(HAND_SCORES)} = {rel_agree:.0f}% |",
+        f"| Both agree             | {both_agree:.0f}% |",
+        f"| Target                 | ≥ 80% |",
+        f"| Status                 | {'✅ PASS — ready to scale' if both_agree >= 80 else '❌ FAIL — revise prompt'} |",
+        "",
+        "## Score normalisation",
+        "",
+        "Raw scores (0–4) are normalised to percentages for downstream use:",
+        "",
+        "| Raw score | Normalised | Meaning |",
+        "|-----------|------------|---------|",
+        "| 0 | 0% | No signal |",
+        "| 1 | 25% | Mild signal |",
+        "| 2 | 50% | Moderate signal |",
+        "| 3 | 75% | Strong signal |",
+        "| 4 | 100% | Confirmed change |",
+        "",
+        "## Article-level results",
+        "",
+        "| # | Team | Date | Human | LLM | Score match | Rel match | Reason |",
+        "|---|------|------|-------|-----|-------------|-----------|--------|",
+    ]
+
+    for r in results:
+        human = f"{r['human_score']}({'Y' if r['human_relevant'] else 'N'})"
+        llm   = f"{r['llm_score']}({'Y' if r['llm_relevant'] else 'N'})"
+        sm    = "✅" if r['score_match'] else "❌"
+        rm    = "✅" if r['rel_match']   else "❌"
+        lines.append(
+            f"| {r['article']} | {r['team']} | {r['date']} | {human} | {llm} | {sm} | {rm} | {r['reason'][:80]} |"
+        )
+
+    lines += [
+        "",
+        "## Disagreements",
+        "",
+    ]
+
+    if not disagreements:
+        lines.append("None — perfect agreement on all 10 articles.")
+    else:
+        for r in disagreements:
+            lines.append(f"**Article {r['article']} — {r['team']} ({r['date']})**")
+            lines.append(f"- Human: score={r['human_score']}, relevant={r['human_relevant']}")
+            lines.append(f"- LLM:   score={r['llm_score']}, relevant={r['llm_relevant']}")
+            lines.append(f"- LLM reason: {r['reason']}")
+            lines.append("")
+
+    lines += [
+        "## Prompt design decisions",
+        "",
+        "- **Scale 0–4** captures the full arc from no signal to confirmed change.",
+        "- **Appointment articles score 0 / is_relevant=false** — they describe the post-change period, not pre-change expectation.",
+        "- **Score 4 = confirmed exit** (firing or resignation) — marks the end of the expectation window.",
+        "- **Score 3 = public pressure** (fan protests, explicit board discussion) — strongest pre-change signal.",
+        "- **Score 1 = mild signal** (manager deflecting departure questions, brief resolved departure, post-firing replacement speculation).",
+        "- **±1 tolerance** used for agreement rate — adjacent scores reflect genuine ambiguity, not model failure.",
+        "",
+        "## Next step",
+        "",
+        f"{'Prompt passes validation. Proceed to full classification of all 2,524 articles.' if both_agree >= 80 else 'Agreement below 80%. Review disagreements above and revise prompt_classifier.md before scaling.'}",
+    ]
+
+    md_path.write_text('\n'.join(lines), encoding='utf-8')
+    print(f"Interpretation saved → news/validation_interpretation.md")
 
 if __name__ == "__main__":
     main()
