@@ -1,11 +1,11 @@
 article,team,date,human_score,human_relevant,llm_score,llm_relevant,score_match,rel_match,reason
-1,Fenerbahce,2025-08-07,1,True,1,True,True,True,Manager answering departure questions — mild signal.
-2,Konyaspor,2025-10-19,3,True,3,True,True,True,Fans demanding manager resignation — strong signal.
-3,Antalyaspor,2025-07-03,1,True,1,True,True,True,Resignation reversed after one week — mild signal.
-4,Genclerbirligi,2025-12-07,4,True,4,True,True,True,Confirmed resignation of head coach.
-5,Galatasaray,2026-04-21,0,False,0,False,True,True,Tactical decision — no managerial pressure.
-6,Trabzonspor,2026-04-21,0,False,0,False,True,True,Manager's post-match message to players — no signal of managerial change.
-7,Besiktas,2025-08-29,0,False,0,False,True,True,"New manager appointed — post-change article, score=0."
-8,Fenerbahce,2025-09-09,0,True,0,True,True,True,"Profile of newly appointed manager — post-change, score=0."
-9,Trabzonspor,2025-07-01,0,False,0,False,True,True,"Player departure, not about manager."
-10,Kayserispor,2025-10-07,1,True,1,True,True,True,Replacement search after previous manager left — mild signal.
+1,Fenerbahce,2025-08-07,1,True,0,True,True,True,Mourinho answering questions about transfers and departures is routine post-match/press conference commentary with no signal of his own job security being under threat.
+2,Konyaspor,2025-10-19,3,True,3,True,True,True,Fans publicly demanding manager Recep Uçar's resignation through chants/protests is a strong signal of imminent manager change pressure.
+3,Antalyaspor,2025-07-03,1,True,4,True,False,True,"Article explicitly states that manager Emre Belözoğlu resigned from Antalyaspor, confirming a firing/resignation has just occurred."
+4,Genclerbirligi,2025-12-07,4,True,4,True,True,True,Volkan Demirel's resignation as Gençlerbirliği manager has been explicitly confirmed.
+5,Galatasaray,2026-04-21,0,False,0,False,True,True,"Routine tactical article about cup match squad rotation decisions by the manager, with no connection to job security or managerial change."
+6,Trabzonspor,2026-04-21,0,False,0,False,True,True,"Routine post-match quote from manager Fatih Tekke addressing his players after a draw; no indication of job pressure, criticism, or departure concerns."
+7,Besiktas,2025-08-29,0,False,0,False,True,True,Article announces Sergen Yalçın as Beşiktaş's new manager — a post-change appointment statement with no content beyond the fact.
+8,Fenerbahce,2025-09-09,0,True,0,True,True,True,"This is a new-manager profile article asking 'Who is Domenico Tedesco?' — the appointment has already been confirmed, making this a post-change period article describing the new coach rather than signaling an imminent change."
+9,Trabzonspor,2025-07-01,0,False,0,False,True,True,"Article headline signals a player departure ('ayrılık'), not a managerial change, with no connection to manager job security."
+10,Kayserispor,2025-10-07,1,True,0,True,True,True,"Article announces a new manager appointment (Jakirovic) for Kayserispor after Gisdol's departure, describing the post-change period rather than signaling an imminent change."

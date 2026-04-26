@@ -7,6 +7,15 @@ Format: `[YYYY-MM-DD] — what changed and why`.
 
 ## Session 2 — 2026-04-26
 
+### Changed (post-session fixes)
+
+| File | Change | Reason |
+|------|--------|--------|
+| `news/classify_validate.py` | Expanded SYSTEM prompt with full scoring scale, explicit appointment rule, and `is_relevant` independence note; switched JSON parser to `re.search()` to handle extra text after JSON | First run showed 50% agreement — appointment articles scored 4 instead of 0; JSON parse errors on 3 articles |
+| `news/classify_validate.py` | Added `body` parameter to `classify()` and `build_user_prompt()` — passes full article body when available (Fotomaç only) | Classifier should use body text where scraped, not title only |
+| `news/articles_classified.csv` | Added `score_norm` column (score × 0.25, range 0.0–1.0) | Required by `build_expectations.py` which aggregates using normalised scores |
+| `out/expectations.csv` | Generated via `build_expectations.py` — canonical aggregated panel | Final output format for Session 3 merge |
+
 ### Added
 
 | File | Description |
