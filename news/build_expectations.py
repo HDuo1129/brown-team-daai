@@ -46,14 +46,15 @@ def aggregate(df: pd.DataFrame) -> pd.DataFrame:
         n_relevant=("score_norm", "count"),
     ).reset_index()
     panel = all_articles.merge(rel_agg, on=["team", "gameweek"], how="left")
+    panel = panel.rename(columns={"gameweek": "date"})
     panel["avg_grade"]  = panel["avg_grade"].fillna(0.0).round(4)
     panel["n_relevant"] = panel["n_relevant"].fillna(0).astype(int)
-    panel = panel.sort_values(["team", "gameweek"]).reset_index(drop=True)
+    panel = panel.sort_values(["team", "date"]).reset_index(drop=True)
     return panel
 
 
 def validate_panel(panel: pd.DataFrame) -> None:
-    required = {"team", "gameweek", "avg_grade", "n_news"}
+    required = {"team", "date", "avg_grade", "n_news"}
     missing = required - set(panel.columns)
     if missing:
         raise ValueError(f"Expectations panel missing columns: {missing}")
