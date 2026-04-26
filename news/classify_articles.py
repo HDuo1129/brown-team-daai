@@ -27,39 +27,16 @@ ROOT          = Path(__file__).parent.parent
 ARTICLES      = ROOT / "news" / "articles_text.csv"
 MANAGERS      = ROOT / "managers" / "managers.csv"
 OUT_CSV       = ROOT / "news" / "articles_classified.csv"
-MODEL         = "llama-3.3-70b-versatile"
+MODEL         = "llama-3.1-8b-instant"
 DAILY_DEFAULT = 1400
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 log = logging.getLogger(__name__)
 
-SYSTEM = """You are a football analyst scoring Turkish Süper Lig news articles for a research project.
+SYSTEM = """Score Turkish Süper Lig articles for manager-change expectation. Return ONLY JSON: {"score":0-4,"is_relevant":true/false,"reason":"one sentence"}
 
-TASK: Score each article on how strongly it signals a manager change is COMING. Return ONLY JSON.
-
-SCORE SCALE (0–4):
-0 = No signal: routine quote, tactics, player news, OR new-manager appointment (change already done)
-1 = Mild signal: manager fielding departure questions, reversed rumour, post-dismissal replacement search
-2 = Moderate signal: explicit board/media criticism, poor results blamed on manager
-3 = Strong signal: fan protests demanding change, named replacement candidates, board meeting reports
-4 = Confirmed change: firing/resignation confirmed as happening NOW in this article
-
-CRITICAL RULES:
-- "yeni teknik direktör X" / "X is the new coach" / "Who is X?" → score=0 (post-change appointment)
-- Resignation reversed/lasted 1 week → score=1 (change did not happen)
-- Searching for new coach AFTER previous was fired → score=1
-- Score=4 ONLY when the headline itself confirms the departure is happening right now
-
-OUTPUT: return exactly this JSON object, no other text:
-{"score": <0-4>, "is_relevant": <true/false>, "reason": "<one sentence in English>"}
-
-EXAMPLES:
-"Beşiktaş'ın yeni teknik direktörü Sergen Yalçın" → {"score": 0, "is_relevant": false, "reason": "New manager appointed — post-change article."}
-"Fenerbahçe'nin yeni teknik direktörü Domenico Tedesco kimdir?" → {"score": 0, "is_relevant": true, "reason": "Profile of newly appointed manager — post-change."}
-"Taraftardan 'Recep Uçar istifa' sesleri!" → {"score": 3, "is_relevant": true, "reason": "Fans demanding manager resignation."}
-"Gençlerbirliği Teknik Direktörü Volkan Demirel istifa etti" → {"score": 4, "is_relevant": true, "reason": "Confirmed resignation of head coach."}
-"Emre Belözoğlu'ndan hiç beklenmedik karar! istifa etmişti, her şey 1 hafta sürdü..." → {"score": 1, "is_relevant": true, "reason": "Resignation reversed — mild signal."}
-"Markus Gisdol'den sonra Kayserispor'un yeni hocası belli oldu mu?" → {"score": 1, "is_relevant": true, "reason": "Replacement search after dismissal — mild signal."}"""
+0=no signal or new appointment; 1=mild (departure rumour/reversed); 2=moderate (criticism); 3=strong (protests/named replacement); 4=confirmed firing/resignation NOW.
+Rule: "yeni teknik direktör" / new coach profile = score 0. Appointment articles always score 0."""
 
 SCALE     = {0: 0.0, 1: 0.25, 2: 0.5, 3: 0.75, 4: 1.0}
 USER_TMPL = "Article headline: {title}\nTeam: {team}\nDate: {date}{body}\n\nScore this article."
@@ -167,7 +144,7 @@ def main() -> None:
         append_result(row, result)
         if i % 100 == 0:
             log.info("Progress: %d / %d", i, len(todo))
-        time.sleep(2.1)   # 30 RPM → 2s per request + safety margin
+        time.sleep(3.5)   # ~17 RPM — stays within 8B model's token-per-minute limit
 
     total = len(pd.read_csv(OUT_CSV)) if OUT_CSV.exists() else 0
     log.info("Done. %d articles classified → %s", total, OUT_CSV)
