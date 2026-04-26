@@ -3,224 +3,175 @@ news/classify_validate.py
 ==========================
 Validate the classifier prompt against 10 hand-labelled articles.
 Prints a comparison table and agreement rate.
+Writes: news/validation_results.csv  news/validation_interpretation.md
 
 Usage:
-    export ANTHROPIC_API_KEY=sk-ant-...
+    export GROQ_API_KEY=gsk_...
     python news/classify_validate.py
 """
 
 import json
 import os
 import time
-import anthropic
+import groq
 import pandas as pd
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 
-# ---------------------------------------------------------------------------
-# Hand labels (your scores)
-# ---------------------------------------------------------------------------
-
-HAND_LABELS = {
-    # news_uid -> (score, is_relevant)
-}
-
-# 10 hand-labelled articles (loaded from hand_label_sample.csv + your scores)
 HAND_SCORES = [
-    # (team, date, body_text, your_score, your_relevant)
-    ("Fenerbahce",     "2025-08-07", "Jose Mourinho'dan transfer ve ayrılık yanıtı!",                                                                                    1, True),
-    ("Konyaspor",      "2025-10-19", "Taraftardan 'Recep Uçar istifa' sesleri!",                                                                                         3, True),
-    ("Antalyaspor",    "2025-07-03", "Emre Belözoğlu'ndan hiç beklenmedik karar! Antalyaspor'dan istifa etmişti, her şey 1 hafta sürdü...",                               1, True),
-    ("Genclerbirligi", "2025-12-07", "Gençlerbirliği Teknik Direktörü Volkan Demirel istifa etti",                                                                        4, True),
-    ("Galatasaray",    "2026-04-21", "Okan Buruk'tan kupada sürpriz hamle: Gençlerbirliği maçı rotasyon sinyali",                                                         0, False),
-    ("Trabzonspor",    "2026-04-21", "Trabzonspor teknik direktörü Fatih Tekke'den beraberlik sonrası oyunculara mesaj! 'Kaldırın kafanızı bırakmak yok'",                0, False),
-    ("Besiktas",       "2025-08-29", "Beşiktaş'ın yeni teknik direktörü Sergen Yalçın",                                                                                  0, False),
-    ("Fenerbahce",     "2025-09-09", "Fenerbahçe'nin yeni teknik direktörü Domenico Tedesco kimdir?",                                                                     0, True),
-    ("Trabzonspor",    "2025-07-01", "Trabzonspor'da ayrılık! Attığı golle hafızalara kazınmıştı",                                                                        0, False),
-    ("Kayserispor",    "2025-10-07", "Markus Gisdol'den sonra Kayserispor'un yeni hocası belli oldu mu? Jakirovic etkisi yaratacak...",                                   1, True),
+    # (team, date, title, human_score, human_relevant)
+    ("Fenerbahce",     "2025-08-07", "Jose Mourinho'dan transfer ve ayrılık yanıtı!",                                                                    1, True),
+    ("Konyaspor",      "2025-10-19", "Taraftardan 'Recep Uçar istifa' sesleri!",                                                                         3, True),
+    ("Antalyaspor",    "2025-07-03", "Emre Belözoğlu'ndan hiç beklenmedik karar! Antalyaspor'dan istifa etmişti, her şey 1 hafta sürdü...",               1, True),
+    ("Genclerbirligi", "2025-12-07", "Gençlerbirliği Teknik Direktörü Volkan Demirel istifa etti",                                                        4, True),
+    ("Galatasaray",    "2026-04-21", "Okan Buruk'tan kupada sürpriz hamle: Gençlerbirliği maçı rotasyon sinyali",                                         0, False),
+    ("Trabzonspor",    "2026-04-21", "Trabzonspor teknik direktörü Fatih Tekke'den beraberlik sonrası oyunculara mesaj! 'Kaldırın kafanızı bırakmak yok'", 0, False),
+    ("Besiktas",       "2025-08-29", "Beşiktaş'ın yeni teknik direktörü Sergen Yalçın",                                                                   0, False),
+    ("Fenerbahce",     "2025-09-09", "Fenerbahçe'nin yeni teknik direktörü Domenico Tedesco kimdir?",                                                      0, True),
+    ("Trabzonspor",    "2025-07-01", "Trabzonspor'da ayrılık! Attığı golle hafızalara kazınmıştı",                                                         0, False),
+    ("Kayserispor",    "2025-10-07", "Markus Gisdol'den sonra Kayserispor'un yeni hocası belli oldu mu? Jakirovic etkisi yaratacak...",                    1, True),
 ]
 
-# ---------------------------------------------------------------------------
-# Prompt (from prompt_classifier.md)
-# ---------------------------------------------------------------------------
-
 SYSTEM = """You are a football analyst scoring Turkish Süper Lig news articles for a research project.
-Your task: assess how strongly each article signals that a manager change is imminent or has just been confirmed.
-Focus only on the manager's job security. Ignore player transfers, match results, and tactical content unless they directly relate to pressure on the manager.
-Always return a single JSON object with keys: score (0–4), is_relevant (true/false), reason (one sentence in English).
-Then normalize 0-4 scale of scores to percentages (0=0%, 1=25%, 2=50%, 3=75%, 4=100%) for easier interpretation."""
 
-def build_user_prompt(title: str, team: str, date: str) -> str:
-    return f"""Article headline: {title}
-Team: {team}
-Date: {date}
+TASK: Score each article on how strongly it signals a manager change is COMING. Return ONLY JSON.
 
-Score this article for manager-change expectation signal."""
+SCORE SCALE (0–4):
+0 = No signal: routine quote, tactics, player news, OR new-manager appointment (change already done)
+1 = Mild signal: manager fielding departure questions, reversed rumour, post-dismissal replacement search
+2 = Moderate signal: explicit board/media criticism, poor results blamed on manager
+3 = Strong signal: fan protests demanding change, named replacement candidates, board meeting reports
+4 = Confirmed change: firing/resignation confirmed as happening NOW in this article
 
-# ---------------------------------------------------------------------------
-# API call
-# ---------------------------------------------------------------------------
+CRITICAL RULES:
+- "yeni teknik direktör X" / "X is the new coach" / "Who is X?" → score=0 (post-change appointment)
+- Resignation reversed/lasted 1 week → score=1 (change did not happen)
+- Searching for new coach AFTER previous was fired → score=1
+- Score=4 ONLY when the headline itself confirms the departure is happening right now
 
-def classify(client: anthropic.Anthropic, title: str, team: str, date: str) -> dict:
-    msg = client.messages.create(
-        model="claude-haiku-4-5-20251001",   # fast + cheap for validation
-        max_tokens=150,
-        system=SYSTEM,
-        messages=[{"role": "user", "content": build_user_prompt(title, team, date)}],
+OUTPUT: return exactly this JSON object, no other text:
+{"score": <0-4>, "is_relevant": <true/false>, "reason": "<one sentence in English>"}
+
+EXAMPLES:
+"Jose Mourinho'dan transfer ve ayrılık yanıtı!" → {"score": 1, "is_relevant": true, "reason": "Manager answering departure questions — mild signal."}
+"Taraftardan 'Recep Uçar istifa' sesleri!" → {"score": 3, "is_relevant": true, "reason": "Fans demanding manager resignation — strong signal."}
+"Emre Belözoğlu'ndan hiç beklenmedik karar! istifa etmişti, her şey 1 hafta sürdü..." → {"score": 1, "is_relevant": true, "reason": "Resignation reversed after one week — mild signal."}
+"Gençlerbirliği Teknik Direktörü Volkan Demirel istifa etti" → {"score": 4, "is_relevant": true, "reason": "Confirmed resignation of head coach."}
+"Okan Buruk'tan kupada sürpriz hamle: rotasyon sinyali" → {"score": 0, "is_relevant": false, "reason": "Tactical decision — no managerial pressure."}
+"Beşiktaş'ın yeni teknik direktörü Sergen Yalçın" → {"score": 0, "is_relevant": false, "reason": "New manager appointed — post-change article, score=0."}
+"Fenerbahçe'nin yeni teknik direktörü Domenico Tedesco kimdir?" → {"score": 0, "is_relevant": true, "reason": "Profile of newly appointed manager — post-change, score=0."}
+"Trabzonspor'da ayrılık! Attığı golle hafızalara kazınmıştı" → {"score": 0, "is_relevant": false, "reason": "Player departure, not about manager."}
+"Markus Gisdol'den sonra Kayserispor'un yeni hocası belli oldu mu?" → {"score": 1, "is_relevant": true, "reason": "Replacement search after previous manager left — mild signal."}"""
+
+SCALE      = {0: 0.0, 1: 0.25, 2: 0.5, 3: 0.75, 4: 1.0}
+USER_TMPL  = "Article headline: {title}\nTeam: {team}\nDate: {date}\n\nScore this article."
+MODEL      = "llama-3.3-70b-versatile"
+
+
+def classify(client: groq.Groq, title: str, team: str, date: str) -> dict:
+    r = client.chat.completions.create(
+        model=MODEL,
+        messages=[
+            {"role": "system", "content": SYSTEM},
+            {"role": "user",   "content": USER_TMPL.format(title=title, team=team, date=date)},
+        ],
+        max_tokens=200,
+        temperature=0.0,
     )
-    raw = msg.content[0].text.strip()
-    # Strip markdown fences if present
-    raw = raw.strip('`').strip()
-    if raw.startswith('json'):
+    raw = r.choices[0].message.content.strip().strip("`").strip()
+    if raw.lower().startswith("json"):
         raw = raw[4:].strip()
     return json.loads(raw)
 
-# ---------------------------------------------------------------------------
-# Validation run
-# ---------------------------------------------------------------------------
 
-def main():
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        print("ERROR: set ANTHROPIC_API_KEY environment variable")
-        return
+def write_results_csv(results: list[dict]) -> None:
+    pd.DataFrame(results).to_csv(ROOT / "news" / "validation_results.csv", index=False)
 
-    client = anthropic.Anthropic(api_key=api_key)
 
-    print("Running 10 hand-labelled articles through the classifier...\n")
-    print(f"{'#':<3} {'Team':<18} {'Date':<12} {'Human':>6} {'LLM':>4} {'Match':>5}  Reason")
-    print("-" * 95)
-
-    results = []
-    score_matches = 0
-    rel_matches   = 0
-
-    for i, (team, date, title, human_score, human_rel) in enumerate(HAND_SCORES, 1):
-        try:
-            out = classify(client, title, team, date)
-            llm_score = int(out.get("score", -1))
-            llm_rel   = bool(out.get("is_relevant", False))
-            reason    = out.get("reason", "")[:70]
-
-            score_match = abs(llm_score - human_score) <= 1  # allow ±1
-            rel_match   = llm_rel == human_rel
-
-            score_matches += score_match
-            rel_matches   += rel_match
-
-            match_icon = "✓" if (score_match and rel_match) else ("~" if score_match else "✗")
-
-            print(f"{i:<3} {team:<18} {date:<12} {human_score:>3}({'Y' if human_rel else 'N'})  {llm_score:>2}({'Y' if llm_rel else 'N'})  {match_icon:<5}  {reason}")
-            results.append({
-                "article": i, "team": team, "date": date,
-                "human_score": human_score, "human_relevant": human_rel,
-                "llm_score": llm_score, "llm_relevant": llm_rel,
-                "score_match": score_match, "rel_match": rel_match,
-                "reason": out.get("reason",""),
-            })
-        except Exception as e:
-            print(f"{i:<3} {team:<18} {date:<12}  ERROR: {e}")
-        time.sleep(0.5)
-
-    print("-" * 95)
-    score_agree = score_matches / len(HAND_SCORES) * 100
-    rel_agree   = rel_matches   / len(HAND_SCORES) * 100
-    both_agree  = sum(1 for r in results if r['score_match'] and r['rel_match']) / len(HAND_SCORES) * 100
-
-    print(f"\nAgreement (score ±1):     {score_matches}/{len(HAND_SCORES)} = {score_agree:.0f}%")
-    print(f"Agreement (is_relevant):  {rel_matches}/{len(HAND_SCORES)} = {rel_agree:.0f}%")
-    print(f"Agreement (both):         {both_agree:.0f}%")
-
-    if both_agree >= 80:
-        print("\n✓  Agreement ≥ 80% — prompt is ready for full classification run.")
-    else:
-        print("\n✗  Agreement < 80% — review disagreements above and revise the prompt.")
-
-    results_df = pd.DataFrame(results)
-    csv_path = ROOT / 'news' / 'validation_results.csv'
-    results_df.to_csv(csv_path, index=False)
-    print(f"\nResults saved → news/validation_results.csv")
-
-    # ── Write interpretation report ───────────────────────────────────────
-    md_path = ROOT / 'news' / 'validation_interpretation.md'
-
-    disagreements = [r for r in results if not (r['score_match'] and r['rel_match'])]
+def write_interpretation_md(results: list[dict], score_matches: int, rel_matches: int) -> None:
+    n     = len(HAND_SCORES)
+    s_pct = score_matches / n * 100
+    r_pct = rel_matches   / n * 100
+    both  = sum(1 for r in results if r["score_match"] and r["rel_match"]) / n * 100
+    ok    = both >= 80
 
     lines = [
-        "# Classifier Validation — Interpretation",
-        "",
-        "## Summary",
-        "",
-        f"| Metric | Result |",
-        f"|--------|--------|",
-        f"| Articles hand-labelled | {len(HAND_SCORES)} |",
-        f"| Score agreement (±1)   | {score_matches}/{len(HAND_SCORES)} = {score_agree:.0f}% |",
-        f"| is_relevant agreement  | {rel_matches}/{len(HAND_SCORES)} = {rel_agree:.0f}% |",
-        f"| Both agree             | {both_agree:.0f}% |",
+        "# Classifier Validation — Interpretation", "",
+        "## Summary", "",
+        "| Metric | Result |", "|--------|--------|",
+        f"| Articles hand-labelled | {n} |",
+        f"| Score agreement (±1)   | {score_matches}/{n} = {s_pct:.0f}% |",
+        f"| is_relevant agreement  | {rel_matches}/{n} = {r_pct:.0f}% |",
+        f"| Both agree             | {both:.0f}% |",
         f"| Target                 | ≥ 80% |",
-        f"| Status                 | {'✅ PASS — ready to scale' if both_agree >= 80 else '❌ FAIL — revise prompt'} |",
-        "",
-        "## Score normalisation",
-        "",
-        "Raw scores (0–4) are normalised to percentages for downstream use:",
-        "",
-        "| Raw score | Normalised | Meaning |",
-        "|-----------|------------|---------|",
-        "| 0 | 0% | No signal |",
-        "| 1 | 25% | Mild signal |",
-        "| 2 | 50% | Moderate signal |",
-        "| 3 | 75% | Strong signal |",
-        "| 4 | 100% | Confirmed change |",
-        "",
-        "## Article-level results",
-        "",
-        "| # | Team | Date | Human | LLM | Score match | Rel match | Reason |",
-        "|---|------|------|-------|-----|-------------|-----------|--------|",
+        f"| Status | {'✅ PASS — ready to scale' if ok else '❌ FAIL — revise prompt'} |",
+        "", "## Score normalisation", "",
+        "Raw 0–4 → 0–1: 0→0.0, 1→0.25, 2→0.50, 3→0.75, 4→1.0",
+        "", "## Article-level results", "",
+        "| # | Team | Date | Human | LLM | Score ✓ | Rel ✓ | Reason |",
+        "|---|------|------|-------|-----|---------|-------|--------|",
     ]
-
     for r in results:
-        human = f"{r['human_score']}({'Y' if r['human_relevant'] else 'N'})"
-        llm   = f"{r['llm_score']}({'Y' if r['llm_relevant'] else 'N'})"
-        sm    = "✅" if r['score_match'] else "❌"
-        rm    = "✅" if r['rel_match']   else "❌"
+        h = f"{r['human_score']}({'Y' if r['human_relevant'] else 'N'})"
+        l = f"{r['llm_score']}({'Y' if r['llm_relevant'] else 'N'})"
         lines.append(
-            f"| {r['article']} | {r['team']} | {r['date']} | {human} | {llm} | {sm} | {rm} | {r['reason'][:80]} |"
+            f"| {r['article']} | {r['team']} | {r['date']} | {h} | {l} | "
+            f"{'✅' if r['score_match'] else '❌'} | {'✅' if r['rel_match'] else '❌'} | {r['reason'][:80]} |"
         )
-
-    lines += [
-        "",
-        "## Disagreements",
-        "",
-    ]
-
-    if not disagreements:
-        lines.append("None — perfect agreement on all 10 articles.")
+    disagree = [r for r in results if not (r["score_match"] and r["rel_match"])]
+    lines += ["", "## Disagreements", ""]
+    if not disagree:
+        lines.append("None — perfect agreement.")
     else:
-        for r in disagreements:
-            lines.append(f"**Article {r['article']} — {r['team']} ({r['date']})**")
-            lines.append(f"- Human: score={r['human_score']}, relevant={r['human_relevant']}")
-            lines.append(f"- LLM:   score={r['llm_score']}, relevant={r['llm_relevant']}")
-            lines.append(f"- LLM reason: {r['reason']}")
-            lines.append("")
+        for r in disagree:
+            lines += [f"**#{r['article']} {r['team']} {r['date']}** — Human {r['human_score']}, LLM {r['llm_score']}: {r['reason']}", ""]
+    lines += ["", "## Next step", "",
+              "Proceed to classify_articles.py." if ok else "Agreement < 80% — revise SYSTEM prompt."]
+    (ROOT / "news" / "validation_interpretation.md").write_text("\n".join(lines), encoding="utf-8")
 
-    lines += [
-        "## Prompt design decisions",
-        "",
-        "- **Scale 0–4** captures the full arc from no signal to confirmed change.",
-        "- **Appointment articles score 0 / is_relevant=false** — they describe the post-change period, not pre-change expectation.",
-        "- **Score 4 = confirmed exit** (firing or resignation) — marks the end of the expectation window.",
-        "- **Score 3 = public pressure** (fan protests, explicit board discussion) — strongest pre-change signal.",
-        "- **Score 1 = mild signal** (manager deflecting departure questions, brief resolved departure, post-firing replacement speculation).",
-        "- **±1 tolerance** used for agreement rate — adjacent scores reflect genuine ambiguity, not model failure.",
-        "",
-        "## Next step",
-        "",
-        f"{'Prompt passes validation. Proceed to full classification of all 2,524 articles.' if both_agree >= 80 else 'Agreement below 80%. Review disagreements above and revise prompt_classifier.md before scaling.'}",
-    ]
 
-    md_path.write_text('\n'.join(lines), encoding='utf-8')
-    print(f"Interpretation saved → news/validation_interpretation.md")
+def main() -> None:
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        raise EnvironmentError("GROQ_API_KEY not set. Get a free key at console.groq.com")
+
+    client = groq.Groq(api_key=api_key)
+    print(f"Validating {len(HAND_SCORES)} hand-labelled articles via {MODEL}...\n")
+    print(f"{'#':<3} {'Team':<18} {'Date':<12} {'Human':>6} {'LLM':>4} {'':>5}  Reason")
+    print("-" * 95)
+
+    results, score_matches, rel_matches = [], 0, 0
+    for i, (team, date, title, human_score, human_rel) in enumerate(HAND_SCORES, 1):
+        try:
+            out       = classify(client, title, team, date)
+            llm_score = int(out.get("score", -1))
+            llm_rel   = bool(out.get("is_relevant", False))
+            reason    = out.get("reason", "")
+            sm = abs(llm_score - human_score) <= 1
+            rm = llm_rel == human_rel
+            score_matches += sm
+            rel_matches   += rm
+            icon = "✓" if (sm and rm) else ("~" if sm else "✗")
+            print(f"{i:<3} {team:<18} {date:<12} {human_score:>3}({'Y' if human_rel else 'N'})  "
+                  f"{llm_score:>2}({'Y' if llm_rel else 'N'})  {icon:<5}  {reason[:65]}")
+            results.append({"article": i, "team": team, "date": date,
+                            "human_score": human_score, "human_relevant": human_rel,
+                            "llm_score": llm_score, "llm_relevant": llm_rel,
+                            "score_match": sm, "rel_match": rm, "reason": reason})
+        except Exception as e:
+            print(f"{i:<3} {team:<18} {date:<12}  ERROR: {e}")
+        time.sleep(2)
+
+    print("-" * 95)
+    both = sum(1 for r in results if r["score_match"] and r["rel_match"])
+    print(f"\nAgreement (score ±1):    {score_matches}/{len(HAND_SCORES)} = {score_matches/len(HAND_SCORES)*100:.0f}%")
+    print(f"Agreement (is_relevant): {rel_matches}/{len(HAND_SCORES)} = {rel_matches/len(HAND_SCORES)*100:.0f}%")
+    print(f"Agreement (both):        {both/len(HAND_SCORES)*100:.0f}%")
+    write_results_csv(results)
+    write_interpretation_md(results, score_matches, rel_matches)
+    print("\nSaved → news/validation_results.csv  news/validation_interpretation.md")
+
 
 if __name__ == "__main__":
     main()
