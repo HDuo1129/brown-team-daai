@@ -13,6 +13,9 @@ Complete description of every table in this repository: source, schema, row coun
 5. [Manager Characteristics](#5-manager-characteristics)
 6. [Team Home/Away Performance](#6-team-homeaway-performance)
 7. [Team Location](#7-team-location)
+8. [News Articles (raw)](#8-news-articles-raw)
+9. [News Articles (classified)](#9-news-articles-classified)
+10. [Expectations Panel](#10-expectations-panel)
 
 ---
 
@@ -216,3 +219,99 @@ Complete description of every table in this repository: source, schema, row coun
 
 - Location reflects the club's primary home city. Two clubs (Buyuksehyr, Karagumruk) have relocated within Istanbul over time — both mapped to Istanbul.
 - `Bodrumspor` is listed under Mugla province / Aegean region (Bodrum is technically on the Aegean coast despite being in Mugla).
+
+---
+
+## 8. News Articles (raw)
+
+**File:** `news/articles_managers.csv`
+**Source:** Google News RSS, queried per team and matched manager name (Season 2025/26)
+**Script:** `news/collect_rss.py` → `news/filter_manager_articles.py`
+**Rows:** 2,524 articles
+
+### Schema
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `news_uid` | string | SHA-1 hex digest of URL (primary key) |
+| `source` | string | Feed source (`google_news`) |
+| `team` | string | Süper Lig club name (Transfermarkt naming) |
+| `date` | string | Publication date (YYYY-MM-DD) |
+| `title` | string | Article headline |
+| `url` | string | Google News redirect URL |
+| `query` | string | RSS query string used to find this article |
+| `matched_manager` | string | Manager name that triggered the match (empty if keyword-only) |
+| `match_type` | string | How article was matched: `name`, `keyword`, or `name+keyword` |
+
+**Coverage:** 2025-07-01 to 2026-04-21 | 18 clubs
+
+### Known Issues
+
+- 101 of 2,524 articles have full body text scraped (`news/articles_text.csv`); the rest are title-only because Google News redirects blocked full-text extraction.
+- Articles matched by keyword only (`match_type=keyword`) may include false positives (articles mentioning "teknik direktör" in a non-job-security context).
+- No articles from the 2025/26 summer window before 2025-07-01.
+
+---
+
+## 9. News Articles (classified)
+
+**File:** `news/articles_classified.csv`
+**Source:** `news/articles_managers.csv` + Anthropic Claude Haiku API
+**Script:** `news/classify_articles.py`
+**Rows:** one per article classified (up to 2,524)
+
+### Schema
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `news_uid` | string | Primary key — matches `articles_managers.csv` |
+| `team` | string | Club name |
+| `date` | string | Publication date (YYYY-MM-DD) |
+| `score` | int | Raw expectation score 0–4 (see scale below) |
+| `score_norm` | float | Normalised score: 0→0.0, 1→0.25, 2→0.5, 3→0.75, 4→1.0 |
+| `is_relevant` | bool | True if article is about manager job security |
+| `reason` | string | One-sentence LLM explanation of the score |
+
+### Score scale
+
+| Score | Label | Definition |
+|-------|-------|------------|
+| 0 | No signal | Routine content, player news, or post-change appointment |
+| 1 | Mild signal | Manager fielding departure questions; unresolved rumour |
+| 2 | Moderate signal | Explicit criticism; board dissatisfaction mentioned |
+| 3 | Strong signal | Fan protests; named replacement; credible board meeting report |
+| 4 | Confirmed change | Firing, resignation, or termination confirmed |
+
+### Known Issues
+
+- Classification is based on headline only for 2,423 articles (body unavailable); 101 articles use body text up to 800 characters.
+- Model: `claude-haiku-4-5-20251001` — fast and cheap but may miss nuance in Turkish-language headlines without translation.
+- Validation: 10 hand-labelled articles; see `news/validation_interpretation.md` for agreement rates.
+
+---
+
+## 10. Expectations Panel
+
+**File:** `out/expectations.csv`
+**Source:** Aggregated from `news/articles_classified.csv`
+**Script:** `news/build_expectations.py`
+**Rows:** one per (team, gameweek)
+
+### Schema
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `team` | string | Club name |
+| `gameweek` | string | ISO calendar week (e.g. `2025-W42`) |
+| `n_news` | int | Total articles in that (team, week) |
+| `avg_grade` | float | Mean `score_norm` across **relevant** articles (0.0–1.0); 0 if no relevant articles |
+| `n_relevant` | int | Count of articles scored `is_relevant=True` |
+
+### Usage in Session 3
+
+Merge onto the match + manager-change panel by team and the gameweek containing the match date. Use **lagged** values of `avg_grade` (the week before the match) as the expectation signal.
+
+### Known Issues
+
+- Weeks with zero relevant articles are included with `avg_grade=0` and `n_relevant=0`.
+- Coverage is 2025-W27 to 2026-W16 (one season). Earlier seasons have no news data.

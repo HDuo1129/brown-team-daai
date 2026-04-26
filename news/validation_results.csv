@@ -1,0 +1,11 @@
+article,team,date,human_score,human_relevant,llm_score,llm_relevant,score_match,rel_match,reason
+1,Fenerbahce,2025-08-07,1,True,1,True,True,True,Manager answering departure questions — mild signal.
+2,Konyaspor,2025-10-19,3,True,3,True,True,True,Fans demanding manager resignation — strong signal.
+3,Antalyaspor,2025-07-03,1,True,1,True,True,True,Resignation reversed after one week — mild signal.
+4,Genclerbirligi,2025-12-07,4,True,4,True,True,True,Confirmed resignation of head coach.
+5,Galatasaray,2026-04-21,0,False,0,False,True,True,Tactical decision — no managerial pressure.
+6,Trabzonspor,2026-04-21,0,False,0,False,True,True,Manager's post-match message to players — no signal of managerial change.
+7,Besiktas,2025-08-29,0,False,0,False,True,True,"New manager appointed — post-change article, score=0."
+8,Fenerbahce,2025-09-09,0,True,0,True,True,True,"Profile of newly appointed manager — post-change, score=0."
+9,Trabzonspor,2025-07-01,0,False,0,False,True,True,"Player departure, not about manager."
+10,Kayserispor,2025-10-07,1,True,1,True,True,True,Replacement search after previous manager left — mild signal.
