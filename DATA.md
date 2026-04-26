@@ -13,6 +13,14 @@ Complete description of every table in this repository: source, schema, row coun
 5. [Manager Characteristics](#5-manager-characteristics)
 6. [Team Home/Away Performance](#6-team-homeaway-performance)
 7. [Team Location](#7-team-location)
+8. [Raw News Articles](#8-raw-news-articles)
+9. [Manager-Filtered Articles](#9-manager-filtered-articles)
+10. [Articles with Text](#10-articles-with-text)
+11. [Classified Articles](#11-classified-articles)
+12. [Expectations Panel](#12-expectations-panel)
+5. [Manager Characteristics](#5-manager-characteristics)
+6. [Team Home/Away Performance](#6-team-homeaway-performance)
+7. [Team Location](#7-team-location)
 
 ---
 
@@ -216,3 +224,169 @@ Complete description of every table in this repository: source, schema, row coun
 
 - Location reflects the club's primary home city. Two clubs (Buyuksehyr, Karagumruk) have relocated within Istanbul over time — both mapped to Istanbul.
 - `Bodrumspor` is listed under Mugla province / Aegean region (Bodrum is technically on the Aegean coast despite being in Mugla).
+
+---
+
+## 8. Raw News Articles
+
+**File:** `news/articles_raw.csv`
+**Source:** Fotomaç RSS + Google News RSS, collected via `news/collect_rss.py`
+**Coverage:** 2025–26 Süper Lig season (18 teams)
+**Rows:** 5,464 articles (after cross-team deduplication)
+
+### Schema
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `news_uid` | string | MD5 hash of `source:url` (12 chars) — unique article ID |
+| `source` | string | `fotomac` or `google_news` |
+| `team` | string | Club name (football_data_name) |
+| `date` | string | Publication date (YYYY-MM-DD) |
+| `title` | string | Article headline |
+| `url` | string | Original RSS link |
+| `query` | string | RSS feed URL or search query that returned this article |
+
+### Collection method
+
+- **Fotomaç:** team-specific RSS feeds at `fotomac.com.tr/rss/{slug}.xml` — 18 slugs
+- **Google News RSS:** 5 queries per team (Turkish: teknik direktör, hoca ayrılık, istifa, görevden; English: manager)
+- Deduplication by `news_uid` across teams
+
+### Known Issues
+
+- RSS feeds return only the most recent ~20 articles; historical coverage is limited to what was live at collection time.
+- Google News article dates reflect RSS `pubDate` — may differ slightly from original publication date.
+
+---
+
+## 9. Manager-Filtered Articles
+
+**File:** `news/articles_managers.csv`
+**Source:** Filtered from `articles_raw.csv` via `news/filter_manager_articles.py`
+**Coverage:** 2025-07-01 to 2026-06-30
+**Rows:** 2,524 articles
+
+### Schema
+
+Same columns as `articles_raw.csv`, plus:
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `matched_manager` | string | Manager name(s) detected in title/URL (empty for keyword-only matches) |
+| `match_type` | string | `name`, `keyword`, or `name+keyword` |
+
+### Filter logic
+
+Two-pass filter: (1) name match — manager token appears in title or URL; (2) keyword match — title contains Turkish/English manager-change keywords (istifa, ayrılık, teknik direktör, sacked, etc.).
+
+| match_type | Count |
+|-----------|-------|
+| name+keyword | 1,044 |
+| name | 793 |
+| keyword | 687 |
+
+---
+
+## 10. Articles with Text
+
+**File:** `news/articles_text.csv`
+**Source:** Scraped from `articles_managers.csv` via `news/scrape_text.py`
+**Rows:** 2,524 articles
+
+### Schema
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `news_uid` | string | Unique article ID |
+| `source` | string | `fotomac` or `google_news` |
+| `team` | string | Club name |
+| `date` | string | Publication date |
+| `title` | string | Article headline |
+| `url` | string | Original URL |
+| `actual_url` | string | Final URL after redirects |
+| `matched_manager` | string | Detected manager name |
+| `match_type` | string | Filter match type |
+| `body` | string | Full article text (or cleaned title for Google News) |
+| `lead` | string | First paragraph, max 300 chars |
+| `body_available` | bool | True if full body was extracted |
+| `fetch_status` | string | `ok`, `title_only`, `fetch_failed`, `extract_failed` |
+
+### Known Issues
+
+- **Google News (2,423 articles):** Google's GDPR consent redirect (`consent.google.com`) blocks server-side URL resolution. `body` contains the cleaned headline only (`body_available=False`, `fetch_status=title_only`). The headline alone carries sufficient signal for LLM scoring.
+- **Fotomaç (~101 articles):** Full body extracted via `trafilatura`. Median body length: 860 characters.
+
+---
+
+## 11. Classified Articles
+
+**File:** `news/articles_classified.csv`
+**Source:** LLM-classified via `news/classify_articles.py` using `claude-haiku-4-5-20251001`
+**Rows:** 2,524 articles
+
+### Schema
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `news_uid` | string | Unique article ID |
+| `source` | string | `fotomac` or `google_news` |
+| `team` | string | Club name |
+| `date` | string | Publication date |
+| `title` | string | Article headline |
+| `score` | int | Manager-change expectation score (0–4) |
+| `is_relevant` | bool | Whether article concerns manager job security |
+| `reason` | string | One-sentence LLM explanation |
+| `score_pct` | int | Normalised score: 0→0%, 1→25%, 2→50%, 3→75%, 4→100% |
+| `used_body` | bool | True if full body text was passed to LLM (Fotomaç only) |
+
+### Score scale
+
+| Score | Label | Definition |
+|-------|-------|------------|
+| 0 | No signal | Routine content, or new-manager appointment (post-change period) |
+| 1 | Mild signal | Manager asked about future, unresolved rumours, replacement speculation |
+| 2 | Moderate signal | Explicit criticism, poor results blamed on manager, board dissatisfaction |
+| 3 | Strong signal | Fan protests, credible board meetings about manager, named candidates |
+| 4 | Confirmed change | Firing, resignation, or mutual termination confirmed |
+
+### Score distribution (2025–26 season)
+
+| Score | Count | % |
+|-------|-------|---|
+| 0 | 1,654 | 65.5% |
+| 1 | 83 | 3.3% |
+| 2 | 57 | 2.3% |
+| 3 | 186 | 7.4% |
+| 4 | 544 | 21.6% |
+
+### Validation
+
+Prompt validated against 10 hand-labelled articles. Agreement rate (score ±1 AND is_relevant): ≥ 80%.
+See `news/validation_results.csv` and `news/validation_interpretation.md`.
+
+---
+
+## 12. Expectations Panel
+
+**File:** `news/expectations.csv`
+**Source:** Aggregated from `articles_classified.csv` via `news/classify_articles.py`
+**Rows:** 506 (team × gameweek combinations)
+
+### Schema
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `team` | string | Club name (football_data_name) |
+| `gameweek` | string | ISO calendar week, e.g. `2025-W32` |
+| `week_start` | date | Monday of that ISO week (YYYY-MM-DD) |
+| `avg_score` | float | Mean expectation score across all articles that week |
+| `avg_score_pct` | float | Mean normalised score (0–100%) |
+| `n_articles` | int | Number of articles contributing to the average |
+| `n_relevant` | int | Articles where `is_relevant=true` |
+
+### Aggregation notes
+
+- **Time unit:** ISO calendar week (Monday–Sunday). Chosen because football coverage is paced around matchdays (~weekly cycle).
+- Only articles with `score ≥ 0` are included (errors excluded).
+- All 2,524 classified articles contribute; `is_relevant` flag is recorded but not used to filter the average.
+- To merge with the match panel in Session 3, join on `team` + `week_start` (or use lagged values of `avg_score`).

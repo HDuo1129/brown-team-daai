@@ -11,6 +11,7 @@ Usage:
 
 import json
 import os
+import re
 import time
 import anthropic
 import pandas as pd
@@ -46,13 +47,37 @@ HAND_SCORES = [
 # ---------------------------------------------------------------------------
 
 SYSTEM = """You are a football analyst scoring Turkish Süper Lig news articles for a research project.
-Your task: assess how strongly each article signals that a manager change is imminent or has just been confirmed.
-Focus only on the manager's job security. Ignore player transfers, match results, and tactical content unless they directly relate to pressure on the manager.
-Always return a single JSON object with keys: score (0–4), is_relevant (true/false), reason (one sentence in English).
-Then normalize 0-4 scale of scores to percentages (0=0%, 1=25%, 2=50%, 3=75%, 4=100%) for easier interpretation."""
+Your task: assess how strongly each article signals that a manager change is IMMINENT or HAS JUST BEEN CONFIRMED (firing or resignation only).
 
-def build_user_prompt(title: str, team: str, date: str) -> str:
-    return f"""Article headline: {title}
+SCORING SCALE:
+0 = No signal: routine post-match quote, tactical discussion, player transfer, OR new-manager appointment article (change already happened — post-change period, not a pre-change signal)
+1 = Mild signal: manager asked about his future, brief/unresolved departure rumours, speculation about replacement after a previous manager already left
+2 = Moderate signal: explicit criticism of manager, poor results blamed on him, board dissatisfaction mentioned
+3 = Strong signal: fans publicly demanding change (protests, chants), credible reports of board meeting about the manager, named replacement candidates
+4 = Confirmed change: firing, resignation, or mutual termination explicitly stated
+
+CRITICAL RULE — APPOINTMENTS SCORE 0:
+Articles that announce WHO the new manager is ("X is the new coach", "who is X?", "X appointed") must receive score=0.
+These describe the post-change period. Score 4 is ONLY for firing/resignation articles, never for appointment articles.
+
+is_relevant — INDEPENDENT of score. Use these distinctions:
+- true: manager's job security, pressure, departure, firing/resignation; OR "who is the new manager?" profile articles; OR articles asking/speculating whether a new coach has been decided; OR manager answering questions about his own future
+- false: ONLY articles with no manager-change connection at all — player transfers, match tactics, cup draws, match results with zero managerial angle; OR brief one-line appointment announcements ("X is the new coach" with no further content)
+
+THREE APPOINTMENT CASES — distinguish carefully:
+1. "X is the new coach" (pure statement) → score=0, is_relevant=false (no content beyond the fact)
+2. "Who is X? / What will X bring?" (new-manager profile) → score=0, is_relevant=true (manager-focused content)
+3. "Has the new coach been decided yet? / Will X be appointed?" (question/speculation) → score=1, is_relevant=true (still in the expectation window, change not yet confirmed)
+
+Return ONLY a single JSON object — no markdown, no extra text:
+{"score": <0-4>, "is_relevant": <true|false>, "reason": "<one sentence in English>"}"""
+
+def build_user_prompt(title: str, team: str, date: str, body: str = "") -> str:
+    if body and body.strip():
+        text_section = f"Article headline: {title}\nArticle body:\n{body.strip()[:1500]}"
+    else:
+        text_section = f"Article headline: {title}"
+    return f"""{text_section}
 Team: {team}
 Date: {date}
 
@@ -62,18 +87,18 @@ Score this article for manager-change expectation signal."""
 # API call
 # ---------------------------------------------------------------------------
 
-def classify(client: anthropic.Anthropic, title: str, team: str, date: str) -> dict:
+def classify(client: anthropic.Anthropic, title: str, team: str, date: str, body: str = "") -> dict:
     msg = client.messages.create(
         model="claude-haiku-4-5-20251001",   # fast + cheap for validation
         max_tokens=150,
         system=SYSTEM,
-        messages=[{"role": "user", "content": build_user_prompt(title, team, date)}],
+        messages=[{"role": "user", "content": build_user_prompt(title, team, date, body)}],
     )
     raw = msg.content[0].text.strip()
-    # Strip markdown fences if present
-    raw = raw.strip('`').strip()
-    if raw.startswith('json'):
-        raw = raw[4:].strip()
+    # Extract first JSON object, ignoring any extra text before/after
+    match = re.search(r'\{.*?\}', raw, re.DOTALL)
+    if match:
+        return json.loads(match.group())
     return json.loads(raw)
 
 # ---------------------------------------------------------------------------
@@ -88,9 +113,18 @@ def main():
 
     client = anthropic.Anthropic(api_key=api_key)
 
+    # Load body text lookup from articles_text.csv (keyed by cleaned title)
+    text_csv = ROOT / 'news' / 'articles_text.csv'
+    body_lookup: dict[str, str] = {}
+    if text_csv.exists():
+        df_text = pd.read_csv(text_csv)
+        for _, row in df_text.iterrows():
+            if row.get('body_available') and str(row.get('body', '')).strip():
+                body_lookup[str(row['title']).strip()] = str(row['body'])
+
     print("Running 10 hand-labelled articles through the classifier...\n")
-    print(f"{'#':<3} {'Team':<18} {'Date':<12} {'Human':>6} {'LLM':>4} {'Match':>5}  Reason")
-    print("-" * 95)
+    print(f"{'#':<3} {'Team':<18} {'Date':<12} {'Human':>6} {'LLM':>4} {'Match':>5} {'Src':<5}  Reason")
+    print("-" * 100)
 
     results = []
     score_matches = 0
@@ -98,7 +132,8 @@ def main():
 
     for i, (team, date, title, human_score, human_rel) in enumerate(HAND_SCORES, 1):
         try:
-            out = classify(client, title, team, date)
+            body = body_lookup.get(title.strip(), "")
+            out = classify(client, title, team, date, body)
             llm_score = int(out.get("score", -1))
             llm_rel   = bool(out.get("is_relevant", False))
             reason    = out.get("reason", "")[:70]
@@ -110,8 +145,9 @@ def main():
             rel_matches   += rel_match
 
             match_icon = "✓" if (score_match and rel_match) else ("~" if score_match else "✗")
+            src_tag = "body" if body else "title"
 
-            print(f"{i:<3} {team:<18} {date:<12} {human_score:>3}({'Y' if human_rel else 'N'})  {llm_score:>2}({'Y' if llm_rel else 'N'})  {match_icon:<5}  {reason}")
+            print(f"{i:<3} {team:<18} {date:<12} {human_score:>3}({'Y' if human_rel else 'N'})  {llm_score:>2}({'Y' if llm_rel else 'N'})  {match_icon:<5} {src_tag:<5}  {reason}")
             results.append({
                 "article": i, "team": team, "date": date,
                 "human_score": human_score, "human_relevant": human_rel,
