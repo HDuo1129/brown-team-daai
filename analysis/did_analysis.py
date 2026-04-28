@@ -35,7 +35,8 @@ OUT_DIR = ROOT / "out"
 (OUT_DIR / "figures").mkdir(parents=True, exist_ok=True)
 
 EVENT_WIN = 10          # ±10 matchweeks around the change
-THRESHOLD  = 0.5        # avg_grade cut-off for expected_change
+# THRESHOLD is computed dynamically as the median pre_avg_grade across treated
+# team-seasons (see section 13).  Not hardcoded here.
 
 # ── 1. Load data ──────────────────────────────────────────────────────────────
 print("Loading data...")
@@ -171,7 +172,11 @@ panel_ev = panel_ev.merge(
 )
 
 # ── 13. expected_change (2025-26 only) ───────────────────────────────────────
-# mean exp_lag1 in the four pre-change matchweeks; binary ≥ THRESHOLD
+# Mean exp_lag1 in the four pre-change matchweeks for each treated team-season.
+# Threshold = median of pre_avg_grade across treated team-seasons (data-driven).
+# This gives a balanced above-/below-median split rather than an arbitrary 0.5
+# cut that would classify almost all changes as "unexpected" given the sparse
+# news coverage in the 2025-26 RSS window.
 exp_thr = (
     panel_ev[
         (panel_ev["season"] == "2025-2026") &
@@ -183,8 +188,12 @@ exp_thr = (
     .rename("pre_avg_grade")
     .reset_index()
 )
+THRESHOLD = exp_thr["pre_avg_grade"].median()
+print(f"  expected_change threshold (median): {THRESHOLD:.4f}")
+print(f"  Distribution: {(exp_thr['pre_avg_grade'] >= THRESHOLD).sum()} above / "
+      f"{(exp_thr['pre_avg_grade'] < THRESHOLD).sum()} below")
 exp_thr["expected_change"] = (exp_thr["pre_avg_grade"] >= THRESHOLD).astype(int)
-panel_ev = panel_ev.merge(exp_thr[["team_season", "expected_change"]],
+panel_ev = panel_ev.merge(exp_thr[["team_season", "pre_avg_grade", "expected_change"]],
                            on="team_season", how="left")
 
 # ── 14. Additional outcomes ───────────────────────────────────────────────────
