@@ -1,13 +1,13 @@
 ---
-title: "Does Changing the Manager Work?"
+title: "Does Changing a Manager Improve Team Performance? And Does the Impact Vary by Manager and Team Characteristics?"
 subtitle: "Evidence from the Turkish Süper Lig, 1994–2026"
 author:
-  - name: Farangiz Jurakhonova
-    affiliation: MSBA, 1st year — CEU
   - name: Duo Huang
-    affiliation: MA, 2nd year — CEU
+    affiliation: MA, 2nd year
   - name: Semih Tosun
-    affiliation: MA, 1st year — CEU
+    affiliation: MA, 1st year
+  - name: Farangiz Jurakhonova
+    affiliation: MSBA, 1st year
 date: "April 2026"
 abstract: |
   We study whether mid-season manager dismissals improve team performance in the Turkish Süper Lig using 30 seasons of match data (1994–2026), 531 treatment events, and a difference-in-differences / event-study design. The average post-change effect is essentially zero (−0.005 points per match, p = 0.90). The event-study reveals significant pre-period coefficients consistent with mean reversion, which limits causal inference. Domestic (Turkish) replacements are associated with larger estimated post-change gains than foreign ones. For the 2025–26 season, an RSS-based media expectations measure provides directional support for the anticipation hypothesis — unexpected dismissals show larger estimated rebounds — though the single-season sample (N = 10) lacks statistical power.
