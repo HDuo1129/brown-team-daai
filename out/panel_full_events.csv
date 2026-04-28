@@ -1093,22 +1093,22 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2024-2025,2025-03-28,Antalyaspor,Alanyaspor,2.0,1.0,H,1,1.0,3,28,82796,Emre Belözoğlu,9.0,81,Alex,2025-01-13,1.0,2025-03-24,2025-03-17,,Türkiye,43.1
 2024-2025,2025-04-05,Antalyaspor,Samsunspor,2.0,1.0,H,1,1.0,3,29,82796,Emre Belözoğlu,10.0,81,Alex,2025-01-13,1.0,2025-03-31,2025-03-24,,Türkiye,43.1
 2025-2026,2025-08-09,Antalyaspor,Kasimpasa,2.0,1.0,H,1,1.0,3,1,82796,Emre Belözoğlu,-8.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-08-04,2025-07-28,0.0,Türkiye,43.1
-2025-2026,2025-08-17,Antalyaspor,Genclerbirligi,1.0,0.0,A,0,1.0,3,2,82796,Emre Belözoğlu,-7.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-08-11,2025-08-04,0.0,Türkiye,43.1
+2025-2026,2025-08-17,Antalyaspor,Genclerbirligi,1.0,0.0,A,0,1.0,3,2,82796,Emre Belözoğlu,-7.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-08-11,2025-08-04,1.0,Türkiye,43.1
 2025-2026,2025-08-24,Antalyaspor,Trabzonspor,0.0,1.0,H,0,-1.0,0,3,82796,Emre Belözoğlu,-6.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-08-18,2025-08-11,0.0,Türkiye,43.1
 2025-2026,2025-08-30,Antalyaspor,Karagumruk,1.0,2.0,A,1,-1.0,0,4,82796,Emre Belözoğlu,-5.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-08-25,2025-08-18,0.0,Türkiye,43.1
 2025-2026,2025-09-13,Antalyaspor,Samsunspor,2.0,1.0,A,0,1.0,3,5,82796,Emre Belözoğlu,-4.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-09-08,2025-09-01,0.0,Türkiye,43.1
-2025-2026,2025-09-20,Antalyaspor,Kayserispor,1.0,1.0,D,1,0.0,1,6,82796,Emre Belözoğlu,-3.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-09-15,2025-09-08,0.0,Türkiye,43.1
+2025-2026,2025-09-20,Antalyaspor,Kayserispor,1.0,1.0,D,1,0.0,1,6,82796,Emre Belözoğlu,-3.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-09-15,2025-09-08,0.875,Türkiye,43.1
 2025-2026,2025-09-28,Antalyaspor,Fenerbahce,0.0,2.0,H,0,-2.0,0,7,82796,Emre Belözoğlu,-2.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-09-22,2025-09-15,0.0,Türkiye,43.1
-2025-2026,2025-10-03,Antalyaspor,Rizespor,2.0,5.0,A,1,-3.0,0,8,82796,Emre Belözoğlu,-1.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-09-29,2025-09-22,0.25,Türkiye,43.1
-2025-2026,2025-10-19,Antalyaspor,Gaziantep,2.0,3.0,H,0,-1.0,0,9,40285,Erol Bulut,0.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-10-13,2025-10-06,0.9107,Türkiye,44.4
-2025-2026,2025-10-26,Antalyaspor,Buyuksehyr,0.0,4.0,A,1,-4.0,0,10,40285,Erol Bulut,1.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-10-20,2025-10-13,0.0,Türkiye,44.4
-2025-2026,2025-11-03,Antalyaspor,Eyupspor,1.0,0.0,A,0,1.0,3,11,40285,Erol Bulut,2.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-11-03,2025-10-27,0.0,Türkiye,44.4
-2025-2026,2025-11-08,Antalyaspor,Besiktas,1.0,3.0,A,1,-2.0,0,12,40285,Erol Bulut,3.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-11-03,2025-10-27,0.0,Türkiye,44.4
+2025-2026,2025-10-03,Antalyaspor,Rizespor,2.0,5.0,A,1,-3.0,0,8,82796,Emre Belözoğlu,-1.0,80,Emre Belözoğlu,2025-10-08,0.0,2025-09-29,2025-09-22,0.5,Türkiye,43.1
+2025-2026,2025-10-19,Antalyaspor,Gaziantep,2.0,3.0,H,0,-1.0,0,9,40285,Erol Bulut,0.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-10-13,2025-10-06,0.85,Türkiye,44.4
+2025-2026,2025-10-26,Antalyaspor,Buyuksehyr,0.0,4.0,A,1,-4.0,0,10,40285,Erol Bulut,1.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-10-20,2025-10-13,0.5,Türkiye,44.4
+2025-2026,2025-11-03,Antalyaspor,Eyupspor,1.0,0.0,A,0,1.0,3,11,40285,Erol Bulut,2.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-11-03,2025-10-27,0.5,Türkiye,44.4
+2025-2026,2025-11-08,Antalyaspor,Besiktas,1.0,3.0,A,1,-2.0,0,12,40285,Erol Bulut,3.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-11-03,2025-10-27,0.5,Türkiye,44.4
 2025-2026,2025-11-24,Antalyaspor,Konyaspor,0.0,0.0,D,0,0.0,1,13,40285,Erol Bulut,4.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-11-24,2025-11-17,0.0,Türkiye,44.4
 2025-2026,2025-11-30,Antalyaspor,Goztep,1.0,2.0,A,1,-1.0,0,14,40285,Erol Bulut,5.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-11-24,2025-11-17,0.0,Türkiye,44.4
-2025-2026,2025-12-08,Antalyaspor,Alanyaspor,0.0,0.0,D,0,0.0,1,15,40285,Erol Bulut,6.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-12-08,2025-12-01,0.5,Türkiye,44.4
-2025-2026,2025-12-13,Antalyaspor,Galatasaray,1.0,4.0,A,1,-3.0,0,16,40285,Erol Bulut,7.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-12-08,2025-12-01,0.5,Türkiye,44.4
-2025-2026,2025-12-19,Antalyaspor,Kocaelispor,1.0,2.0,H,0,-1.0,0,17,49793,Alaattin Gülerce,8.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-12-15,2025-12-08,0.0,Türkiye,55.4
+2025-2026,2025-12-08,Antalyaspor,Alanyaspor,0.0,0.0,D,0,0.0,1,15,40285,Erol Bulut,6.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-12-08,2025-12-01,0.75,Türkiye,44.4
+2025-2026,2025-12-13,Antalyaspor,Galatasaray,1.0,4.0,A,1,-3.0,0,16,40285,Erol Bulut,7.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-12-08,2025-12-01,0.75,Türkiye,44.4
+2025-2026,2025-12-19,Antalyaspor,Kocaelispor,1.0,2.0,H,0,-1.0,0,17,49793,Alaattin Gülerce,8.0,80,Emre Belözoğlu,2025-10-08,1.0,2025-12-15,2025-12-08,0.5625,Türkiye,55.4
 2025-2026,2026-01-18,Antalyaspor,Kasimpasa,0.0,0.0,D,0,0.0,1,18,90166,Sami Uğurlu,9.0,80,Emre Belözoğlu,2025-10-08,1.0,2026-01-12,2026-01-05,0.0,Türkiye,46.6
 2025-2026,2026-01-25,Antalyaspor,Genclerbirligi,2.0,1.0,H,1,1.0,3,19,90166,Sami Uğurlu,10.0,80,Emre Belözoğlu,2025-10-08,1.0,2026-01-19,2026-01-12,0.0,Türkiye,46.6
 2014-2015,2014-08-29,Balikesirspor,Akhisar Belediyespor,1.0,2.0,A,1,-1.0,0,1,17012,İsmail Ertekin,-10.0,102,İsmail Ertekin,2014-11-25,0.0,2014-08-25,2014-08-18,,Türkiye,65.9
@@ -2377,7 +2377,7 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-08-31,Eyupspor,Buyuksehyr,0.0,0.0,D,0,0.0,1,4,87864,Selçuk Şahin,-5.0,208,Selçuk Şahin,2025-10-05,0.0,2025-08-25,2025-08-18,0.0,Türkiye,44.4
 2025-2026,2025-09-13,Eyupspor,Galatasaray,0.0,2.0,A,1,-2.0,0,5,87864,Selçuk Şahin,-4.0,208,Selçuk Şahin,2025-10-05,0.0,2025-09-08,2025-09-01,0.0,Türkiye,44.4
 2025-2026,2025-09-20,Eyupspor,Genclerbirligi,0.0,1.0,H,0,-1.0,0,6,87864,Selçuk Şahin,-3.0,208,Selçuk Şahin,2025-10-05,0.0,2025-09-15,2025-09-08,0.0,Türkiye,44.4
-2025-2026,2025-09-27,Eyupspor,Goztep,0.0,0.0,D,1,0.0,1,7,87864,Selçuk Şahin,-2.0,208,Selçuk Şahin,2025-10-05,0.0,2025-09-22,2025-09-15,0.75,Türkiye,44.4
+2025-2026,2025-09-27,Eyupspor,Goztep,0.0,0.0,D,1,0.0,1,7,87864,Selçuk Şahin,-2.0,208,Selçuk Şahin,2025-10-05,0.0,2025-09-22,2025-09-15,1.0,Türkiye,44.4
 2025-2026,2025-10-04,Eyupspor,Kocaelispor,0.0,1.0,H,0,-1.0,0,8,87864,Selçuk Şahin,-1.0,208,Selçuk Şahin,2025-10-05,0.0,2025-09-29,2025-09-22,0.0,Türkiye,44.4
 2025-2026,2025-10-20,Eyupspor,Kasimpasa,2.0,0.0,H,1,2.0,3,9,62361,Orhan Ak,0.0,208,Selçuk Şahin,2025-10-05,1.0,2025-10-20,2025-10-13,0.0,Türkiye,46.0
 2025-2026,2025-10-25,Eyupspor,Trabzonspor,0.0,2.0,H,0,-2.0,0,10,62361,Orhan Ak,1.0,208,Selçuk Şahin,2025-10-05,1.0,2025-10-20,2025-10-13,0.0,Türkiye,46.0
@@ -2388,7 +2388,7 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-12-06,Eyupspor,Kayserispor,1.0,1.0,D,1,0.0,1,15,62361,Orhan Ak,6.0,208,Selçuk Şahin,2025-10-05,1.0,2025-12-01,2025-11-24,0.0,Türkiye,46.0
 2025-2026,2025-12-13,Eyupspor,Rizespor,0.0,3.0,H,0,-3.0,0,16,62361,Orhan Ak,7.0,208,Selçuk Şahin,2025-10-05,1.0,2025-12-08,2025-12-01,0.0,Türkiye,46.0
 2025-2026,2025-12-20,Eyupspor,Fenerbahce,0.0,3.0,A,1,-3.0,0,17,62361,Orhan Ak,8.0,208,Selçuk Şahin,2025-10-05,1.0,2025-12-15,2025-12-08,0.0,Türkiye,46.0
-2025-2026,2026-01-19,Eyupspor,Konyaspor,1.0,1.0,D,0,0.0,1,18,19158,Atila Gerin,9.0,208,Selçuk Şahin,2025-10-05,1.0,2026-01-19,2026-01-12,0.0,Türkiye,57.8
+2025-2026,2026-01-19,Eyupspor,Konyaspor,1.0,1.0,D,0,0.0,1,18,19158,Atila Gerin,9.0,208,Selçuk Şahin,2025-10-05,1.0,2026-01-19,2026-01-12,0.0625,Türkiye,57.8
 2025-2026,2026-01-26,Eyupspor,Besiktas,2.0,2.0,D,1,0.0,1,19,19158,Atila Gerin,10.0,208,Selçuk Şahin,2025-10-05,1.0,2026-01-26,2026-01-19,0.875,Türkiye,57.8
 1994-1995,1994-10-08,Fenerbahce,Bursaspor,1.0,1.0,D,1,0.0,1,8,181,Holger Osieck,-10.0,221,Holger Osieck,1994-12-22,0.0,1994-10-03,1994-09-26,,Germany,44.8
 1994-1995,1994-10-15,Fenerbahce,Galatasaray,1.0,1.0,D,0,0.0,1,9,181,Holger Osieck,-9.0,221,Holger Osieck,1994-12-22,0.0,1994-10-10,1994-10-03,,Germany,44.8
@@ -2847,7 +2847,7 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2024-2025,2025-05-31,Gaziantep,Ad. Demirspor,2.0,2.0,D,0,0.0,1,36,64218,İbrahim Kürşat Daloğlu,2.0,237,Selçuk İnan,2025-05-10,1.0,2025-05-26,2025-05-19,,Türkiye,52.2
 2025-2026,2025-09-27,Gaziantep,Samsunspor,2.0,2.0,D,1,0.0,1,7,117405,Burak Yılmaz,-10.0,236,Burak Yılmaz,2025-12-15,0.0,2025-09-22,2025-09-15,0.0,Türkiye,38.2
 2025-2026,2025-10-05,Gaziantep,Karagumruk,2.0,0.0,A,0,2.0,3,8,117405,Burak Yılmaz,-9.0,236,Burak Yılmaz,2025-12-15,0.0,2025-09-29,2025-09-22,0.0,Türkiye,38.2
-2025-2026,2025-10-19,Gaziantep,Antalyaspor,3.0,2.0,H,1,1.0,3,9,117405,Burak Yılmaz,-8.0,236,Burak Yılmaz,2025-12-15,0.0,2025-10-13,2025-10-06,0.0,Türkiye,38.2
+2025-2026,2025-10-19,Gaziantep,Antalyaspor,3.0,2.0,H,1,1.0,3,9,117405,Burak Yılmaz,-8.0,236,Burak Yılmaz,2025-12-15,0.0,2025-10-13,2025-10-06,0.75,Türkiye,38.2
 2025-2026,2025-10-27,Gaziantep,Fenerbahce,0.0,4.0,A,1,-4.0,0,10,117405,Burak Yılmaz,-7.0,236,Burak Yılmaz,2025-12-15,0.0,2025-10-27,2025-10-20,0.0,Türkiye,38.2
 2025-2026,2025-11-03,Gaziantep,Alanyaspor,0.0,0.0,D,0,0.0,1,11,117405,Burak Yılmaz,-6.0,236,Burak Yılmaz,2025-12-15,0.0,2025-11-03,2025-10-27,0.0,Türkiye,38.2
 2025-2026,2025-11-08,Gaziantep,Rizespor,2.0,2.0,D,1,0.0,1,12,117405,Burak Yılmaz,-5.0,236,Burak Yılmaz,2025-12-15,0.0,2025-11-03,2025-10-27,0.0,Türkiye,38.2
@@ -2855,17 +2855,17 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-11-29,Gaziantep,Eyupspor,1.0,2.0,A,1,-1.0,0,14,117405,Burak Yılmaz,-3.0,236,Burak Yılmaz,2025-12-15,0.0,2025-11-24,2025-11-17,0.0,Türkiye,38.2
 2025-2026,2025-12-08,Gaziantep,Besiktas,2.0,2.0,D,0,0.0,1,15,117405,Burak Yılmaz,-2.0,236,Burak Yılmaz,2025-12-15,0.0,2025-12-08,2025-12-01,0.0,Türkiye,38.2
 2025-2026,2025-12-14,Gaziantep,Goztep,0.0,1.0,A,1,-1.0,0,16,117405,Burak Yılmaz,-1.0,236,Burak Yılmaz,2025-12-15,0.0,2025-12-08,2025-12-01,0.0,Türkiye,38.2
-2025-2026,2025-12-22,Gaziantep,Buyuksehyr,1.0,5.0,H,0,-4.0,0,17,117405,Burak Yılmaz,0.0,236,Burak Yılmaz,2025-12-15,1.0,2025-12-22,2025-12-15,0.8684,Türkiye,38.2
+2025-2026,2025-12-22,Gaziantep,Buyuksehyr,1.0,5.0,H,0,-4.0,0,17,117405,Burak Yılmaz,0.0,236,Burak Yılmaz,2025-12-15,1.0,2025-12-22,2025-12-15,0.8333,Türkiye,38.2
 2025-2026,2026-01-17,Gaziantep,Galatasaray,1.0,1.0,D,0,0.0,1,18,117405,Burak Yılmaz,1.0,236,Burak Yılmaz,2025-12-15,1.0,2026-01-12,2026-01-05,1.0,Türkiye,38.2
-2025-2026,2026-01-25,Gaziantep,Konyaspor,1.0,1.0,D,1,0.0,1,19,117405,Burak Yılmaz,2.0,236,Burak Yılmaz,2025-12-15,1.0,2026-01-19,2026-01-12,0.0,Türkiye,38.2
+2025-2026,2026-01-25,Gaziantep,Konyaspor,1.0,1.0,D,1,0.0,1,19,117405,Burak Yılmaz,2.0,236,Burak Yılmaz,2025-12-15,1.0,2026-01-19,2026-01-12,0.5,Türkiye,38.2
 2025-2026,2026-02-01,Gaziantep,Genclerbirligi,1.0,2.0,H,0,-1.0,0,20,117405,Burak Yılmaz,3.0,236,Burak Yılmaz,2025-12-15,1.0,2026-01-26,2026-01-19,0.0,Türkiye,38.2
-2025-2026,2026-02-09,Gaziantep,Kasimpasa,2.0,1.0,H,1,1.0,3,21,117405,Burak Yılmaz,4.0,236,Burak Yılmaz,2025-12-15,1.0,2026-02-09,2026-02-02,0.0,Türkiye,38.2
-2025-2026,2026-02-15,Gaziantep,Kocaelispor,0.0,3.0,H,0,-3.0,0,22,117405,Burak Yılmaz,5.0,236,Burak Yılmaz,2025-12-15,1.0,2026-02-09,2026-02-02,0.0,Türkiye,38.2
-2025-2026,2026-02-22,Gaziantep,Trabzonspor,1.0,2.0,A,1,-1.0,0,23,117405,Burak Yılmaz,6.0,236,Burak Yılmaz,2025-12-15,1.0,2026-02-16,2026-02-09,0.0,Türkiye,38.2
-2025-2026,2026-03-01,Gaziantep,Samsunspor,0.0,0.0,D,0,0.0,1,24,117405,Burak Yılmaz,7.0,236,Burak Yılmaz,2025-12-15,1.0,2026-02-23,2026-02-16,0.0,Türkiye,38.2
-2025-2026,2026-03-08,Gaziantep,Karagumruk,1.0,1.0,D,1,0.0,1,25,117405,Burak Yılmaz,8.0,236,Burak Yılmaz,2025-12-15,1.0,2026-03-02,2026-02-23,0.0,Türkiye,38.2
-2025-2026,2026-03-13,Gaziantep,Antalyaspor,4.0,1.0,A,0,3.0,3,26,117405,Burak Yılmaz,9.0,236,Burak Yılmaz,2025-12-15,1.0,2026-03-09,2026-03-02,0.65,Türkiye,38.2
-2025-2026,2026-03-17,Gaziantep,Fenerbahce,1.0,4.0,H,0,-3.0,0,27,117405,Burak Yılmaz,10.0,236,Burak Yılmaz,2025-12-15,1.0,2026-03-16,2026-03-09,0.0,Türkiye,38.2
+2025-2026,2026-02-09,Gaziantep,Kasimpasa,2.0,1.0,H,1,1.0,3,21,117405,Burak Yılmaz,4.0,236,Burak Yılmaz,2025-12-15,1.0,2026-02-09,2026-02-02,0.4375,Türkiye,38.2
+2025-2026,2026-02-15,Gaziantep,Kocaelispor,0.0,3.0,H,0,-3.0,0,22,117405,Burak Yılmaz,5.0,236,Burak Yılmaz,2025-12-15,1.0,2026-02-09,2026-02-02,0.4375,Türkiye,38.2
+2025-2026,2026-02-22,Gaziantep,Trabzonspor,1.0,2.0,A,1,-1.0,0,23,117405,Burak Yılmaz,6.0,236,Burak Yılmaz,2025-12-15,1.0,2026-02-16,2026-02-09,0.75,Türkiye,38.2
+2025-2026,2026-03-01,Gaziantep,Samsunspor,0.0,0.0,D,0,0.0,1,24,117405,Burak Yılmaz,7.0,236,Burak Yılmaz,2025-12-15,1.0,2026-02-23,2026-02-16,1.0,Türkiye,38.2
+2025-2026,2026-03-08,Gaziantep,Karagumruk,1.0,1.0,D,1,0.0,1,25,117405,Burak Yılmaz,8.0,236,Burak Yılmaz,2025-12-15,1.0,2026-03-02,2026-02-23,0.5,Türkiye,38.2
+2025-2026,2026-03-13,Gaziantep,Antalyaspor,4.0,1.0,A,0,3.0,3,26,117405,Burak Yılmaz,9.0,236,Burak Yılmaz,2025-12-15,1.0,2026-03-09,2026-03-02,0.7222,Türkiye,38.2
+2025-2026,2026-03-17,Gaziantep,Fenerbahce,1.0,4.0,H,0,-3.0,0,27,117405,Burak Yılmaz,10.0,236,Burak Yılmaz,2025-12-15,1.0,2026-03-16,2026-03-09,0.6667,Türkiye,38.2
 1997-1998,1997-08-31,Gaziantepspor,Sekerspor,1.0,1.0,D,1,0.0,1,4,8604,Georges Heylens,-10.0,259,Georges Heylens,1997-11-19,0.0,1997-08-25,1997-08-18,,Belgium,56.0
 1997-1998,1997-09-07,Gaziantepspor,Genclerbirligi,1.0,0.0,A,0,1.0,3,5,8604,Georges Heylens,-9.0,259,Georges Heylens,1997-11-19,0.0,1997-09-01,1997-08-25,,Belgium,56.0
 1997-1998,1997-09-14,Gaziantepspor,Dardanelspor,2.0,2.0,D,1,0.0,1,6,8604,Georges Heylens,-8.0,259,Georges Heylens,1997-11-19,0.0,1997-09-08,1997-09-01,,Belgium,56.0
@@ -3449,16 +3449,16 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-10-18,Genclerbirligi,Besiktas,2.0,1.0,A,0,1.0,3,9,26856,Hüseyin Eroğlu,-2.0,263,Hüseyin Eroğlu,2025-10-28,0.0,2025-10-13,2025-10-06,0.0,Türkiye,52.1
 2025-2026,2025-10-26,Genclerbirligi,Konyaspor,1.0,2.0,A,1,-1.0,0,10,26856,Hüseyin Eroğlu,-1.0,263,Hüseyin Eroğlu,2025-10-28,0.0,2025-10-20,2025-10-13,0.0,Türkiye,52.1
 2025-2026,2025-11-01,Genclerbirligi,Goztep,0.0,1.0,H,0,-1.0,0,11,72485,Volkan Demirel,0.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-10-27,2025-10-20,0.0,Türkiye,43.0
-2025-2026,2025-11-07,Genclerbirligi,Buyuksehyr,2.0,1.0,H,1,1.0,3,12,72485,Volkan Demirel,1.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-11-03,2025-10-27,0.9,Türkiye,43.0
+2025-2026,2025-11-07,Genclerbirligi,Buyuksehyr,2.0,1.0,H,1,1.0,3,12,72485,Volkan Demirel,1.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-11-03,2025-10-27,0.875,Türkiye,43.0
 2025-2026,2025-11-22,Genclerbirligi,Galatasaray,2.0,3.0,H,0,-1.0,0,13,72485,Volkan Demirel,2.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-11-17,2025-11-10,1.0,Türkiye,43.0
 2025-2026,2025-11-28,Genclerbirligi,Kocaelispor,0.0,1.0,H,0,-1.0,0,14,72485,Volkan Demirel,3.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-11-24,2025-11-17,1.0,Türkiye,43.0
 2025-2026,2025-12-07,Genclerbirligi,Karagumruk,3.0,0.0,H,1,3.0,3,15,72485,Volkan Demirel,4.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-12-01,2025-11-24,0.0,Türkiye,43.0
-2025-2026,2025-12-12,Genclerbirligi,Kasimpasa,0.0,0.0,D,0,0.0,1,16,5199,Metin Diyadin,5.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-12-08,2025-12-01,0.9954,Türkiye,
+2025-2026,2025-12-12,Genclerbirligi,Kasimpasa,0.0,0.0,D,0,0.0,1,16,5199,Metin Diyadin,5.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-12-08,2025-12-01,0.9956,Türkiye,
 2025-2026,2025-12-22,Genclerbirligi,Trabzonspor,4.0,3.0,H,1,1.0,3,17,5199,Metin Diyadin,6.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2025-12-22,2025-12-15,0.0,Türkiye,
 2025-2026,2026-01-18,Genclerbirligi,Samsunspor,1.0,1.0,D,1,0.0,1,18,5199,Metin Diyadin,7.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2026-01-12,2026-01-05,0.0,Türkiye,
 2025-2026,2026-01-25,Genclerbirligi,Antalyaspor,1.0,2.0,H,0,-1.0,0,19,5199,Metin Diyadin,8.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2026-01-19,2026-01-12,0.0,Türkiye,
 2025-2026,2026-02-01,Genclerbirligi,Gaziantep,2.0,1.0,H,1,1.0,3,20,5199,Metin Diyadin,9.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2026-01-26,2026-01-19,0.0,Türkiye,
-2025-2026,2026-02-09,Genclerbirligi,Fenerbahce,1.0,3.0,H,0,-2.0,0,21,5199,Metin Diyadin,10.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2026-02-09,2026-02-02,0.0,Türkiye,
+2025-2026,2026-02-09,Genclerbirligi,Fenerbahce,1.0,3.0,H,0,-2.0,0,21,5199,Metin Diyadin,10.0,263,Hüseyin Eroğlu,2025-10-28,1.0,2026-02-09,2026-02-02,0.75,Türkiye,
 2022-2023,2023-02-01,Giresunspor,Kasimpasa,1.0,5.0,H,0,-4.0,0,21,64778,Hakan Keleş,-10.0,290,Hakan Keleş,2023-05-05,0.0,2023-01-30,2023-01-23,,Türkiye,53.1
 2022-2023,2023-02-25,Giresunspor,Kayserispor,1.0,2.0,A,1,-1.0,0,22,64778,Hakan Keleş,-9.0,290,Hakan Keleş,2023-05-05,0.0,2023-02-20,2023-02-13,,Türkiye,53.1
 2022-2023,2023-03-05,Giresunspor,Konyaspor,0.0,0.0,D,0,0.0,1,23,64778,Hakan Keleş,-8.0,290,Hakan Keleş,2023-05-05,0.0,2023-02-27,2023-02-20,,Türkiye,53.1
@@ -3962,12 +3962,12 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-09-13,Karagumruk,Kasimpasa,0.0,1.0,A,1,-1.0,0,4,46373,Marcel Lička,-7.0,328,Marcel Lička,2025-10-31,0.0,2025-09-08,2025-09-01,0.0,Czech Republic,48.0
 2025-2026,2025-09-17,Karagumruk,Buyuksehyr,0.0,2.0,A,1,-2.0,0,5,46373,Marcel Lička,-6.0,328,Marcel Lička,2025-10-31,0.0,2025-09-15,2025-09-08,0.0,Czech Republic,48.0
 2025-2026,2025-09-21,Karagumruk,Samsunspor,2.0,3.0,H,0,-1.0,0,6,46373,Marcel Lička,-5.0,328,Marcel Lička,2025-10-31,0.0,2025-09-15,2025-09-08,0.0,Czech Republic,48.0
-2025-2026,2025-09-27,Karagumruk,Trabzonspor,3.0,4.0,A,1,-1.0,0,7,46373,Marcel Lička,-4.0,328,Marcel Lička,2025-10-31,0.0,2025-09-22,2025-09-15,0.0,Czech Republic,48.0
-2025-2026,2025-10-05,Karagumruk,Gaziantep,0.0,2.0,A,1,-2.0,0,8,46373,Marcel Lička,-3.0,328,Marcel Lička,2025-10-31,0.0,2025-09-29,2025-09-22,0.0,Czech Republic,48.0
+2025-2026,2025-09-27,Karagumruk,Trabzonspor,3.0,4.0,A,1,-1.0,0,7,46373,Marcel Lička,-4.0,328,Marcel Lička,2025-10-31,0.0,2025-09-22,2025-09-15,0.5,Czech Republic,48.0
+2025-2026,2025-10-05,Karagumruk,Gaziantep,0.0,2.0,A,1,-2.0,0,8,46373,Marcel Lička,-3.0,328,Marcel Lička,2025-10-31,0.0,2025-09-29,2025-09-22,0.375,Czech Republic,48.0
 2025-2026,2025-10-19,Karagumruk,Fenerbahce,1.0,2.0,H,0,-1.0,0,9,46373,Marcel Lička,-2.0,328,Marcel Lička,2025-10-31,0.0,2025-10-13,2025-10-06,0.0,Czech Republic,48.0
 2025-2026,2025-10-24,Karagumruk,Kayserispor,2.0,2.0,D,1,0.0,1,10,46373,Marcel Lička,-1.0,328,Marcel Lička,2025-10-31,0.0,2025-10-20,2025-10-13,0.0,Czech Republic,48.0
-2025-2026,2025-11-03,Karagumruk,Rizespor,0.0,1.0,H,0,-1.0,0,11,138254,Onur Can Korkmaz,0.0,328,Marcel Lička,2025-10-31,1.0,2025-11-03,2025-10-27,0.9643,Türkiye,34.3
-2025-2026,2025-11-09,Karagumruk,Konyaspor,2.0,0.0,H,1,2.0,3,12,138254,Onur Can Korkmaz,1.0,328,Marcel Lička,2025-10-31,1.0,2025-11-03,2025-10-27,0.9643,Türkiye,34.3
+2025-2026,2025-11-03,Karagumruk,Rizespor,0.0,1.0,H,0,-1.0,0,11,138254,Onur Can Korkmaz,0.0,328,Marcel Lička,2025-10-31,1.0,2025-11-03,2025-10-27,0.7667,Türkiye,34.3
+2025-2026,2025-11-09,Karagumruk,Konyaspor,2.0,0.0,H,1,2.0,3,12,138254,Onur Can Korkmaz,1.0,328,Marcel Lička,2025-10-31,1.0,2025-11-03,2025-10-27,0.7667,Türkiye,34.3
 2025-2026,2025-11-22,Karagumruk,Eyupspor,1.0,1.0,D,0,0.0,1,13,138254,Onur Can Korkmaz,2.0,328,Marcel Lička,2025-10-31,1.0,2025-11-17,2025-11-10,0.0,Türkiye,34.3
 2025-2026,2025-11-30,Karagumruk,Besiktas,0.0,2.0,A,1,-2.0,0,14,138254,Onur Can Korkmaz,3.0,328,Marcel Lička,2025-10-31,1.0,2025-11-24,2025-11-17,0.0,Türkiye,34.3
 2025-2026,2025-12-07,Karagumruk,Genclerbirligi,0.0,3.0,H,0,-3.0,0,15,138254,Onur Can Korkmaz,4.0,328,Marcel Lička,2025-10-31,1.0,2025-12-01,2025-11-24,0.0,Türkiye,34.3
@@ -3976,7 +3976,7 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2026-01-17,Karagumruk,Buyuksehyr,1.0,2.0,H,0,-1.0,0,18,4183,Aleksandar Stanojevic,7.0,328,Marcel Lička,2025-10-31,1.0,2026-01-12,2026-01-05,0.0,Serbia,52.2
 2025-2026,2026-01-24,Karagumruk,Galatasaray,1.0,3.0,A,1,-2.0,0,19,4183,Aleksandar Stanojevic,8.0,328,Marcel Lička,2025-10-31,1.0,2026-01-19,2026-01-12,0.0,Serbia,52.2
 2025-2026,2026-01-31,Karagumruk,Goztep,1.0,2.0,H,0,-1.0,0,20,4183,Aleksandar Stanojevic,9.0,328,Marcel Lička,2025-10-31,1.0,2026-01-26,2026-01-19,0.0,Serbia,52.2
-2025-2026,2026-02-07,Karagumruk,Antalyaspor,1.0,0.0,H,1,1.0,3,21,4183,Aleksandar Stanojevic,10.0,328,Marcel Lička,2025-10-31,1.0,2026-02-02,2026-01-26,0.0,Serbia,52.2
+2025-2026,2026-02-07,Karagumruk,Antalyaspor,1.0,0.0,H,1,1.0,3,21,4183,Aleksandar Stanojevic,10.0,328,Marcel Lička,2025-10-31,1.0,2026-02-02,2026-01-26,0.5,Serbia,52.2
 1995-1996,1995-08-12,Karsiyaka,Fenerbahce,0.0,4.0,H,0,-4.0,0,1,,,-9.0,522,Allan Harris,1995-10-23,0.0,1995-08-07,1995-07-31,,,
 1995-1996,1995-08-20,Karsiyaka,Vanspor,2.0,1.0,H,1,1.0,3,2,,,-8.0,522,Allan Harris,1995-10-23,0.0,1995-08-14,1995-08-07,,,
 1995-1996,1995-08-27,Karsiyaka,Eskisehirspor,3.0,2.0,H,1,1.0,3,3,28808,Allan Harris,-7.0,522,Allan Harris,1995-10-23,0.0,1995-08-21,1995-08-14,,England,52.6
@@ -4252,17 +4252,17 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-11-08,Kasimpasa,Goztep,0.0,2.0,A,1,-2.0,0,12,7849,Shota Arveladze,-3.0,334,Shota Arveladze,2025-12-03,0.0,2025-11-03,2025-10-27,0.75,Georgia,50.8
 2025-2026,2025-11-23,Kasimpasa,Alanyaspor,2.0,1.0,A,0,1.0,3,13,7849,Shota Arveladze,-2.0,334,Shota Arveladze,2025-12-03,0.0,2025-11-17,2025-11-10,0.0,Georgia,50.8
 2025-2026,2025-11-29,Kasimpasa,Buyuksehyr,1.0,3.0,A,1,-2.0,0,14,7849,Shota Arveladze,-1.0,334,Shota Arveladze,2025-12-03,0.0,2025-11-24,2025-11-17,0.0,Georgia,50.8
-2025-2026,2025-12-07,Kasimpasa,Kocaelispor,0.0,0.0,D,0,0.0,1,15,82796,Emre Belözoğlu,0.0,334,Shota Arveladze,2025-12-03,1.0,2025-12-01,2025-11-24,0.0,Türkiye,43.1
-2025-2026,2025-12-12,Kasimpasa,Genclerbirligi,0.0,0.0,D,1,0.0,1,16,82796,Emre Belözoğlu,1.0,334,Shota Arveladze,2025-12-03,1.0,2025-12-08,2025-12-01,0.8,Türkiye,43.1
+2025-2026,2025-12-07,Kasimpasa,Kocaelispor,0.0,0.0,D,0,0.0,1,15,82796,Emre Belözoğlu,0.0,334,Shota Arveladze,2025-12-03,1.0,2025-12-01,2025-11-24,0.5,Türkiye,43.1
+2025-2026,2025-12-12,Kasimpasa,Genclerbirligi,0.0,0.0,D,1,0.0,1,16,82796,Emre Belözoğlu,1.0,334,Shota Arveladze,2025-12-03,1.0,2025-12-08,2025-12-01,0.85,Türkiye,43.1
 2025-2026,2025-12-21,Kasimpasa,Galatasaray,0.0,3.0,H,0,-3.0,0,17,82796,Emre Belözoğlu,2.0,334,Shota Arveladze,2025-12-03,1.0,2025-12-15,2025-12-08,1.0,Türkiye,43.1
 2025-2026,2026-01-18,Kasimpasa,Antalyaspor,0.0,0.0,D,1,0.0,1,18,82796,Emre Belözoğlu,3.0,334,Shota Arveladze,2025-12-03,1.0,2026-01-12,2026-01-05,0.0,Türkiye,43.1
-2025-2026,2026-01-23,Kasimpasa,Trabzonspor,1.0,2.0,H,0,-1.0,0,19,82796,Emre Belözoğlu,4.0,334,Shota Arveladze,2025-12-03,1.0,2026-01-19,2026-01-12,0.0,Türkiye,43.1
+2025-2026,2026-01-23,Kasimpasa,Trabzonspor,1.0,2.0,H,0,-1.0,0,19,82796,Emre Belözoğlu,4.0,334,Shota Arveladze,2025-12-03,1.0,2026-01-19,2026-01-12,0.4167,Türkiye,43.1
 2025-2026,2026-01-30,Kasimpasa,Samsunspor,0.0,1.0,A,1,-1.0,0,20,82796,Emre Belözoğlu,5.0,334,Shota Arveladze,2025-12-03,1.0,2026-01-26,2026-01-19,0.0,Türkiye,43.1
 2025-2026,2026-02-09,Kasimpasa,Gaziantep,1.0,2.0,H,0,-1.0,0,21,82796,Emre Belözoğlu,6.0,334,Shota Arveladze,2025-12-03,1.0,2026-02-09,2026-02-02,0.0,Türkiye,43.1
-2025-2026,2026-02-16,Kasimpasa,Karagumruk,3.0,2.0,H,1,1.0,3,22,82796,Emre Belözoğlu,7.0,334,Shota Arveladze,2025-12-03,1.0,2026-02-16,2026-02-09,0.5,Türkiye,43.1
+2025-2026,2026-02-16,Kasimpasa,Karagumruk,3.0,2.0,H,1,1.0,3,22,82796,Emre Belözoğlu,7.0,334,Shota Arveladze,2025-12-03,1.0,2026-02-16,2026-02-09,0.625,Türkiye,43.1
 2025-2026,2026-02-23,Kasimpasa,Fenerbahce,1.0,1.0,D,0,0.0,1,23,82796,Emre Belözoğlu,8.0,334,Shota Arveladze,2025-12-03,1.0,2026-02-23,2026-02-16,0.0,Türkiye,43.1
 2025-2026,2026-02-28,Kasimpasa,Rizespor,0.0,3.0,A,1,-3.0,0,24,82796,Emre Belözoğlu,9.0,334,Shota Arveladze,2025-12-03,1.0,2026-02-23,2026-02-16,0.0,Türkiye,43.1
-2025-2026,2026-03-08,Kasimpasa,Konyaspor,1.0,1.0,D,0,0.0,1,25,82796,Emre Belözoğlu,10.0,334,Shota Arveladze,2025-12-03,1.0,2026-03-02,2026-02-23,0.4375,Türkiye,43.1
+2025-2026,2026-03-08,Kasimpasa,Konyaspor,1.0,1.0,D,0,0.0,1,25,82796,Emre Belözoğlu,10.0,334,Shota Arveladze,2025-12-03,1.0,2026-03-02,2026-02-23,0.4333,Türkiye,43.1
 1994-1995,1994-09-18,Kayseri,Galatasaray,1.0,2.0,H,0,-1.0,0,5,62729,Kamuran Yavuz,-10.0,357,Kamuran Yavuz,1994-11-22,0.0,1994-09-12,1994-09-05,,Türkiye,46.0
 1994-1995,1994-09-25,Kayseri,Genclerbirligi,3.0,4.0,A,1,-1.0,0,6,62729,Kamuran Yavuz,-9.0,357,Kamuran Yavuz,1994-11-22,0.0,1994-09-19,1994-09-12,,Türkiye,46.0
 1994-1995,1994-10-02,Kayseri,P. Ofisi,1.0,0.0,A,0,1.0,3,7,62729,Kamuran Yavuz,-8.0,357,Kamuran Yavuz,1994-11-22,0.0,1994-09-26,1994-09-19,,Türkiye,46.0
@@ -4509,15 +4509,15 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-09-20,Kayserispor,Antalyaspor,1.0,1.0,D,0,0.0,1,5,4849,Markus Gisdol,-4.0,360,Markus Gisdol,2025-10-07,0.0,2025-09-15,2025-09-08,0.0,Germany,55.9
 2025-2026,2025-09-24,Kayserispor,Besiktas,0.0,4.0,A,1,-4.0,0,6,4849,Markus Gisdol,-3.0,360,Markus Gisdol,2025-10-07,0.0,2025-09-22,2025-09-15,0.0,Germany,55.9
 2025-2026,2025-09-28,Kayserispor,Genclerbirligi,1.0,1.0,D,1,0.0,1,7,4849,Markus Gisdol,-2.0,360,Markus Gisdol,2025-10-07,0.0,2025-09-22,2025-09-15,0.0,Germany,55.9
-2025-2026,2025-10-03,Kayserispor,Trabzonspor,0.0,4.0,H,0,-4.0,0,8,4849,Markus Gisdol,-1.0,360,Markus Gisdol,2025-10-07,0.0,2025-09-29,2025-09-22,0.625,Germany,55.9
-2025-2026,2025-10-19,Kayserispor,Samsunspor,1.0,3.0,A,1,-2.0,0,9,104976,Radomir Djalovic,0.0,360,Markus Gisdol,2025-10-07,1.0,2025-10-13,2025-10-06,0.5833,Montenegro,43.0
-2025-2026,2025-10-24,Kayserispor,Karagumruk,2.0,2.0,D,0,0.0,1,10,104976,Radomir Djalovic,1.0,360,Markus Gisdol,2025-10-07,1.0,2025-10-20,2025-10-13,0.5,Montenegro,43.0
-2025-2026,2025-11-02,Kayserispor,Kasimpasa,3.0,2.0,H,1,1.0,3,11,104976,Radomir Djalovic,2.0,360,Markus Gisdol,2025-10-07,1.0,2025-10-27,2025-10-20,0.0,Montenegro,43.0
+2025-2026,2025-10-03,Kayserispor,Trabzonspor,0.0,4.0,H,0,-4.0,0,8,4849,Markus Gisdol,-1.0,360,Markus Gisdol,2025-10-07,0.0,2025-09-29,2025-09-22,0.5,Germany,55.9
+2025-2026,2025-10-19,Kayserispor,Samsunspor,1.0,3.0,A,1,-2.0,0,9,104976,Radomir Djalovic,0.0,360,Markus Gisdol,2025-10-07,1.0,2025-10-13,2025-10-06,0.5,Montenegro,43.0
+2025-2026,2025-10-24,Kayserispor,Karagumruk,2.0,2.0,D,0,0.0,1,10,104976,Radomir Djalovic,1.0,360,Markus Gisdol,2025-10-07,1.0,2025-10-20,2025-10-13,0.375,Montenegro,43.0
+2025-2026,2025-11-02,Kayserispor,Kasimpasa,3.0,2.0,H,1,1.0,3,11,104976,Radomir Djalovic,2.0,360,Markus Gisdol,2025-10-07,1.0,2025-10-27,2025-10-20,0.75,Montenegro,43.0
 2025-2026,2025-11-09,Kayserispor,Fenerbahce,2.0,4.0,H,0,-2.0,0,12,104976,Radomir Djalovic,3.0,360,Markus Gisdol,2025-10-07,1.0,2025-11-03,2025-10-27,0.0,Montenegro,43.0
 2025-2026,2025-11-22,Kayserispor,Gaziantep,0.0,3.0,A,1,-3.0,0,13,104976,Radomir Djalovic,4.0,360,Markus Gisdol,2025-10-07,1.0,2025-11-17,2025-11-10,0.0,Montenegro,43.0
 2025-2026,2025-11-29,Kayserispor,Rizespor,1.0,0.0,A,0,1.0,3,14,104976,Radomir Djalovic,5.0,360,Markus Gisdol,2025-10-07,1.0,2025-11-24,2025-11-17,0.0,Montenegro,43.0
-2025-2026,2025-12-06,Kayserispor,Eyupspor,1.0,1.0,D,0,0.0,1,15,104976,Radomir Djalovic,6.0,360,Markus Gisdol,2025-10-07,1.0,2025-12-01,2025-11-24,0.925,Montenegro,43.0
-2025-2026,2025-12-13,Kayserispor,Alanyaspor,0.0,0.0,D,1,0.0,1,16,104976,Radomir Djalovic,7.0,360,Markus Gisdol,2025-10-07,1.0,2025-12-08,2025-12-01,0.0,Montenegro,43.0
+2025-2026,2025-12-06,Kayserispor,Eyupspor,1.0,1.0,D,0,0.0,1,15,104976,Radomir Djalovic,6.0,360,Markus Gisdol,2025-10-07,1.0,2025-12-01,2025-11-24,0.8333,Montenegro,43.0
+2025-2026,2025-12-13,Kayserispor,Alanyaspor,0.0,0.0,D,1,0.0,1,16,104976,Radomir Djalovic,7.0,360,Markus Gisdol,2025-10-07,1.0,2025-12-08,2025-12-01,1.0,Montenegro,43.0
 2025-2026,2025-12-20,Kayserispor,Konyaspor,1.0,1.0,D,0,0.0,1,17,104976,Radomir Djalovic,8.0,360,Markus Gisdol,2025-10-07,1.0,2025-12-15,2025-12-08,0.0,Montenegro,43.0
 2025-2026,2026-01-19,Kayserispor,Besiktas,0.0,1.0,H,0,-1.0,0,18,104976,Radomir Djalovic,9.0,360,Markus Gisdol,2025-10-07,1.0,2026-01-19,2026-01-12,0.0,Montenegro,43.0
 2025-2026,2026-01-24,Kayserispor,Buyuksehyr,0.0,3.0,A,1,-3.0,0,19,104976,Radomir Djalovic,10.0,360,Markus Gisdol,2025-10-07,1.0,2026-01-19,2026-01-12,0.0,Montenegro,43.0
@@ -4846,22 +4846,22 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-09-13,Konyaspor,Alanyaspor,1.0,2.0,A,1,-1.0,0,4,22369,Recep Uçar,-8.0,389,Recep Uçar,2025-11-03,0.0,2025-09-08,2025-09-01,0.0,Türkiye,48.0
 2025-2026,2025-09-22,Konyaspor,Galatasaray,1.0,3.0,H,0,-2.0,0,5,22369,Recep Uçar,-7.0,389,Recep Uçar,2025-11-03,0.0,2025-09-22,2025-09-15,0.0,Türkiye,48.0
 2025-2026,2025-09-28,Konyaspor,Buyuksehyr,2.0,1.0,H,1,1.0,3,6,22369,Recep Uçar,-6.0,389,Recep Uçar,2025-11-03,0.0,2025-09-22,2025-09-15,0.0,Türkiye,48.0
-2025-2026,2025-10-05,Konyaspor,Kasimpasa,1.0,1.0,D,0,0.0,1,7,22369,Recep Uçar,-5.0,389,Recep Uçar,2025-11-03,0.0,2025-09-29,2025-09-22,1.0,Türkiye,48.0
+2025-2026,2025-10-05,Konyaspor,Kasimpasa,1.0,1.0,D,0,0.0,1,7,22369,Recep Uçar,-5.0,389,Recep Uçar,2025-11-03,0.0,2025-09-29,2025-09-22,0.875,Türkiye,48.0
 2025-2026,2025-10-18,Konyaspor,Kocaelispor,2.0,3.0,A,1,-1.0,0,8,22369,Recep Uçar,-4.0,389,Recep Uçar,2025-11-03,0.0,2025-10-13,2025-10-06,0.0,Türkiye,48.0
 2025-2026,2025-10-22,Konyaspor,Besiktas,0.0,2.0,A,1,-2.0,0,9,22369,Recep Uçar,-3.0,389,Recep Uçar,2025-11-03,0.0,2025-10-20,2025-10-13,0.75,Türkiye,48.0
 2025-2026,2025-10-26,Konyaspor,Genclerbirligi,2.0,1.0,A,0,1.0,3,10,22369,Recep Uçar,-2.0,389,Recep Uçar,2025-11-03,0.0,2025-10-20,2025-10-13,0.75,Türkiye,48.0
-2025-2026,2025-11-02,Konyaspor,Samsunspor,1.0,3.0,A,1,-2.0,0,11,22369,Recep Uçar,-1.0,389,Recep Uçar,2025-11-03,0.0,2025-10-27,2025-10-20,0.8,Türkiye,48.0
-2025-2026,2025-11-09,Konyaspor,Karagumruk,0.0,2.0,H,0,-2.0,0,12,46594,Çağdaş Atan,0.0,389,Recep Uçar,2025-11-03,1.0,2025-11-03,2025-10-27,0.375,Türkiye,40.5
+2025-2026,2025-11-02,Konyaspor,Samsunspor,1.0,3.0,A,1,-2.0,0,11,22369,Recep Uçar,-1.0,389,Recep Uçar,2025-11-03,0.0,2025-10-27,2025-10-20,0.7857,Türkiye,48.0
+2025-2026,2025-11-09,Konyaspor,Karagumruk,0.0,2.0,H,0,-2.0,0,12,46594,Çağdaş Atan,0.0,389,Recep Uçar,2025-11-03,1.0,2025-11-03,2025-10-27,0.9167,Türkiye,40.5
 2025-2026,2025-11-24,Konyaspor,Antalyaspor,0.0,0.0,D,1,0.0,1,13,46594,Çağdaş Atan,1.0,389,Recep Uçar,2025-11-03,1.0,2025-11-24,2025-11-17,0.0,Türkiye,40.5
 2025-2026,2025-11-29,Konyaspor,Trabzonspor,1.0,3.0,H,0,-2.0,0,14,46594,Çağdaş Atan,2.0,389,Recep Uçar,2025-11-03,1.0,2025-11-24,2025-11-17,0.0,Türkiye,40.5
 2025-2026,2025-12-06,Konyaspor,Rizespor,1.0,1.0,D,1,0.0,1,15,46594,Çağdaş Atan,3.0,389,Recep Uçar,2025-11-03,1.0,2025-12-01,2025-11-24,1.0,Türkiye,40.5
 2025-2026,2025-12-15,Konyaspor,Fenerbahce,0.0,4.0,H,0,-4.0,0,16,46594,Çağdaş Atan,4.0,389,Recep Uçar,2025-11-03,1.0,2025-12-15,2025-12-08,0.0,Türkiye,40.5
 2025-2026,2025-12-20,Konyaspor,Kayserispor,1.0,1.0,D,1,0.0,1,17,46594,Çağdaş Atan,5.0,389,Recep Uçar,2025-11-03,1.0,2025-12-15,2025-12-08,0.0,Türkiye,40.5
-2025-2026,2026-01-19,Konyaspor,Eyupspor,1.0,1.0,D,1,0.0,1,18,46594,Çağdaş Atan,6.0,389,Recep Uçar,2025-11-03,1.0,2026-01-19,2026-01-12,0.0,Türkiye,40.5
-2025-2026,2026-01-25,Konyaspor,Gaziantep,1.0,1.0,D,0,0.0,1,19,46594,Çağdaş Atan,7.0,389,Recep Uçar,2025-11-03,1.0,2026-01-19,2026-01-12,0.0,Türkiye,40.5
-2025-2026,2026-01-31,Konyaspor,Besiktas,1.0,2.0,H,0,-1.0,0,20,46594,Çağdaş Atan,8.0,389,Recep Uçar,2025-11-03,1.0,2026-01-26,2026-01-19,0.4375,Türkiye,40.5
-2025-2026,2026-02-08,Konyaspor,Goztep,0.0,0.0,D,1,0.0,1,21,41916,İlhan Palut,9.0,389,Recep Uçar,2025-11-03,1.0,2026-02-02,2026-01-26,0.7,Türkiye,43.0
-2025-2026,2026-02-14,Konyaspor,Alanyaspor,1.0,2.0,H,0,-1.0,0,22,41916,İlhan Palut,10.0,389,Recep Uçar,2025-11-03,1.0,2026-02-09,2026-02-02,0.7763,Türkiye,43.0
+2025-2026,2026-01-19,Konyaspor,Eyupspor,1.0,1.0,D,1,0.0,1,18,46594,Çağdaş Atan,6.0,389,Recep Uçar,2025-11-03,1.0,2026-01-19,2026-01-12,1.0,Türkiye,40.5
+2025-2026,2026-01-25,Konyaspor,Gaziantep,1.0,1.0,D,0,0.0,1,19,46594,Çağdaş Atan,7.0,389,Recep Uçar,2025-11-03,1.0,2026-01-19,2026-01-12,1.0,Türkiye,40.5
+2025-2026,2026-01-31,Konyaspor,Besiktas,1.0,2.0,H,0,-1.0,0,20,46594,Çağdaş Atan,8.0,389,Recep Uçar,2025-11-03,1.0,2026-01-26,2026-01-19,0.65,Türkiye,40.5
+2025-2026,2026-02-08,Konyaspor,Goztep,0.0,0.0,D,1,0.0,1,21,41916,İlhan Palut,9.0,389,Recep Uçar,2025-11-03,1.0,2026-02-02,2026-01-26,0.75,Türkiye,43.0
+2025-2026,2026-02-14,Konyaspor,Alanyaspor,1.0,2.0,H,0,-1.0,0,22,41916,İlhan Palut,10.0,389,Recep Uçar,2025-11-03,1.0,2026-02-09,2026-02-02,0.8068,Türkiye,43.0
 2001-2002,2001-08-12,Malatyaspor,Istanbulspor,0.0,1.0,H,0,-1.0,0,1,5204,Yücel İldiz,-3.0,528,Yücel İldiz,2001-09-04,0.0,2001-08-06,2001-07-30,,Türkiye,60.2
 2001-2002,2001-08-19,Malatyaspor,Ankaragucu,0.0,6.0,H,0,-6.0,0,2,5204,Yücel İldiz,-2.0,528,Yücel İldiz,2001-09-04,0.0,2001-08-13,2001-08-06,,Türkiye,60.2
 2001-2002,2001-08-26,Malatyaspor,Kocaelispor,0.0,2.0,H,0,-2.0,0,3,5204,Yücel İldiz,-1.0,528,Yücel İldiz,2001-09-04,0.0,2001-08-20,2001-08-13,,Türkiye,60.2
@@ -5359,23 +5359,23 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2025-2026,2025-09-28,Rizespor,Kasimpasa,1.0,2.0,A,1,-1.0,0,6,41916,İlhan Palut,-9.0,427,İlhan Palut,2025-11-30,0.0,2025-09-22,2025-09-15,0.0,Türkiye,43.0
 2025-2026,2025-10-03,Rizespor,Antalyaspor,5.0,2.0,A,0,3.0,3,7,41916,İlhan Palut,-8.0,427,İlhan Palut,2025-11-30,0.0,2025-09-29,2025-09-22,0.0,Türkiye,43.0
 2025-2026,2025-10-18,Rizespor,Trabzonspor,1.0,2.0,A,1,-1.0,0,8,41916,İlhan Palut,-7.0,427,İlhan Palut,2025-11-30,0.0,2025-10-13,2025-10-06,0.0,Türkiye,43.0
-2025-2026,2025-10-22,Rizespor,Buyuksehyr,0.0,0.0,D,1,0.0,1,9,41916,İlhan Palut,-6.0,427,İlhan Palut,2025-11-30,0.0,2025-10-20,2025-10-13,0.0,Türkiye,43.0
+2025-2026,2025-10-22,Rizespor,Buyuksehyr,0.0,0.0,D,1,0.0,1,9,41916,İlhan Palut,-6.0,427,İlhan Palut,2025-11-30,0.0,2025-10-20,2025-10-13,0.5,Türkiye,43.0
 2025-2026,2025-10-27,Rizespor,Samsunspor,1.0,1.0,D,0,0.0,1,10,41916,İlhan Palut,-5.0,427,İlhan Palut,2025-11-30,0.0,2025-10-27,2025-10-20,0.0,Türkiye,43.0
 2025-2026,2025-11-03,Rizespor,Karagumruk,1.0,0.0,H,1,1.0,3,11,41916,İlhan Palut,-4.0,427,İlhan Palut,2025-11-30,0.0,2025-11-03,2025-10-27,0.0,Türkiye,43.0
 2025-2026,2025-11-08,Rizespor,Gaziantep,2.0,2.0,D,0,0.0,1,12,41916,İlhan Palut,-3.0,427,İlhan Palut,2025-11-30,0.0,2025-11-03,2025-10-27,0.0,Türkiye,43.0
 2025-2026,2025-11-23,Rizespor,Fenerbahce,2.0,5.0,A,1,-3.0,0,13,41916,İlhan Palut,-2.0,427,İlhan Palut,2025-11-30,0.0,2025-11-17,2025-11-10,0.0,Türkiye,43.0
 2025-2026,2025-11-29,Rizespor,Kayserispor,0.0,1.0,A,1,-1.0,0,14,41916,İlhan Palut,-1.0,427,İlhan Palut,2025-11-30,0.0,2025-11-24,2025-11-17,0.0,Türkiye,43.0
-2025-2026,2025-12-06,Rizespor,Konyaspor,1.0,1.0,D,0,0.0,1,15,22369,Recep Uçar,0.0,427,İlhan Palut,2025-11-30,1.0,2025-12-01,2025-11-24,0.9318,Türkiye,48.0
-2025-2026,2025-12-13,Rizespor,Eyupspor,3.0,0.0,H,1,3.0,3,16,22369,Recep Uçar,1.0,427,İlhan Palut,2025-11-30,1.0,2025-12-08,2025-12-01,0.25,Türkiye,48.0
+2025-2026,2025-12-06,Rizespor,Konyaspor,1.0,1.0,D,0,0.0,1,15,22369,Recep Uçar,0.0,427,İlhan Palut,2025-11-30,1.0,2025-12-01,2025-11-24,0.83,Türkiye,48.0
+2025-2026,2025-12-13,Rizespor,Eyupspor,3.0,0.0,H,1,3.0,3,16,22369,Recep Uçar,1.0,427,İlhan Palut,2025-11-30,1.0,2025-12-08,2025-12-01,0.0,Türkiye,48.0
 2025-2026,2025-12-20,Rizespor,Besiktas,0.0,1.0,H,0,-1.0,0,17,22369,Recep Uçar,2.0,427,İlhan Palut,2025-11-30,1.0,2025-12-15,2025-12-08,0.0,Türkiye,48.0
 2025-2026,2026-01-19,Rizespor,Goztep,1.0,3.0,H,0,-2.0,0,18,22369,Recep Uçar,3.0,427,İlhan Palut,2025-11-30,1.0,2026-01-19,2026-01-12,0.0,Türkiye,48.0
 2025-2026,2026-01-25,Rizespor,Alanyaspor,1.0,1.0,D,1,0.0,1,19,22369,Recep Uçar,4.0,427,İlhan Palut,2025-11-30,1.0,2026-01-19,2026-01-12,0.0,Türkiye,48.0
-2025-2026,2026-01-31,Rizespor,Buyuksehyr,2.0,2.0,D,0,0.0,1,20,22369,Recep Uçar,5.0,427,İlhan Palut,2025-11-30,1.0,2026-01-26,2026-01-19,0.0,Türkiye,48.0
+2025-2026,2026-01-31,Rizespor,Buyuksehyr,2.0,2.0,D,0,0.0,1,20,22369,Recep Uçar,5.0,427,İlhan Palut,2025-11-30,1.0,2026-01-26,2026-01-19,0.75,Türkiye,48.0
 2025-2026,2026-02-08,Rizespor,Galatasaray,0.0,3.0,A,1,-3.0,0,21,22369,Recep Uçar,6.0,427,İlhan Palut,2025-11-30,1.0,2026-02-02,2026-01-26,0.0,Türkiye,48.0
 2025-2026,2026-02-14,Rizespor,Genclerbirligi,2.0,2.0,D,0,0.0,1,22,22369,Recep Uçar,7.0,427,İlhan Palut,2025-11-30,1.0,2026-02-09,2026-02-02,0.0,Türkiye,48.0
-2025-2026,2026-02-20,Rizespor,Kocaelispor,2.0,0.0,H,1,2.0,3,23,22369,Recep Uçar,8.0,427,İlhan Palut,2025-11-30,1.0,2026-02-16,2026-02-09,0.0,Türkiye,48.0
+2025-2026,2026-02-20,Rizespor,Kocaelispor,2.0,0.0,H,1,2.0,3,23,22369,Recep Uçar,8.0,427,İlhan Palut,2025-11-30,1.0,2026-02-16,2026-02-09,0.5,Türkiye,48.0
 2025-2026,2026-02-28,Rizespor,Kasimpasa,3.0,0.0,A,0,3.0,3,24,22369,Recep Uçar,9.0,427,İlhan Palut,2025-11-30,1.0,2026-02-23,2026-02-16,0.0,Türkiye,48.0
-2025-2026,2026-03-08,Rizespor,Antalyaspor,1.0,0.0,H,1,1.0,3,25,22369,Recep Uçar,10.0,427,İlhan Palut,2025-11-30,1.0,2026-03-02,2026-02-23,0.75,Türkiye,48.0
+2025-2026,2026-03-08,Rizespor,Antalyaspor,1.0,0.0,H,1,1.0,3,25,22369,Recep Uçar,10.0,427,İlhan Palut,2025-11-30,1.0,2026-03-02,2026-02-23,0.5,Türkiye,48.0
 1998-1999,1998-08-09,Sakaryaspor,Antalyaspor,0.0,0.0,D,1,0.0,1,1,5469,Radmilo Ivancevic,-4.0,444,Radmilo Ivancevic,1998-09-03,0.0,1998-08-03,1998-07-27,,Serbia,47.9
 1998-1999,1998-08-16,Sakaryaspor,Gaziantepspor,0.0,2.0,H,0,-2.0,0,2,5469,Radmilo Ivancevic,-3.0,444,Radmilo Ivancevic,1998-09-03,0.0,1998-08-10,1998-08-03,,Serbia,47.9
 1998-1999,1998-08-23,Sakaryaspor,Altay,1.0,2.0,A,1,-1.0,0,3,5469,Radmilo Ivancevic,-2.0,444,Radmilo Ivancevic,1998-09-03,0.0,1998-08-17,1998-08-10,,Serbia,47.9
@@ -5551,23 +5551,23 @@ season,match_date,team,opponent,gf,ga,FTR,home,goal_diff,points,match_n,trainer_
 2023-2024,2023-12-02,Samsunspor,Ad. Demirspor,3.0,2.0,A,0,1.0,3,14,4849,Markus Gisdol,8.0,446,Hüseyin Eroğlu,2023-09-27,1.0,2023-11-27,2023-11-20,,Germany,55.9
 2023-2024,2023-12-09,Samsunspor,Kasimpasa,4.0,2.0,H,1,2.0,3,15,4849,Markus Gisdol,9.0,446,Hüseyin Eroğlu,2023-09-27,1.0,2023-12-04,2023-11-27,,Germany,55.9
 2023-2024,2023-12-21,Samsunspor,Konyaspor,1.0,1.0,D,1,0.0,1,16,4849,Markus Gisdol,10.0,446,Hüseyin Eroğlu,2023-09-27,1.0,2023-12-18,2023-12-11,,Germany,55.9
-2025-2026,2025-11-23,Samsunspor,Besiktas,1.0,1.0,D,0,0.0,1,13,19735,Thomas Reis,-10.0,445,Thomas Reis,2026-02-14,0.0,2025-11-17,2025-11-10,0.0,Germany,50.7
+2025-2026,2025-11-23,Samsunspor,Besiktas,1.0,1.0,D,0,0.0,1,13,19735,Thomas Reis,-10.0,445,Thomas Reis,2026-02-14,0.0,2025-11-17,2025-11-10,0.5625,Germany,50.7
 2025-2026,2025-12-01,Samsunspor,Alanyaspor,1.0,1.0,D,1,0.0,1,14,19735,Thomas Reis,-9.0,445,Thomas Reis,2026-02-14,0.0,2025-12-01,2025-11-24,0.0,Germany,50.7
 2025-2026,2025-12-05,Samsunspor,Galatasaray,2.0,3.0,H,0,-1.0,0,15,19735,Thomas Reis,-8.0,445,Thomas Reis,2026-02-14,0.0,2025-12-01,2025-11-24,0.0,Germany,50.7
-2025-2026,2025-12-14,Samsunspor,Buyuksehyr,0.0,2.0,A,1,-2.0,0,16,19735,Thomas Reis,-7.0,445,Thomas Reis,2026-02-14,0.0,2025-12-08,2025-12-01,0.0,Germany,50.7
+2025-2026,2025-12-14,Samsunspor,Buyuksehyr,0.0,2.0,A,1,-2.0,0,16,19735,Thomas Reis,-7.0,445,Thomas Reis,2026-02-14,0.0,2025-12-08,2025-12-01,0.75,Germany,50.7
 2025-2026,2025-12-21,Samsunspor,Goztep,0.0,2.0,H,0,-2.0,0,17,19735,Thomas Reis,-6.0,445,Thomas Reis,2026-02-14,0.0,2025-12-15,2025-12-08,0.0,Germany,50.7
-2025-2026,2026-01-18,Samsunspor,Genclerbirligi,1.0,1.0,D,0,0.0,1,18,19735,Thomas Reis,-5.0,445,Thomas Reis,2026-02-14,0.0,2026-01-12,2026-01-05,0.0,Germany,50.7
+2025-2026,2026-01-18,Samsunspor,Genclerbirligi,1.0,1.0,D,0,0.0,1,18,19735,Thomas Reis,-5.0,445,Thomas Reis,2026-02-14,0.0,2026-01-12,2026-01-05,0.5,Germany,50.7
 2025-2026,2026-01-24,Samsunspor,Kocaelispor,0.0,0.0,D,1,0.0,1,19,19735,Thomas Reis,-4.0,445,Thomas Reis,2026-02-14,0.0,2026-01-19,2026-01-12,0.0,Germany,50.7
-2025-2026,2026-01-30,Samsunspor,Kasimpasa,1.0,0.0,A,0,1.0,3,20,19735,Thomas Reis,-3.0,445,Thomas Reis,2026-02-14,0.0,2026-01-26,2026-01-19,0.0,Germany,50.7
-2025-2026,2026-02-07,Samsunspor,Trabzonspor,0.0,3.0,A,1,-3.0,0,21,19735,Thomas Reis,-2.0,445,Thomas Reis,2026-02-14,0.0,2026-02-02,2026-01-26,0.5,Germany,50.7
+2025-2026,2026-01-30,Samsunspor,Kasimpasa,1.0,0.0,A,0,1.0,3,20,19735,Thomas Reis,-3.0,445,Thomas Reis,2026-02-14,0.0,2026-01-26,2026-01-19,0.5,Germany,50.7
+2025-2026,2026-02-07,Samsunspor,Trabzonspor,0.0,3.0,A,1,-3.0,0,21,19735,Thomas Reis,-2.0,445,Thomas Reis,2026-02-14,0.0,2026-02-02,2026-01-26,0.75,Germany,50.7
 2025-2026,2026-02-13,Samsunspor,Antalyaspor,1.0,3.0,H,0,-2.0,0,22,19735,Thomas Reis,-1.0,445,Thomas Reis,2026-02-14,0.0,2026-02-09,2026-02-02,0.0,Germany,50.7
-2025-2026,2026-02-22,Samsunspor,Karagumruk,0.0,0.0,D,0,0.0,1,23,3770,Thorsten Fink,0.0,445,Thomas Reis,2026-02-14,1.0,2026-02-16,2026-02-09,0.7396,Germany,58.3
-2025-2026,2026-03-01,Samsunspor,Gaziantep,0.0,0.0,D,1,0.0,1,24,3770,Thorsten Fink,1.0,445,Thomas Reis,2026-02-14,1.0,2026-02-23,2026-02-16,0.6667,Germany,58.3
-2025-2026,2026-03-08,Samsunspor,Fenerbahce,2.0,3.0,H,0,-1.0,0,25,3770,Thorsten Fink,2.0,445,Thomas Reis,2026-02-14,1.0,2026-03-02,2026-02-23,0.125,Germany,58.3
-2025-2026,2026-03-15,Samsunspor,Kayserispor,2.0,1.0,H,1,1.0,3,26,3770,Thorsten Fink,3.0,445,Thomas Reis,2026-02-14,1.0,2026-03-09,2026-03-02,0.0,Germany,58.3
-2025-2026,2026-04-05,Samsunspor,Konyaspor,2.0,2.0,D,1,0.0,1,27,3770,Thorsten Fink,4.0,445,Thomas Reis,2026-02-14,1.0,2026-03-30,2026-03-23,0.0,Germany,58.3
-2025-2026,2026-04-09,Samsunspor,Rizespor,1.0,4.0,H,0,-3.0,0,28,3770,Thorsten Fink,5.0,445,Thomas Reis,2026-02-14,1.0,2026-04-06,2026-03-30,0.0,Germany,58.3
-2025-2026,2026-04-13,Samsunspor,Eyupspor,2.0,1.0,A,0,1.0,3,29,3770,Thorsten Fink,6.0,445,Thomas Reis,2026-02-14,1.0,2026-04-13,2026-04-06,0.625,Germany,58.3
+2025-2026,2026-02-22,Samsunspor,Karagumruk,0.0,0.0,D,0,0.0,1,23,3770,Thorsten Fink,0.0,445,Thomas Reis,2026-02-14,1.0,2026-02-16,2026-02-09,0.8021,Germany,58.3
+2025-2026,2026-03-01,Samsunspor,Gaziantep,0.0,0.0,D,1,0.0,1,24,3770,Thorsten Fink,1.0,445,Thomas Reis,2026-02-14,1.0,2026-02-23,2026-02-16,0.6,Germany,58.3
+2025-2026,2026-03-08,Samsunspor,Fenerbahce,2.0,3.0,H,0,-1.0,0,25,3770,Thorsten Fink,2.0,445,Thomas Reis,2026-02-14,1.0,2026-03-02,2026-02-23,0.6389,Germany,58.3
+2025-2026,2026-03-15,Samsunspor,Kayserispor,2.0,1.0,H,1,1.0,3,26,3770,Thorsten Fink,3.0,445,Thomas Reis,2026-02-14,1.0,2026-03-09,2026-03-02,0.7,Germany,58.3
+2025-2026,2026-04-05,Samsunspor,Konyaspor,2.0,2.0,D,1,0.0,1,27,3770,Thorsten Fink,4.0,445,Thomas Reis,2026-02-14,1.0,2026-03-30,2026-03-23,0.1875,Germany,58.3
+2025-2026,2026-04-09,Samsunspor,Rizespor,1.0,4.0,H,0,-3.0,0,28,3770,Thorsten Fink,5.0,445,Thomas Reis,2026-02-14,1.0,2026-04-06,2026-03-30,0.5,Germany,58.3
+2025-2026,2026-04-13,Samsunspor,Eyupspor,2.0,1.0,A,0,1.0,3,29,3770,Thorsten Fink,6.0,445,Thomas Reis,2026-02-14,1.0,2026-04-13,2026-04-06,0.3333,Germany,58.3
 1996-1997,1996-10-27,Sariyer,Vanspor,2.0,0.0,H,1,2.0,3,11,810,Yılmaz Vural,-10.0,458,Yılmaz Vural,1997-02-03,0.0,1996-10-21,1996-10-14,,Türkiye,65.9
 1996-1997,1996-11-03,Sariyer,Trabzonspor,2.0,3.0,H,0,-1.0,0,12,810,Yılmaz Vural,-9.0,458,Yılmaz Vural,1997-02-03,0.0,1996-10-28,1996-10-21,,Türkiye,65.9
 1996-1997,1996-11-17,Sariyer,Kocaelispor,2.0,1.0,H,1,1.0,3,13,810,Yılmaz Vural,-8.0,458,Yılmaz Vural,1997-02-03,0.0,1996-11-11,1996-11-04,,Türkiye,65.9

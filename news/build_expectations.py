@@ -58,9 +58,9 @@ def validate_panel(panel: pd.DataFrame) -> None:
     missing = required - set(panel.columns)
     if missing:
         raise ValueError(f"Expectations panel missing columns: {missing}")
-    dupes = panel.duplicated(["team", "gameweek"]).sum()
+    dupes = panel.duplicated(["team", "date"]).sum()
     if dupes:
-        raise ValueError(f"{dupes} duplicate (team, gameweek) pairs in expectations panel")
+        raise ValueError(f"{dupes} duplicate (team, date) pairs in expectations panel")
     if panel["avg_grade"].between(0, 1).all() is False:
         raise ValueError("avg_grade out of [0, 1] range")
 
@@ -77,7 +77,7 @@ def main() -> None:
     panel.to_csv(OUT_CSV, index=False)
 
     teams = panel["team"].nunique()
-    weeks = panel["gameweek"].nunique()
+    weeks = panel["date"].nunique()
     print(f"Expectations panel: {len(panel)} rows | {teams} teams | {weeks} gameweeks → {OUT_CSV}")
     print(panel.head(10).to_string(index=False))
 
