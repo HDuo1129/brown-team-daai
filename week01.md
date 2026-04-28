@@ -4,96 +4,100 @@
 
 ---
 
+## TL;DR
+
+- Built a complete match + manager + feature dataset for the Turkish Süper Lig (1994–2026)
+- 11,094 matches across 32 seasons, 3,884 coaching stints, 1,082 manager profiles
+- Resolved 65 club name inconsistencies between two data sources
+- All datasets pass core quality checks (details → `tests/managers_check_output.txt`)
+
+---
+
 ## My Contributions
 
-This week I designed and built the complete data infrastructure for the Turkish Süper Lig analytics project from scratch.
-
 **Data sourcing & research design**
-- Identified [football-data.co.uk](https://www.football-data.co.uk/turkeym.php) as the source for all 32 seasons of historical match results (1994–2026), evaluated its coverage gaps across eras, and structured the download
+- Identified [football-data.co.uk](https://www.football-data.co.uk/turkeym.php) as the source for all 32 seasons of match results, evaluated coverage gaps across eras, and structured the download
 - Chose [Transfermarkt](https://www.transfermarkt.com) over alternatives for manager data due to its structured dates, consistent IDs, and coverage depth
 - Researched and manually resolved all 65 club name mismatches between the two sources, producing `team_mapping.csv`
+- Built the core content and structure of the GitHub repository
 
 **Feature engineering decisions**
-- Defined the home/away performance schema: which metrics matter (PPG, win rate, goal difference, home_away_gap) and how to compute them consistently across seasons with varying column availability
+- Defined the home/away performance schema: which metrics matter (PPG, win rate, goal difference, home_away_gap) and how to compute them consistently across seasons
 - Designed the geographic lookup table (`team_location.csv`), mapping all 65 clubs to Turkish regional categories for spatial analysis
 
 ---
 
-## What We Did
+## What We Built
 
-This week we built the foundational dataset for analysing the Turkish Süper Lig (T1), covering all 32 seasons from 1994/95 through 2025/26.
-
-### 1. Match Data (branch: `turkey-data`)
-
-Downloaded 32 season CSV files from [football-data.co.uk](https://www.football-data.co.uk/turkeym.php), one file per season.
-
-- **Coverage:** 1994/95 – 2025/26 (all available seasons)
-- **Location:** `data/` folder on the `turkey-data` branch
-- **Key columns:** `Date`, `HomeTeam`, `AwayTeam`, `FTHG`, `FTAG`, `FTR`, half-time scores, shots, cards, and bookmaker odds (for modern seasons)
-
-### 2. Manager Data (`managers/`)
-
-Scraped coaching history and manager profiles from [Transfermarkt](https://www.transfermarkt.com) for all 65 clubs that have appeared in the dataset.
-
-| File | Description | Rows |
-|------|-------------|------|
-| `managers/team_mapping.csv` | Maps football-data club names → Transfermarkt IDs | 65 clubs |
-| `managers/managers.csv` | All coaching spells with start/end dates | 3,885 stints |
-| `managers/manager_profiles.csv` | Date of birth, place of birth, citizenship | 1,082 managers |
-| `managers/manager_characteristics.csv` | Age at appointment, clubs managed before, years of experience | 3,885 rows |
-
-Scripts:
-- `managers/scrape_managers.py` — scrapes club-level coaching history
-- `managers/scrape_manager_profiles.py` — scrapes individual manager profiles and computes experience metrics
-
-### 3. Team Features (`features/`)
-
-Built two team-level lookup tables to support future modelling.
-
-| File | Description | Rows |
-|------|-------------|------|
-| `features/team_home_away.csv` | Per-season home/away performance: W/D/L, goals, PPG, win rate, home_away_gap | 584 (season × team) |
-| `features/team_location.csv` | Each team's city, province, and Turkish geographic region | 65 teams |
+| Dataset | File | Rows |
+|---------|------|------|
+| Match results | `data/*.csv` (turkey-data branch) | ~11,094 matches, 32 seasons |
+| Club name mapping | `managers/team_mapping.csv` | 65 clubs |
+| Manager stints | `managers/managers.csv` | 3,884 coaching spells |
+| Manager profiles | `managers/manager_profiles.csv` | 1,082 managers (95% DOB coverage) |
+| Manager characteristics | `managers/manager_characteristics.csv` | Age & experience at appointment |
+| Home/away performance | `features/team_home_away.csv` | 584 rows (season × team) |
+| Team locations | `features/team_location.csv` | 65 teams → city, province, region |
 
 ---
 
 ## Where to Find Everything
 
 ```
-brown-team-daai/                   ← main branch
-├── data/                          # ← turkey-data branch (separate, not merged — by design)
+brown-team-daai/                      ← main branch
 ├── managers/
-│   ├── team_mapping.csv           # Club name mapping (football-data ↔ Transfermarkt)
-│   ├── managers.csv               # All coaching stints (3,885 rows)
-│   ├── manager_profiles.csv       # Manager DOB, birthplace, citizenship
-│   ├── manager_characteristics.csv# Age & experience at time of appointment
-│   ├── scrape_managers.py         # Scraping script
-│   └── scrape_manager_profiles.py # Profile enrichment script
+│   ├── team_mapping.csv              # Club name mapping
+│   ├── managers.csv                  # All coaching stints
+│   ├── manager_profiles.csv          # DOB, birthplace, citizenship
+│   ├── manager_characteristics.csv   # Age & experience at appointment
+│   ├── scrape_managers.py            # Scraping script
+│   └── scrape_manager_profiles.py    # Profile enrichment script
 ├── features/
-│   ├── team_home_away.csv         # Home/away performance by season
-│   └── team_location.csv          # Team → city → region lookup
-└── README.md                      # Full documentation and join examples
+│   ├── team_home_away.csv            # Home/away performance by season
+│   └── team_location.csv             # Team → city → region lookup
+├── tests/
+│   ├── test_data.py                  # 17 pytest data + code tests (all passing)
+│   ├── check_managers.py             # Detailed manager QA script
+│   └── managers_check_output.txt     # Full QA output
+├── analysis/
+│   ├── data_description.py           # Generates HTML report
+│   └── data_description.html         # Descriptive stats + 7 exhibits
+├── DATA.md                           # Full schema for all 7 tables
+├── PLAN.md                           # Sources, keys, join logic, ownership
+└── data/                             # ← turkey-data branch: 32 season CSVs
 ```
 
 ---
 
-## Data Sources
+## Quality Assurance — Summary
 
-| Source | URL |
-|--------|-----|
-| Match results | https://www.football-data.co.uk/turkeym.php |
-| Manager history | https://www.transfermarkt.com (manager history pages) |
-| Manager profiles | https://www.transfermarkt.com (individual trainer profile pages) |
+All datasets pass core quality checks:
+
+| Check | Result |
+|-------|--------|
+| Duplicate rows | ✅ None |
+| Missing critical fields | ✅ None |
+| Date format consistency | ✅ All YYYY-MM-DD |
+| Club names consistent across files | ✅ Pass |
+| FTR values valid (H/D/A only) | ✅ Pass |
+
+Known issues (documented, tolerated):
+- 2 Transfermarkt date-order errors (<0.1% of stints)
+- 5 historical clubs have no manager data — no Transfermarkt profile exists
+
+Full test output → [`tests/managers_check_output.txt`](tests/managers_check_output.txt)
+Full pytest suite → [`tests/test_data.py`](tests/test_data.py) (17 tests, all passing)
 
 ---
 
 ## Known Limitations
 
-- **5 historical clubs** (A. Sebatspor, Oftasspor, Sekerspor, Siirt Jet-PA, P. Ofisi) have no Transfermarkt profile — manager data for these clubs (all 1994–1998 era) is missing.
-- **Date precision** for manager stints in the 1990s–early 2000s is sometimes month-level rather than day-level on Transfermarkt.
+- **5 clubs** (A. Sebatspor, Oftasspor, Sekerspor, Siirt Jet-PA, P. Ofisi) have no manager data — all are 1990s-era clubs with no Transfermarkt profile
+- **Mixed date format** in match CSVs (DD/MM/YY for older seasons) requires dual-format parsing when joining to manager stints
+- **Match stats** (shots, cards, fouls) only available from 2017/18 onwards
 
 ---
 
 ## Next Steps
 
-- Match dataset and build panel dataset to start analysis.
+- Join manager data to match-level data and build panel dataset for analysis

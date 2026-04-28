@@ -1,0 +1,532 @@
+team,season,manager_out,trainer_id_out,fire_date,last_pre_n,first_post_n,n_pre_avail,n_post_avail
+Ad. Demirspor,2024-2025,Mustafa Dalcı,63323,2025-01-28,20,21,20,16
+Ad. Demirspor,2024-2025,Serkan Damla,44479,2024-11-27,12,13,12,24
+Ad. Demirspor,2024-2025,Michael Valkanis,20119,2024-09-23,6,7,6,30
+Ad. Demirspor,2023-2024,Serkan Damla,44479,2024-01-18,20,21,20,18
+Ad. Demirspor,2023-2024,Patrick Kluivert,15093,2023-12-04,14,15,14,24
+Ad. Demirspor,2021-2022,Samet Aybaba,5002,2021-08-29,3,4,3,35
+Ad. Demirspor,1994-1995,Kemal Omeragic,59973,1995-04-12,29,30,29,5
+Ad. Demirspor,1994-1995,Samet Aybaba,5002,1995-02-23,22,23,22,12
+Adanaspor,2016-2017,Levent Şahin,2628,2017-04-13,27,28,27,7
+Adanaspor,2016-2017,Krunoslav Jurcic,4756,2016-12-05,13,14,13,21
+Adanaspor,2003-2004,Yılmaz Vural,810,2004-01-14,17,18,17,17
+Adanaspor,2000-2001,Joachim Löw,495,2001-03-01,22,23,22,12
+Adanaspor,2000-2001,Hikmet Karaman,801,2000-12-07,15,16,15,19
+Adanaspor,1999-2000,Nenad Bijedic,2609,1999-11-29,10,11,10,24
+Adanaspor,1998-1999,Gheorghe Mulțescu,5429,1999-05-13,31,32,31,3
+Adanaspor,1998-1999,Fuad Muzurovic,4111,1998-09-30,7,8,7,27
+Akhisar Belediyespor,2018-2019,Cihat Arslan,5540,2019-02-13,21,22,21,13
+Akhisar Belediyespor,2018-2019,Safet Susic,2026,2018-09-17,5,6,5,29
+Akhisar Belediyespor,2016-2017,Tolunay Kafkas,5006,2017-03-18,25,26,25,9
+Akhisar Belediyespor,2014-2015,Mustafa Reşit Akçay,15266,2014-12-31,15,16,15,19
+Alanyaspor,2024-2025,Sami Uğurlu,90166,2025-03-20,27,28,27,9
+Alanyaspor,2024-2025,Fatih Tekke,29046,2024-11-07,11,12,11,25
+Alanyaspor,2023-2024,Ömer Erdoğan,41081,2023-10-29,10,11,10,28
+Alanyaspor,2022-2023,Ersun Yanal,811,2023-04-19,29,30,29,7
+Alanyaspor,2022-2023,Francesco Farioli,73923,2023-02-27,22,23,22,14
+Alanyaspor,2021-2022,Bülent Korkmaz,4176,2021-12-30,19,20,19,19
+Alanyaspor,2021-2022,Çağdaş Atan,46594,2021-09-02,3,4,3,35
+Alanyaspor,2018-2019,Mesut Bakkal,784,2018-11-06,11,12,11,23
+Alanyaspor,2017-2018,Hikmet Karaman,801,2018-02-26,23,24,23,11
+Alanyaspor,2017-2018,Safet Susic,2026,2017-12-25,17,18,17,17
+Alanyaspor,2016-2017,Hüseyin Kalpar,12053,2017-01-16,17,18,17,17
+Altay,2021-2022,Serkan Özbalta,59420,2022-03-21,30,31,30,8
+Altay,2021-2022,Mustafa Denizli,7875,2022-01-13,20,21,20,18
+Altay,1999-2000,Turgut Uçar,2821,2000-04-18,29,30,29,5
+Altay,1999-2000,Mehmet Celal Bölgen,77061,2000-03-06,23,24,23,11
+Altay,1999-2000,Ümit Kayıhan,802,1999-11-12,8,9,8,26
+Altay,1998-1999,Zinnur Sarı,63248,1999-04-19,28,29,28,6
+Altay,1998-1999,Sakıp Özberk,814,1998-11-24,13,14,13,21
+Altay,1997-1998,Marian Bondrea,22719,1997-09-26,7,8,7,27
+Altay,1996-1997,Ivan Kyuchukov,54666,1996-10-30,11,12,11,23
+Altay,1995-1996,Raşit Çetiner,4097,1995-10-20,8,9,8,26
+Ankaragucu,2023-2024,Tolunay Kafkas,5006,2023-10-02,7,8,7,31
+Ankaragucu,2022-2023,Sedat Ağçay,107881,2023-03-23,24,25,24,12
+Ankaragucu,2022-2023,Ömer Erdoğan,41081,2023-02-06,21,22,21,15
+Ankaragucu,2022-2023,Mustafa Dalcı,63323,2022-08-27,3,4,3,33
+Ankaragucu,2020-2021,Mustafa Dalcı,63323,2021-02-09,22,23,22,18
+Ankaragucu,2020-2021,Mustafa Dalcı,63323,2021-01-23,19,20,19,21
+Ankaragucu,2020-2021,Fuat Çapa,2043,2020-11-25,7,8,7,33
+Ankaragucu,2019-2020,Mustafa Reşit Akçay,15266,2020-06-23,28,29,28,6
+Ankaragucu,2019-2020,Mustafa Kaplan,27861,2020-01-22,18,19,18,16
+Ankaragucu,2019-2020,Metin Diyadin,5199,2019-11-12,11,12,11,23
+Ankaragucu,2019-2020,Aykan Atik,38129,2019-09-03,3,4,3,31
+Ankaragucu,2018-2019,Bayram Bektaş,30871,2019-01-13,17,18,17,17
+Ankaragucu,2018-2019,İsmail Kartal,6366,2018-12-15,16,17,16,18
+Ankaragucu,2011-2012,Ziya Doğan,795,2011-12-13,15,16,15,19
+Ankaragucu,2010-2011,Ümit Özat,10719,2011-02-28,23,24,23,11
+Ankaragucu,2009-2010,Nazmi Erdenerin,12285,2010-01-05,16,17,16,16
+Ankaragucu,2009-2010,Hikmet Karaman,801,2009-11-17,11,12,11,21
+Ankaragucu,2008-2009,Hakan Kutlu,5471,2009-03-26,25,26,25,9
+Ankaragucu,2008-2009,Ünal Karaman,4776,2009-01-06,16,17,16,18
+Ankaragucu,2008-2009,Hakan Kutlu,5471,2008-10-24,7,8,7,27
+Ankaragucu,2007-2008,Hans-Peter Briegel,24,2007-10-25,9,10,9,25
+Ankaragucu,2005-2006,Safet Susic,2026,2006-02-09,19,20,19,15
+Ankaragucu,2005-2006,Adnan Şentürk,16989,2005-09-21,6,7,6,28
+Ankaragucu,2004-2005,Sakıp Özberk,814,2005-02-14,19,20,19,15
+Ankaragucu,2004-2005,Reha Kapsal,2018,2004-11-29,14,15,14,20
+Ankaragucu,2003-2004,Rıza Çalımbay,789,2004-05-13,33,34,33,1
+Ankaragucu,2003-2004,Tevfik Lav,57966,2003-11-12,12,13,12,22
+Ankaragucu,1999-2000,Gheorghe Mulțescu,5429,2000-03-23,25,26,25,9
+Ankaragucu,1999-2000,Tınaz Tırpan,25611,1999-09-27,5,6,5,29
+Ankaragucu,1998-1999,Samet Aybaba,5002,1998-11-22,13,14,13,21
+Ankaragucu,1995-1996,Ali Osman Renklibay,64761,1995-10-19,8,9,8,26
+Ankaraspor,2007-2008,Hikmet Karaman,801,2008-03-04,24,25,24,10
+Ankaraspor,2007-2008,Aykut Kocaman,1061,2007-10-08,8,9,8,26
+Ankaraspor,2005-2006,Rıza Çalımbay,789,2006-01-23,18,19,18,16
+Ankaraspor,2005-2006,Alper Boğuşlu,2626,2005-11-10,12,13,12,22
+Ankaraspor,2005-2006,Samet Aybaba,5002,2005-11-10,12,13,12,22
+Antalya,1994-1995,Adnan Dinçer,63332,1994-12-16,16,17,16,18
+Antalyaspor,2025-2026,Alaattin Gülerce,49793,2026-01-02,17,18,17,12
+Antalyaspor,2025-2026,Erol Bulut,40285,2025-12-17,16,17,16,13
+Antalyaspor,2025-2026,Emre Belözoğlu,82796,2025-10-08,8,9,8,21
+Antalyaspor,2024-2025,Alex,91297,2025-01-13,18,19,18,18
+Antalyaspor,2023-2024,Nuri Şahin,96813,2023-12-31,17,18,17,21
+Antalyaspor,2021-2022,Ersun Yanal,811,2021-10-04,8,9,8,30
+Antalyaspor,2020-2021,Tamer Tuna,30988,2020-10-30,6,7,6,34
+Antalyaspor,2019-2020,Stjepan Tomas,33374,2020-01-06,17,18,17,17
+Antalyaspor,2019-2020,Bülent Korkmaz,4176,2019-11-15,11,12,11,23
+Antalyaspor,2017-2018,David Badia Cequier,56577,2018-01-16,17,18,17,17
+Antalyaspor,2017-2018,Leonardo,8631,2017-12-07,14,15,14,20
+Antalyaspor,2017-2018,Rıza Çalımbay,789,2017-09-19,5,6,5,29
+Antalyaspor,2016-2017,José Morais,434,2016-10-06,6,7,6,28
+Antalyaspor,2015-2016,Samuel Eto'o,99122,2016-01-05,17,18,17,17
+Antalyaspor,2015-2016,Mehmet Uğurlu,43867,2016-01-06,17,18,17,17
+Antalyaspor,2015-2016,Yusuf Şimşek,19920,2015-12-08,14,15,14,20
+Antalyaspor,2013-2014,Samet Aybaba,5002,2014-03-10,24,25,24,10
+Antalyaspor,2008-2009,Jozef Jarabinsky,7416,2008-11-06,9,10,9,25
+Antalyaspor,2001-2002,Mehmet Ali Öztürk,67791,2002-01-02,17,18,17,17
+Antalyaspor,2001-2002,Hüseyin Kalpar,12053,2001-11-19,12,13,12,22
+Antalyaspor,2001-2002,Cezmi Turhan,67790,2001-08-31,3,4,3,31
+Antalyaspor,1999-2000,Rüdiger Abramczik,6206,2000-05-01,31,32,31,3
+Antalyaspor,1996-1997,Ümit Kayıhan,802,1997-01-17,17,18,17,17
+Balikesirspor,2014-2015,Kemal Özdeş,3106,2015-04-27,28,29,28,6
+Balikesirspor,2014-2015,İsmail Ertekin,17012,2014-11-25,10,11,10,24
+Besiktas,2024-2025,Serdar Topraktepe,88763,2025-01-19,19,20,19,17
+Besiktas,2024-2025,Giovanni van Bronckhorst,20014,2024-11-30,12,13,12,24
+Besiktas,2023-2024,Fernando Santos,782,2024-04-13,32,33,32,6
+Besiktas,2023-2024,Serdar Topraktepe,88763,2024-01-09,19,20,19,19
+Besiktas,2023-2024,Rıza Çalımbay,789,2023-12-21,16,17,16,22
+Besiktas,2023-2024,Burak Yılmaz,117405,2023-11-10,11,12,11,27
+Besiktas,2023-2024,Şenol Güneş,2332,2023-10-06,7,8,7,31
+Besiktas,2022-2023,Valérien Ismaël,12871,2022-10-26,11,12,11,25
+Besiktas,2021-2022,Önder Karaveli,38319,2022-03-25,30,31,30,8
+Besiktas,2021-2022,Önder Karaveli,38319,2022-01-13,20,21,20,18
+Besiktas,2021-2022,Sergen Yalçın,32128,2021-12-09,15,16,15,23
+Besiktas,2019-2020,Abdullah Avcı,5078,2020-01-29,19,20,19,15
+Besiktas,2011-2012,Carlos Carvalhal,1588,2012-04-02,33,34,33,1
+Besiktas,2010-2011,Bernd Schuster,555,2011-03-15,25,26,25,9
+Besiktas,2008-2009,Ertuğrul Sağlam,2019,2008-10-14,6,7,6,28
+Besiktas,2005-2006,Rıza Çalımbay,789,2005-10-31,11,12,11,23
+Besiktas,2004-2005,Vicente del Bosque,40,2005-01-27,17,18,17,17
+Besiktas,2000-2001,Nevio Scala,693,2001-03-06,23,24,23,11
+Besiktas,1998-1999,Fuat Yaman,5212,1999-03-17,24,25,24,10
+Besiktas,1998-1999,John Toshack,1825,1999-02-23,21,22,21,13
+Bodrumspor,2024-2025,Volkan Demirel,72485,2025-01-31,21,22,21,15
+Bodrumspor,2024-2025,İsmet Taşdemir,18920,2024-10-29,10,11,10,26
+Bucaspor,2010-2011,Samet Aybaba,5002,2011-04-04,27,28,27,7
+Bucaspor,2010-2011,Bülent Uygun,5014,2010-10-06,7,8,7,27
+Bursaspor,2018-2019,Samet Aybaba,5002,2019-04-07,27,28,27,7
+Bursaspor,2017-2018,Paul Le Guen,1234,2018-04-10,28,29,28,6
+Bursaspor,2016-2017,Mutlu Topçu,2618,2017-05-01,29,30,29,5
+Bursaspor,2016-2017,Hamza Hamzaoğlu,8536,2017-01-21,18,19,18,16
+Bursaspor,2015-2016,Ersel Uzğur,22410,2015-12-18,15,16,15,19
+Bursaspor,2015-2016,Ertuğrul Sağlam,2019,2015-11-30,13,14,13,21
+Bursaspor,2013-2014,Christoph Daum,38,2014-03-25,26,27,26,8
+Bursaspor,2012-2013,Ersel Uzğur,22410,2013-03-06,24,25,24,10
+Bursaspor,2012-2013,Ertuğrul Sağlam,2019,2013-02-05,20,21,20,14
+Bursaspor,2008-2009,Güvenç Kurtar,804,2008-12-23,16,17,16,18
+Bursaspor,2008-2009,Samet Aybaba,5002,2008-11-04,9,10,9,25
+Bursaspor,2007-2008,Mehmet Kulaksızoğlu,22418,2007-10-22,9,10,9,25
+Bursaspor,2003-2004,Ümit Kayıhan,802,2004-03-04,23,24,23,11
+Bursaspor,2003-2004,Gheorghe Hagi,85,2003-11-15,12,13,12,22
+Bursaspor,2000-2001,Jörg Berger,16,2000-10-27,9,10,9,25
+Bursaspor,1999-2000,Kemal Batmaz,75943,1999-09-15,3,4,3,31
+Bursaspor,1998-1999,Ahmet Akcan,4708,1999-02-23,21,22,21,13
+Bursaspor,1998-1999,Nenad Bijedic,2609,1998-12-10,15,16,15,19
+Bursaspor,1997-1998,Rasim Kara,28492,1998-04-13,30,31,30,4
+Bursaspor,1995-1996,Nenad Bijedic,2609,1996-04-30,31,32,31,3
+Bursaspor,1994-1995,Nevzat Güzelırmak,60737,1994-11-24,14,15,14,20
+Buyuksehyr,2023-2024,Emre Belözoğlu,82796,2023-09-06,3,4,3,35
+Buyuksehyr,2021-2022,Aykut Kocaman,1061,2021-10-04,8,9,8,30
+Buyuksehyr,2020-2021,Okan Buruk,23531,2021-01-29,20,21,20,20
+Buyuksehyr,2012-2013,Carlos Carvalhal,1588,2012-11-12,11,12,11,23
+Buyuksehyr,2011-2012,Abdullah Avcı,5078,2011-11-18,10,11,10,24
+Dardanelspor,1998-1999,Rasim Kara,28492,1999-03-17,24,25,24,10
+Dardanelspor,1998-1999,Milorad Mitrovic,10481,1998-10-26,9,10,9,25
+Dardanelspor,1998-1999,Ümit Erol Tok,5211,1998-09-22,6,7,6,28
+Dardanelspor,1996-1997,Raşit Çetiner,4097,1996-12-11,16,17,16,18
+Denizlispor,2020-2021,Hakan Kutlu,5471,2021-04-18,33,34,33,7
+Denizlispor,2020-2021,Yalçın Koşukavak,32976,2021-01-28,20,21,20,20
+Denizlispor,2020-2021,Robert Prosinecki,6653,2020-11-25,8,9,8,32
+Denizlispor,2019-2020,Bülent Uygun,5014,2020-07-04,30,31,30,4
+Denizlispor,2019-2020,Mehmet Özdilek,815,2020-02-21,22,23,22,12
+Denizlispor,2019-2020,Yücel İldiz,5204,2019-10-08,7,8,7,27
+Denizlispor,2009-2010,Erhan Altın,9012,2009-09-01,3,4,3,29
+Denizlispor,2008-2009,Ümit Kayıhan,802,2009-02-05,18,19,18,16
+Denizlispor,2008-2009,Ali Yalçın,6651,2008-11-03,9,10,9,25
+Denizlispor,2007-2008,Güvenç Kurtar,804,2008-04-30,32,33,32,2
+Denizlispor,2004-2005,Giray Bulak,788,2005-04-11,27,28,27,7
+Denizlispor,2001-2002,Sakıp Özberk,814,2002-01-02,17,18,17,17
+Denizlispor,2000-2001,Tevfik Lav,57966,2000-09-15,4,5,4,30
+Denizlispor,1999-2000,Ersun Yanal,811,2000-03-20,25,26,25,9
+Denizlispor,1996-1997,Behzat Çınar,43757,1997-04-12,28,29,28,6
+Denizlispor,1996-1997,Ersun Yanal,811,1996-11-14,12,13,12,22
+Denizlispor,1996-1997,Milorad Mitrovic,10481,1996-09-03,3,4,3,31
+Denizlispor,1995-1996,Ümit Kayıhan,802,1996-04-18,29,30,29,5
+Diyarbakirspor,2009-2010,Güvenç Kurtar,804,2010-04-27,29,30,29,3
+Diyarbakirspor,2009-2010,Ziya Doğan,795,2010-02-23,21,22,21,11
+Diyarbakirspor,2005-2006,Nenad Bijedic,2609,2006-03-10,23,24,23,11
+Diyarbakirspor,2005-2006,Hüseyin Kalpar,12053,2005-09-27,7,8,7,27
+Diyarbakirspor,2004-2005,Ümit Kayıhan,802,2004-12-31,17,18,17,17
+Diyarbakirspor,2001-2002,Yılmaz Vural,810,2001-11-22,12,13,12,22
+Elazigspor,2013-2014,Trond Sollied,1097,2013-10-27,9,10,9,25
+Elazigspor,2012-2013,Bülent Uygun,5014,2012-10-08,7,8,7,27
+Elazigspor,2003-2004,Milorad Mitrovic,10481,2003-10-23,9,10,9,25
+Elazigspor,2003-2004,Ümit Turmuş,12423,2003-09-02,4,5,4,30
+Erciyesspor,2014-2015,Mehmet Özdilek,815,2015-03-25,25,26,25,9
+Erciyesspor,2014-2015,Uğur Tütüneker,2492,2015-01-21,16,17,16,18
+Erciyesspor,2014-2015,Bülent Korkmaz,4176,2014-11-25,10,11,10,24
+Erciyesspor,2013-2014,Fuat Çapa,2043,2013-12-23,16,17,16,18
+Erzurum,1998-1999,Ümit Kayıhan,802,1999-03-08,23,24,23,11
+Erzurum,1998-1999,Hikmet Karaman,801,1998-12-02,14,15,14,20
+Erzurum BB,2020-2021,Yılmaz Vural,810,2021-05-09,39,40,39,1
+Erzurum BB,2020-2021,Mesut Bakkal,784,2021-03-21,30,31,30,10
+Erzurum BB,2020-2021,Hüseyin Çimşir,29119,2020-12-21,13,14,13,27
+Erzurum BB,2020-2021,Mehmet Özdilek,815,2020-11-30,9,10,9,31
+Erzurum BB,2018-2019,Mehmet Özdilek,815,2019-03-05,24,25,24,10
+Erzurum BB,2018-2019,Mehmet Altıparmak,5195,2018-09-26,6,7,6,28
+Erzurumspor,2000-2001,Celal Kıprızlı,19319,2001-03-15,24,25,24,10
+Erzurumspor,2000-2001,Stanislav Karasi,81979,2001-01-10,18,19,18,16
+Erzurumspor,1999-2000,Sadi Tekelioğlu,22826,1999-10-27,7,8,7,27
+Eskisehirspor,2015-2016,İsmail Kartal,6366,2015-11-13,11,12,11,23
+Eskisehirspor,2015-2016,Michael Skibbe,681,2015-10-10,7,8,7,27
+Eskisehirspor,2014-2015,Ertuğrul Sağlam,2019,2015-01-05,16,17,16,18
+Eskisehirspor,2011-2012,Michael Skibbe,681,2011-12-26,17,18,17,17
+Eskisehirspor,2010-2011,Rıza Çalımbay,789,2010-09-28,6,7,6,28
+Eskisehirspor,1995-1996,İlhan Mayakan,69893,1995-12-30,17,18,17,17
+Eskisehirspor,1995-1996,Yılmaz Vural,810,1995-12-14,15,16,15,19
+Eyupspor,2025-2026,Orhan Ak,62361,2026-01-04,17,18,17,12
+Eyupspor,2025-2026,Selçuk Şahin,87864,2025-10-05,8,9,8,21
+Fenerbahce,2021-2022,Zeki Murat Göle,65003,2022-01-13,20,21,20,18
+Fenerbahce,2021-2022,Vítor Pereira,7571,2021-12-20,17,18,17,21
+Fenerbahce,2020-2021,Erol Bulut,40285,2021-03-25,30,31,30,10
+Fenerbahce,2019-2020,Zeki Murat Göle,65003,2020-06-09,26,27,26,8
+Fenerbahce,2019-2020,Ersun Yanal,811,2020-03-04,24,25,24,10
+Fenerbahce,2018-2019,Erwin Koeman,1275,2018-12-14,15,16,15,19
+Fenerbahce,2018-2019,Phillip Cocu,6405,2018-10-28,10,11,10,24
+Fenerbahce,2001-2002,Mustafa Denizli,7875,2002-01-08,17,18,17,17
+Fenerbahce,1999-2000,Zdenek Zeman,1186,2000-01-12,15,16,15,19
+Fenerbahce,1999-2000,Rıdvan Dilmen,69200,1999-10-01,5,6,5,29
+Fenerbahce,1997-1998,Otto Baric,13,1998-05-05,33,34,33,1
+Fenerbahce,1996-1997,Sebastião Lazaroni,4628,1997-02-06,20,21,20,14
+Fenerbahce,1994-1995,Holger Osieck,181,1994-12-22,17,18,17,17
+Galatasaray,2021-2022,Fatih Terim,253,2022-01-10,20,21,20,18
+Galatasaray,2017-2018,Igor Tudor,28632,2017-12-18,16,17,16,18
+Galatasaray,2016-2017,Jan Olde Riekerink,1281,2017-02-14,20,21,20,14
+Galatasaray,2015-2016,Orhan Atik,36634,2016-03-16,25,26,25,9
+Galatasaray,2015-2016,Mustafa Denizli,7875,2016-03-01,23,24,23,11
+Galatasaray,2015-2016,Hamza Hamzaoğlu,8536,2015-11-19,11,12,11,23
+Galatasaray,2014-2015,Cesare Prandelli,521,2014-11-28,10,11,10,24
+Galatasaray,2013-2014,Fatih Terim,253,2013-09-25,5,6,5,29
+Galatasaray,2010-2011,Gheorghe Hagi,85,2011-03-24,26,27,26,8
+Galatasaray,2010-2011,Frank Rijkaard,570,2010-10-20,8,9,8,26
+Galatasaray,2008-2009,Michael Skibbe,681,2009-02-26,21,22,21,13
+Galatasaray,2007-2008,Karl-Heinz Feldkamp,62,2008-04-08,29,30,29,5
+Galatasaray,2003-2004,Fatih Terim,253,2004-03-24,26,27,26,8
+Galatasaray,1994-1995,Reinhard Saftig,894,1995-03-16,25,26,25,9
+Gaziantep,2025-2026,Burak Yılmaz,117405,2025-12-15,16,17,16,13
+Gaziantep,2024-2025,Selçuk İnan,83535,2025-05-10,33,34,33,3
+Gaziantep,2023-2024,Marius Șumudică,13105,2024-03-06,28,29,28,10
+Gaziantep,2023-2024,Erdal Güneş,54840,2023-09-05,4,5,4,34
+Gaziantep,2022-2023,Erol Bulut,40285,2023-01-27,19,20,19,17
+Gaziantep,2020-2021,Marius Șumudică,13105,2021-01-11,17,18,17,23
+Gaziantepspor,2016-2017,İbrahim Üzülmez,43477,2017-01-26,17,18,17,17
+Gaziantepspor,2016-2017,İsmail Kartal,6366,2016-12-07,13,14,13,21
+Gaziantepspor,2015-2016,Mutlu Topçu,2618,2016-04-26,30,31,30,4
+Gaziantepspor,2013-2014,Sergen Yalçın,32128,2014-03-25,26,27,26,8
+Gaziantepspor,2013-2014,Bülent Uygun,5014,2013-11-10,11,12,11,23
+Gaziantepspor,2012-2013,Hikmet Karaman,801,2013-02-05,20,21,20,14
+Gaziantepspor,2011-2012,Abdullah Ercan,10052,2012-01-26,22,23,22,12
+Gaziantepspor,2011-2012,Tolunay Kafkas,5006,2011-09-26,4,5,4,30
+Gaziantepspor,2008-2009,Seçkin Göksel,9561,2009-04-17,27,28,27,7
+Gaziantepspor,2008-2009,Nurullah Sağlam,806,2009-03-09,23,24,23,11
+Gaziantepspor,2007-2008,Bünyamin Süral,5587,2008-01-28,20,21,20,14
+Gaziantepspor,2007-2008,Mesut Bakkal,784,2007-11-30,13,14,13,21
+Gaziantepspor,2005-2006,Hüseyin Kalpar,12053,2006-02-22,21,22,21,13
+Gaziantepspor,2005-2006,Faruk Hadzibegic,1540,2005-12-15,16,17,16,18
+Gaziantepspor,2004-2005,Nurullah Sağlam,806,2005-04-30,30,31,30,4
+Gaziantepspor,2001-2002,Tevfik Lav,57966,2001-10-03,6,7,6,28
+Gaziantepspor,2000-2001,Erdoğan Arıca,783,2000-12-05,15,16,15,19
+Gaziantepspor,1997-1998,Georges Heylens,8604,1997-11-19,13,14,13,21
+Genclerbirligi,2025-2026,Levent Şahin,2628,2026-03-06,24,25,24,5
+Genclerbirligi,2025-2026,Metin Diyadin,5199,2026-02-14,22,23,22,7
+Genclerbirligi,2025-2026,Volkan Demirel,72485,2025-12-07,15,16,15,14
+Genclerbirligi,2025-2026,Hüseyin Eroğlu,26856,2025-10-28,10,11,10,19
+Genclerbirligi,2020-2021,Mehmet Altıparmak,5195,2021-03-08,27,28,27,13
+Genclerbirligi,2020-2021,Mustafa Kaplan,27861,2021-01-31,21,22,21,19
+Genclerbirligi,2020-2021,Mert Nobre,71006,2020-11-10,7,8,7,33
+Genclerbirligi,2019-2020,Mustafa Kaplan,27861,2019-10-30,9,10,9,25
+Genclerbirligi,2017-2018,Mesut Bakkal,784,2017-11-20,12,13,12,22
+Genclerbirligi,2017-2018,Ümit Özat,10719,2017-08-31,3,4,3,31
+Genclerbirligi,2016-2017,İbrahim Üzülmez,43477,2016-11-08,10,11,10,24
+Genclerbirligi,2015-2016,Mehmet Özdilek,815,2015-12-14,15,16,15,19
+Genclerbirligi,2014-2015,İrfan Buz,24256,2015-02-17,20,21,20,14
+Genclerbirligi,2013-2014,Metin Diyadin,5199,2013-10-20,8,9,8,26
+Genclerbirligi,2010-2011,Ralf Zumdick,669,2011-04-26,30,31,30,4
+Genclerbirligi,2010-2011,Thomas Doll,383,2010-10-21,8,9,8,26
+Genclerbirligi,2008-2009,Mesut Bakkal,784,2008-11-03,9,10,9,25
+Genclerbirligi,2007-2008,Mehmet Kulaksızoğlu,22418,2008-01-30,20,21,20,14
+Genclerbirligi,2007-2008,Reinhard Stumpf,377,2007-10-31,10,11,10,24
+Genclerbirligi,2007-2008,Fuat Çapa,2043,2007-09-21,5,6,5,29
+Genclerbirligi,2005-2006,Ziya Doğan,795,2005-08-29,4,5,4,30
+Genclerbirligi,2004-2005,Erdoğan Arıca,783,2005-02-01,18,19,18,16
+Genclerbirligi,2004-2005,Oğuz Çetin,1652,2004-12-20,17,18,17,17
+Genclerbirligi,2004-2005,Erdoğan Arıca,783,2004-10-01,7,8,7,27
+Genclerbirligi,2001-2002,Walter Meeuws,3390,2001-11-10,11,12,11,23
+Genclerbirligi,2000-2001,Samet Aybaba,5002,2001-04-12,27,28,27,7
+Genclerbirligi,1999-2000,Karol Pecze,3404,2000-01-06,14,15,14,20
+Genclerbirligi,1997-1998,Luka Peruzovic,18374,1997-11-17,13,14,13,21
+Genclerbirligi,1996-1997,Metin Türel,10484,1996-11-04,12,13,12,22
+Genclerbirligi,1994-1995,Zafer Göncüler,60759,1994-12-05,16,17,16,18
+Giresunspor,2022-2023,Hakan Keleş,64778,2023-05-05,30,31,30,6
+Goztep,2021-2022,Stjepan Tomas,33374,2022-04-27,34,35,34,4
+Goztep,2021-2022,Nestor El Maestro,3415,2022-03-07,28,29,28,10
+Goztep,2021-2022,Ünal Karaman,4776,2021-08-31,3,4,3,35
+Goztep,2020-2021,İlhan Palut,41916,2021-01-11,17,18,17,23
+Goztep,2019-2020,Tamer Tuna,30988,2019-10-30,9,10,9,25
+Goztep,2018-2019,Kemal Özdeş,3106,2019-02-25,23,24,23,11
+Goztep,2018-2019,Bayram Bektaş,30871,2018-12-09,15,16,15,19
+Goztep,2001-2002,Rıza Çalımbay,789,2001-12-19,16,17,16,18
+Goztep,1999-2000,Celal Kıprızlı,19319,2000-04-13,28,29,28,6
+Goztep,1999-2000,Jozef Jarabinsky,7416,2000-02-03,18,19,18,16
+Hacettepespor,2008-2009,Erdoğan Arıca,783,2009-03-05,22,23,22,12
+Hacettepespor,2008-2009,Osman Özdemir,5215,2008-11-07,9,10,9,25
+Hatayspor,2024-2025,Yılmaz Bal,36975,2025-01-14,18,19,18,18
+Hatayspor,2024-2025,Rıza Çalımbay,789,2024-12-24,16,17,16,20
+Hatayspor,2024-2025,Özhan Pulat,71537,2024-09-07,4,5,4,32
+Hatayspor,2023-2024,Volkan Demirel,72485,2024-05-03,34,35,34,4
+Hatayspor,2022-2023,Serkan Özbalta,59420,2022-09-17,6,7,6,30
+Istanbulspor,2023-2024,Hakan Yakin,43774,2024-01-19,20,21,20,18
+Istanbulspor,2023-2024,Olcay Demir,100212,2023-10-10,7,8,7,31
+Istanbulspor,2023-2024,Fatih Tekke,29046,2023-09-26,5,6,5,33
+Istanbulspor,2022-2023,Osman Zeki Korkmaz,71084,2022-10-24,10,11,10,26
+Istanbulspor,2004-2005,Ümit Erol Tok,5211,2005-04-22,28,29,28,6
+Istanbulspor,1999-2000,Ziya Doğan,795,2000-04-04,27,28,27,7
+Istanbulspor,1996-1997,Herbert Neumann,2324,1996-08-31,3,4,3,31
+Istanbulspor,1995-1996,Leo Beenhakker,2120,1995-10-18,8,9,8,26
+Karabukspor,2017-2018,Levent Açıkgöz,30941,2018-03-21,26,27,26,8
+Karabukspor,2017-2018,Tony Popovic,20038,2017-12-15,15,16,15,19
+Karabukspor,2017-2018,Erkan Sözeri,19095,2017-09-25,6,7,6,28
+Karabukspor,2016-2017,Igor Tudor,28632,2017-02-14,20,21,20,14
+Karabukspor,2014-2015,Tolunay Kafkas,5006,2015-02-23,21,22,21,13
+Karabukspor,2012-2013,Mesut Bakkal,784,2013-05-06,32,33,32,2
+Karabukspor,2012-2013,Michael Skibbe,681,2012-11-05,10,11,10,24
+Karabukspor,2011-2012,Yücel İldiz,5204,2011-11-16,10,11,10,24
+Karabukspor,1998-1999,Cihat Erbil,64743,1999-03-22,25,26,25,9
+Karabukspor,1998-1999,Orhan Yahya Yüce,73525,1999-01-25,17,18,17,17
+Karabukspor,1998-1999,Ahmet Akcan,4708,1998-09-21,6,7,6,28
+Karagumruk,2025-2026,Onur Can Korkmaz,138254,2025-12-23,17,18,17,12
+Karagumruk,2025-2026,Marcel Lička,46373,2025-10-31,10,11,10,19
+Karagumruk,2023-2024,Shota Arveladze,7849,2024-03-10,29,30,29,9
+Karagumruk,2023-2024,Alparslan Erdem,105285,2023-12-11,15,16,15,23
+Karagumruk,2022-2023,Andrea Pirlo,62049,2023-05-24,33,34,33,3
+Karagumruk,2021-2022,Francesco Farioli,73923,2021-12-16,16,17,16,22
+Karagumruk,2020-2021,Şenol Can,73765,2021-03-15,29,30,29,11
+Kasimpasa,2025-2026,Shota Arveladze,7849,2025-12-03,14,15,14,15
+Kasimpasa,2024-2025,Hakan Keleş,64778,2025-01-28,20,21,20,16
+Kasimpasa,2024-2025,Sami Uğurlu,90166,2024-11-07,11,12,11,25
+Kasimpasa,2023-2024,Kemal Özdeş,3106,2023-11-29,13,14,13,25
+Kasimpasa,2022-2023,Selçuk İnan,83535,2023-03-18,25,26,25,11
+Kasimpasa,2022-2023,Şenol Can,73765,2022-11-11,13,14,13,23
+Kasimpasa,2021-2022,Hakan Kutlu,5471,2021-12-18,17,18,17,21
+Kasimpasa,2021-2022,Cihat Arslan,5540,2021-10-27,10,11,10,28
+Kasimpasa,2020-2021,Fuat Çapa,2043,2021-03-22,30,31,30,10
+Kasimpasa,2020-2021,Mehmet Altıparmak,5195,2020-11-04,7,8,7,33
+Kasimpasa,2019-2020,Tayfur Havutçu,7877,2020-01-19,18,19,18,16
+Kasimpasa,2019-2020,Kemal Özdeş,3106,2019-12-02,13,14,13,21
+Kasimpasa,2018-2019,Mustafa Denizli,7875,2019-05-14,32,33,32,2
+Kasimpasa,2018-2019,Kemal Özdeş,3106,2018-10-02,7,8,7,27
+Kasimpasa,2016-2017,Rıza Çalımbay,789,2016-09-16,3,4,3,31
+Kasimpasa,2014-2015,Shota Arveladze,7849,2015-03-18,24,25,24,10
+Kasimpasa,2012-2013,Metin Diyadin,5199,2012-09-24,5,6,5,29
+Kasimpasa,2010-2011,Yılmaz Vural,810,2011-01-05,17,18,17,17
+Kasimpasa,2009-2010,Besim Durmuş,10148,2009-09-04,4,5,4,28
+Kasimpasa,2007-2008,Werner Lorant,144,2007-12-03,14,15,14,20
+Kasimpasa,2007-2008,Kadir Özcan,5214,2007-10-01,7,8,7,27
+Kayseri,1995-1996,Raşit Çetiner,4097,1995-12-18,16,17,16,18
+Kayseri,1995-1996,Nevzat Güzelırmak,60737,1995-10-25,9,10,9,25
+Kayseri,1994-1995,Kamuran Yavuz,62729,1994-11-22,14,15,14,20
+Kayserispor,2025-2026,Muhammed Türkmen,92322,2026-02-25,23,24,23,6
+Kayserispor,2025-2026,Radomir Djalovic,104976,2026-02-24,23,24,23,6
+Kayserispor,2025-2026,Markus Gisdol,4849,2025-10-07,8,9,8,21
+Kayserispor,2024-2025,Sinan Kaloğlu,84667,2025-01-25,19,20,19,17
+Kayserispor,2024-2025,Burak Yılmaz,117405,2024-10-01,6,7,6,30
+Kayserispor,2023-2024,Recep Uçar,22369,2024-01-27,22,23,22,16
+Kayserispor,2023-2024,Çağdaş Atan,46594,2023-09-06,4,5,4,34
+Kayserispor,2020-2021,Hamza Hamzaoğlu,8536,2021-04-25,35,36,35,5
+Kayserispor,2020-2021,Uğur Kulaksız,87959,2021-03-20,29,30,29,11
+Kayserispor,2020-2021,Dan Petrescu,2730,2021-02-23,25,26,25,15
+Kayserispor,2020-2021,Samet Aybaba,5002,2021-01-04,15,16,15,25
+Kayserispor,2020-2021,Bayram Bektaş,30871,2020-11-01,6,7,6,34
+Kayserispor,2019-2020,Bülent Uygun,5014,2020-01-03,17,18,17,17
+Kayserispor,2019-2020,Samet Aybaba,5002,2019-10-28,9,10,9,25
+Kayserispor,2019-2020,Hikmet Karaman,801,2019-10-08,7,8,7,27
+Kayserispor,2018-2019,Ertuğrul Sağlam,2019,2018-12-02,14,15,14,20
+Kayserispor,2017-2018,Marius Șumudică,13105,2018-05-15,33,34,33,1
+Kayserispor,2016-2017,Sergen Yalçın,32128,2017-04-22,28,29,28,6
+Kayserispor,2016-2017,Hakan Kutlu,5471,2016-12-06,13,14,13,21
+Kayserispor,2015-2016,Tolunay Kafkas,5006,2016-03-03,23,24,23,11
+Kayserispor,2013-2014,Domingos Paciência,3259,2014-03-20,25,26,25,9
+Kayserispor,2013-2014,Robert Prosinecki,6653,2014-01-10,17,18,17,17
+Kayserispor,2012-2013,Shota Arveladze,7849,2012-10-09,7,8,7,27
+Kayserispor,2004-2005,Hüsnü Özkara,2022,2004-09-29,7,8,7,27
+Kocaelispor,2008-2009,Yılmaz Vural,810,2009-01-22,16,17,16,18
+Kocaelispor,2008-2009,Engin İpekoğlu,5205,2008-09-25,4,5,4,30
+Kocaelispor,2000-2001,Rasim Kara,28492,2000-11-27,14,15,14,20
+Kocaelispor,2000-2001,Güvenç Kurtar,804,2000-08-29,3,4,3,31
+Kocaelispor,1996-1997,Hikmet Karaman,801,1997-01-21,18,19,18,16
+Kocaelispor,1996-1997,Mustafa Denizli,7875,1996-09-28,6,7,6,28
+Konyaspor,2025-2026,Çağdaş Atan,46594,2026-02-04,20,21,20,9
+Konyaspor,2025-2026,Recep Uçar,22369,2025-11-03,11,12,11,18
+Konyaspor,2024-2025,Ali Çamdalı,119905,2024-10-30,10,11,10,26
+Konyaspor,2023-2024,Fahrudin Omerovic,1062,2024-04-29,34,35,34,4
+Konyaspor,2023-2024,Hakan Keleş,64778,2024-01-11,19,20,19,19
+Konyaspor,2023-2024,Aleksandar Stanojevic,4183,2023-10-23,9,10,9,29
+Konyaspor,2022-2023,İlhan Palut,41916,2023-01-17,18,19,18,18
+Konyaspor,2020-2021,İsmail Kartal,6366,2021-02-08,22,23,22,18
+Konyaspor,2019-2020,Aykut Kocaman,1061,2020-02-10,21,22,21,13
+Konyaspor,2018-2019,Rıza Çalımbay,789,2018-11-13,12,13,12,22
+Konyaspor,2017-2018,Mehmet Özdilek,815,2018-03-06,24,25,24,10
+Konyaspor,2017-2018,Mustafa Reşit Akçay,15266,2017-10-24,9,10,9,25
+Konyaspor,2014-2015,Mesut Bakkal,784,2014-10-25,7,8,7,27
+Konyaspor,2013-2014,Uğur Tütüneker,2492,2013-12-16,15,16,15,19
+Konyaspor,2010-2011,Ziya Doğan,795,2011-02-14,21,22,21,13
+Konyaspor,2008-2009,Giray Bulak,788,2009-05-20,32,33,32,2
+Konyaspor,2008-2009,Raşit Çetiner,4097,2008-09-18,3,4,3,31
+Konyaspor,2007-2008,Ünal Karaman,4776,2008-03-24,27,28,27,7
+Konyaspor,2007-2008,Nurullah Sağlam,806,2007-09-26,6,7,6,28
+Konyaspor,2004-2005,Sakıp Özberk,814,2004-09-20,6,7,6,28
+Konyaspor,2003-2004,Tevfik Lav,57966,2004-04-04,28,29,28,6
+Konyaspor,2003-2004,Mehmet Yıldırım,46216,2004-01-20,17,18,17,17
+Konyaspor,2003-2004,Hüsnü Özkara,2022,2003-12-15,16,17,16,18
+Manisaspor,2011-2012,Ümit Özat,10719,2012-02-28,28,29,28,6
+Manisaspor,2011-2012,Kemal Özdeş,3106,2012-01-25,22,23,22,12
+Manisaspor,2010-2011,Hakan Kutlu,5471,2010-09-13,4,5,4,30
+Manisaspor,2009-2010,Mesut Bakkal,784,2010-01-26,17,18,17,15
+Manisaspor,2007-2008,Yılmaz Vural,810,2008-03-11,25,26,25,9
+Manisaspor,2007-2008,Giray Bulak,788,2008-01-18,18,19,18,16
+Manisaspor,2005-2006,Levent Eriş,2444,2005-10-14,8,9,8,26
+Mersin Idman Yurdu,2015-2016,Ümit Özat,10719,2016-05-06,31,32,31,3
+Mersin Idman Yurdu,2015-2016,Bülent Korkmaz,4176,2016-01-04,17,18,17,17
+Mersin Idman Yurdu,2015-2016,Mesut Bakkal,784,2015-09-22,5,6,5,29
+Mersin Idman Yurdu,2012-2013,Giray Bulak,788,2013-03-08,24,25,24,10
+Mersin Idman Yurdu,2012-2013,Nurullah Sağlam,806,2012-12-15,16,17,16,18
+Orduspor,2012-2013,Héctor Cúper,526,2013-04-13,29,30,29,5
+Orduspor,2011-2012,Metin Diyadin,5199,2011-12-12,15,16,15,19
+Osmanlispor,2017-2018,Bülent Uygun,5014,2017-09-18,5,6,5,29
+Osmanlispor,2016-2017,Mustafa Reşit Akçay,15266,2017-03-21,25,26,25,9
+Rizespor,2025-2026,İlhan Palut,41916,2025-11-30,14,15,14,15
+Rizespor,2021-2022,Hamza Hamzaoğlu,8536,2022-02-19,26,27,26,12
+Rizespor,2021-2022,Bülent Uygun,5014,2021-09-22,6,7,6,32
+Rizespor,2020-2021,Marius Șumudică,13105,2021-03-04,27,28,27,13
+Rizespor,2020-2021,Stjepan Tomas,33374,2021-01-18,18,19,18,22
+Rizespor,2019-2020,Ünal Karaman,4776,2020-07-14,32,33,32,2
+Rizespor,2019-2020,İsmail Kartal,6366,2020-02-29,23,24,23,11
+Rizespor,2018-2019,İbrahim Üzülmez,43477,2018-09-21,5,6,5,29
+Rizespor,2014-2015,Mehmet Özdilek,815,2014-12-08,12,13,12,22
+Rizespor,2013-2014,Rıza Çalımbay,789,2014-02-13,20,21,20,14
+Rizespor,2007-2008,Erdoğan Arıca,783,2008-04-30,32,33,32,2
+Rizespor,2007-2008,Safet Susic,2026,2008-02-01,20,21,20,14
+Rizespor,2005-2006,Sakıp Özberk,814,2005-12-12,16,17,16,18
+Rizespor,2005-2006,Metin Yıldız,2333,2005-10-20,9,10,9,25
+Rizespor,2004-2005,Rıza Çalımbay,789,2005-01-28,17,18,17,17
+Rizespor,2003-2004,Hikmet Karaman,801,2004-02-06,19,20,19,15
+Sakaryaspor,1998-1999,Şenol Güneş,2332,1999-02-08,19,20,19,15
+Sakaryaspor,1998-1999,Radmilo Ivancevic,5469,1998-09-03,4,5,4,30
+Samsunspor,2025-2026,Thomas Reis,19735,2026-02-14,22,23,22,7
+Samsunspor,2023-2024,Hüseyin Eroğlu,26856,2023-09-27,5,6,5,33
+Samsunspor,2011-2012,Vladimir Petkovic,1315,2012-01-23,21,22,21,13
+Samsunspor,2005-2006,Erdoğan Arıca,783,2006-03-21,25,26,25,9
+Samsunspor,2005-2006,Şaban Yıldırım,30992,2005-09-14,5,6,5,29
+Samsunspor,2003-2004,Gheorghe Mulțescu,5429,2003-09-24,6,7,6,28
+Samsunspor,2001-2002,Yücel Uyar,10485,2002-03-05,25,26,25,9
+Samsunspor,2000-2001,Bülent Ünder,10367,2001-04-02,26,27,26,8
+Samsunspor,1998-1999,Mehmet Ali Çınar,10480,1998-09-17,5,6,5,29
+Samsunspor,1997-1998,Jozef Jarabinsky,7416,1998-04-20,31,32,31,3
+Samsunspor,1997-1998,Horst Hrubesch,97,1997-09-09,5,6,5,29
+Samsunspor,1996-1997,Gheorghe Mulțescu,5429,1997-01-29,19,20,19,15
+Sariyer,1996-1997,Fatih Eser,70017,1997-05-01,30,31,30,4
+Sariyer,1996-1997,Yılmaz Vural,810,1997-02-03,20,21,20,14
+Sivasspor,2024-2025,Ömer Erdoğan,41081,2025-03-05,25,26,25,11
+Sivasspor,2024-2025,Bülent Uygun,5014,2024-12-14,16,17,16,20
+Sivasspor,2023-2024,Servet Çetin,50948,2023-12-30,17,18,17,21
+Sivasspor,2018-2019,Tamer Tuna,30988,2018-11-06,11,12,11,23
+Sivasspor,2015-2016,Okan Buruk,23531,2016-02-08,20,21,20,14
+Sivasspor,2015-2016,Sergen Yalçın,32128,2015-10-26,9,10,9,25
+Sivasspor,2014-2015,Roberto Carlos,29100,2014-12-21,14,15,14,20
+Sivasspor,2010-2011,Mesut Bakkal,784,2010-10-25,9,10,9,25
+Sivasspor,2009-2010,Muhsin Ertuğral,1251,2010-03-25,25,26,25,7
+Sivasspor,2009-2010,Bülent Uygun,5014,2009-10-05,8,9,8,24
+Trabzonspor,2024-2025,Şenol Güneş,2332,2025-03-10,25,26,25,11
+Trabzonspor,2023-2024,Nenad Bjelica,5197,2023-10-11,8,9,8,30
+Trabzonspor,2022-2023,Orhan Ak,62361,2023-04-04,26,27,26,10
+Trabzonspor,2022-2023,Abdullah Avcı,5078,2023-03-08,23,24,23,13
+Trabzonspor,2020-2021,Eddie Newton,15907,2020-10-31,7,8,7,33
+Trabzonspor,2019-2020,Hüseyin Çimşir,29119,2020-07-20,33,34,33,1
+Trabzonspor,2019-2020,Ünal Karaman,4776,2019-12-30,17,18,17,17
+Trabzonspor,2017-2018,Ersun Yanal,811,2017-10-16,8,9,8,26
+Trabzonspor,2015-2016,Hami Mandıralı,7479,2016-05-13,33,34,33,1
+Trabzonspor,2015-2016,Sadi Tekelioğlu,22826,2016-01-21,18,19,18,16
+Trabzonspor,2015-2016,Shota Arveladze,7849,2015-11-11,11,12,11,23
+Trabzonspor,2014-2015,Vahid Halilhodzic,1231,2014-11-08,8,9,8,26
+Trabzonspor,2013-2014,Mustafa Reşit Akçay,15266,2014-02-10,20,21,20,14
+Trabzonspor,2012-2013,Şenol Güneş,2332,2013-01-29,19,20,19,15
+Trabzonspor,2009-2010,Hugo Broos,706,2009-11-24,12,13,12,20
+Trabzonspor,2008-2009,Ersun Yanal,811,2009-04-27,29,30,29,5
+Trabzonspor,2007-2008,Ziya Doğan,795,2007-10-22,9,10,9,25
+Trabzonspor,2005-2006,Şenol Güneş,2332,2005-09-26,7,8,7,27
+Trabzonspor,2004-2005,Ziya Doğan,795,2005-01-17,17,18,17,17
+Trabzonspor,2003-2004,Turgay Semercioğlu,807,2004-02-05,19,20,19,15
+Trabzonspor,2003-2004,Samet Aybaba,5002,2003-12-04,14,15,14,20
+Trabzonspor,2001-2002,Sadi Tekelioğlu,22826,2001-11-09,11,12,11,23
+Trabzonspor,2000-2001,Giray Bulak,788,2001-01-01,18,19,18,16
+Trabzonspor,1999-2000,Ahmet Suat Özyazıcı,30967,1999-12-30,14,15,14,20
+Trabzonspor,1997-1998,Özkan Sümer,13876,1998-03-04,24,25,24,10
+Trabzonspor,1997-1998,Yılmaz Vural,810,1997-10-09,9,10,9,25
+Trabzonspor,1996-1997,Şenol Güneş,2332,1997-02-03,20,21,20,14
+Umraniyespor,2022-2023,Recep Uçar,22369,2023-04-19,28,29,28,8
+Vanspor,1999-2000,Nevzat Sipal,57205,2000-02-10,19,20,19,15
+Vanspor,1999-2000,Samet Aybaba,5002,2000-01-05,14,15,14,20
+Vanspor,1997-1998,Giray Bulak,788,1997-10-01,8,9,8,26
+Vanspor,1996-1997,Tınaz Tırpan,25611,1997-03-23,27,28,27,7
+Vanspor,1996-1997,Cihat Erbil,64743,1997-01-14,17,18,17,17
+Vanspor,1996-1997,Mehmet Başaygün,60781,1996-10-08,8,9,8,26
+Vanspor,1995-1996,Petre Gavrila,68393,1996-01-18,17,18,17,17
+Vanspor,1994-1995,Mehmet Başaygün,60781,1995-03-14,25,26,25,9
+Yeni Malatyaspor,2021-2022,Marius Șumudică,13105,2022-02-07,23,24,23,15
+Yeni Malatyaspor,2021-2022,İrfan Buz,24256,2021-10-03,8,9,8,30
+Yeni Malatyaspor,2020-2021,Hamza Hamzaoğlu,8536,2021-02-21,25,26,25,15
+Yeni Malatyaspor,2019-2020,Kemal Özdeş,3106,2020-03-02,23,24,23,11
+Yeni Malatyaspor,2019-2020,Sergen Yalçın,32128,2020-01-15,17,18,17,17
+Yeni Malatyaspor,2018-2019,Erol Bulut,40285,2019-04-27,29,30,29,5
+Yeni Malatyaspor,2017-2018,Ertuğrul Sağlam,2019,2017-09-14,4,5,4,30
+Yozgatspor,2001-2002,Rasim Kara,28492,2002-03-12,26,27,26,8
+Yozgatspor,2001-2002,Bahri Kaya,17749,2001-11-29,13,14,13,21
+Zeytinburnu,1996-1997,Bahri Kaya,17749,1996-10-08,8,9,8,26
+Zeytinburnu,1994-1995,İlyas Tüfekçi,10372,1995-05-07,32,33,32,2
+Zeytinburnu,1994-1995,Erol Togay,61208,1995-01-09,17,18,17,17
+Zeytinburnu,1994-1995,Cihat Erbil,64743,1994-10-25,10,11,10,24
+Karsiyaka,1995-1996,İlyas Sazalan,64081,1996-04-01,27,28,27,7
+Karsiyaka,1995-1996,Zeynel Soyuer,10483,1996-04-03,27,28,27,7
+Karsiyaka,1995-1996,Hidir Akbas,8932,1995-12-25,17,18,17,17
+Karsiyaka,1995-1996,Erol Togay,61208,1995-11-14,11,12,11,23
+Karsiyaka,1995-1996,Allan Harris,28808,1995-10-23,9,10,9,25
+Malatyaspor,2005-2006,Ziya Doğan,795,2006-03-15,24,25,24,10
+Malatyaspor,2005-2006,Feyyaz Uçar,809,2005-09-01,4,5,4,30
+Malatyaspor,2004-2005,Aykut Kocaman,1061,2005-03-30,25,26,25,9
+Malatyaspor,2003-2004,Ziya Doğan,795,2003-12-29,17,18,17,17
+Malatyaspor,2001-2002,Erdoğan Arıca,783,2001-10-25,9,10,9,25
+Malatyaspor,2001-2002,Yücel İldiz,5204,2001-09-04,3,4,3,31
+Pendikspor,2023-2024,Ivo Vieira,2819,2024-02-29,27,28,27,11
+Pendikspor,2023-2024,Osman Özköylü,9284,2023-10-09,8,9,8,30
