@@ -102,6 +102,23 @@ opp_str = panel_sorted[["team", "season", "match_date", "cum_pts_before"]].renam
 )
 panel_ev = panel_ev.merge(opp_str, on=["opponent", "season", "match_date"], how="left")
 
+# ── 7b. Table position (league standing before this match) ───────────────────
+# Rank teams within each (season, match_n) by cum_pts_before.
+# Rank 1 = top of table, higher number = lower in the table.
+# This pre-determined variable captures the team's recent form / decline
+# that often motivates a manager change; adding it as a control checks
+# whether the observed pre-trend is driven by selection on league standing.
+table_pts = panel_sorted[["team", "season", "match_n", "cum_pts_before"]].copy()
+table_pts["table_position"] = (
+    table_pts.groupby(["season", "match_n"])["cum_pts_before"]
+    .rank(method="min", ascending=False)
+    .astype(int)
+)
+panel_ev = panel_ev.merge(
+    table_pts[["team", "season", "match_n", "table_position"]],
+    on=["team", "season", "match_n"], how="left"
+)
+
 # ── 8. is_foreign (current manager nationality) ───────────────────────────────
 TURKISH = {"Türkiye", "Turkey", "Turkish", "Türk", "Turkiye"}
 panel_ev["is_foreign"] = (~panel_ev["nationality"].isin(TURKISH) &
@@ -240,6 +257,27 @@ m2 = pf.feols(
     vcov    = {"CRV1": "team"}
 )
 print(m2.summary())
+
+# =============================================================================
+# MODEL 2b — Preferred Event-Study + Table Position
+# Adds table_position as a pre-determined control to absorb the selection
+# effect (teams about to be fired are already low in the table).
+# If the pre-trend in m2 is driven by standing, the pre-period coefficients
+# in m2_tp should shrink toward zero.
+#
+# Econometric caveat: table_position is itself a function of past outcomes,
+# so it partially absorbs the "bad form" that causes both low standing and
+# imminent firing.  Interpret carefully — this is a diagnostic check, not
+# a preferred specification.
+# =============================================================================
+print("\nFitting Model 2b — Event-Study + Table Position...")
+m2_tp = pf.feols(
+    f"points ~ {ES_TERMS} + home + opponent_strength + table_position"
+    " | team_season + season_week + opponent",
+    data    = panel_ev,
+    vcov    = {"CRV1": "team"}
+)
+print(m2_tp.summary())
 
 # =============================================================================
 # MODEL 3 — Extended Controls
@@ -534,5 +572,44 @@ fig.tight_layout()
 fig.savefig(OUT_DIR / "figures" / "fig4_robustness_windows.png", dpi=150)
 plt.close(fig)
 print(f"  Saved: {OUT_DIR / 'figures' / 'fig4_robustness_windows.png'}")
+
+# Figure 5: Pre-trend diagnostic — with vs without table_position
+def es_compare_plot(fits_labels, title, path, colors=None):
+    """Overlay multiple event-study paths on one axes."""
+    if colors is None:
+        colors = ["#2166ac", "#d6604d", "#4dac26"]
+    fig, ax = plt.subplots(figsize=(11, 5.5))
+    ax.axhline(0, color="grey", lw=0.8, ls="--")
+    ax.axvline(-0.5, color="grey", lw=0.8, ls="--")
+    for (fit, label), color in zip(fits_labels, colors):
+        df  = get_es_coefs(fit)
+        df  = df[df["rw"].between(-EVENT_WIN, EVENT_WIN)]
+        rws = df["rw"].tolist()
+        est = df["estimate"].tolist()
+        err = (df["se"] * 1.96).tolist()
+        ax.fill_between(rws,
+                        [e - er for e, er in zip(est, err)],
+                        [e + er for e, er in zip(est, err)],
+                        alpha=0.10, color=color)
+        ax.plot(rws, est, "o-", label=label, color=color, lw=1.5, ms=4)
+        ax.errorbar(rws, est, yerr=err, fmt="none", color=color,
+                    capsize=2, elinewidth=0.8, alpha=0.6)
+    ax.set_xlabel("Matchweeks Relative to Manager Change", fontsize=11)
+    ax.set_ylabel("Effect on Points per Match", fontsize=11)
+    ax.set_title(title, fontsize=12)
+    ax.xaxis.set_major_locator(mticker.MultipleLocator(2))
+    ax.legend(fontsize=10)
+    fig.tight_layout()
+    fig.savefig(path, dpi=150)
+    plt.close(fig)
+    print(f"  Saved: {path}")
+
+es_compare_plot(
+    [(m2,    "Without table position (baseline)"),
+     (m2_tp, "With table position control")],
+    "Pre-trend Diagnostic: Effect of Adding League Standing Control\n"
+    "Reference: week −1 | SEs clustered by team",
+    OUT_DIR / "figures" / "fig5_pretrend_tablepos.png"
+)
 
 print("\n=== Done. Tables → out/tables/   Figures → out/figures/ ===")
