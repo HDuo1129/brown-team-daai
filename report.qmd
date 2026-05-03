@@ -282,7 +282,33 @@ Season-by-season CSV files for the Turkish Süper Lig sourced from [football-dat
 Stint-level records from Transfermarkt: manager name, nationality, `start_date`, `end_date`, plus characteristics (age at appointment, prior clubs, years of experience). Stints < 14 days are classified as caretaker appointments and excluded.
 
 ### News / Expectations Data *(2025–26 only)*
-We collected Turkish-language manager news via two RSS sources — **Fotomaç** (team-specific feeds) and **Google News RSS** — and classified each article using a Groq/Llama LLM pipeline that assigns a normalised sentiment score (`score_norm ∈ [0, 1]`) reflecting managerial pressure intensity. The team-week average, lagged by one ISO week, becomes `exp_lag1` used in regression.
+
+We built an original expectations measure from Turkish football news, following four steps:
+
+**Step 1 — Collection.** We queried two RSS sources for all 18 Süper Lig teams: **Fotomaç** (Turkish football tabloid, team-specific feeds) and **Google News RSS** (6 queries per team in Turkish and English: *teknik direktör, hoca ayrılık, istifa, görevden, manager*). Cross-article deduplication via MD5 hash yielded **5,464 unique raw articles** (coverage: 2025-W27 to 2026-W17).
+
+**Step 2 — Manager-relevance filter.** A two-pass filter retained only articles where (a) at least one manager's name tokens appeared, and (b) at least one managerial-change keyword matched (Turkish character-normalised). This reduced the corpus to **2,524 manager-relevant articles**.
+
+**Step 3 — LLM classification.** Each article was scored 0–4 on a pre-change expectation-pressure scale using **Claude Haiku** (`claude-haiku-4-5-20251001`, Anthropic):
+
+| Score | Label | Definition |
+|-------|-------|------------|
+| 0 | No signal | Routine content or post-change appointment coverage |
+| 1 | Mild | Manager fielding departure questions / unresolved rumours |
+| 2 | Moderate | Explicit board criticism; poor results blamed on manager |
+| 3 | Strong | Fan protests, named replacements, credible board meetings |
+| 4 | Confirmed | Firing or resignation explicitly confirmed |
+
+Scores were normalised to `score_norm ∈ [0, 1]`. The classifier was validated against 10 hand-labelled articles before scaling: score agreement ≥ 90% (±1 tolerance), `is_relevant` agreement ≥ 80%.
+
+**Step 4 — Aggregation.** Relevant articles (`is_relevant = True`) were averaged within each (team, ISO week) cell to produce `avg_grade`. The final panel has **506 (team, week) rows** across 18 teams. `exp_lag1` is the lagged one-week value used in regression, so that articles written in the same week as the match cannot contaminate the expectation measure.
+
+::: {.callout-note}
+## News coverage caveat
+Google News GDPR redirects blocked full-text retrieval for 96% of articles; Claude Haiku classified those using headline text only. Full article body was available for Fotomaç articles (101 articles, median 860 characters). Zero-article weeks are assigned `exp_lag1 = 0`, interpreted as genuine absence of pressure signal. Pre-2025-W27 matches have `exp_lag1 = NaN` and enter the base DiD only.
+:::
+
+The team-week average, lagged by one ISO week, becomes `exp_lag1` used in regression.
 
 ---
 
@@ -491,22 +517,47 @@ plt.show()
 #| tbl-cap: "Model 5 — Domestic vs. foreign manager replacement"
 #| echo: false
 
-b = m5.coef()["PostChange"]
-t = m5.coef()["PostChange:NMD"]
+b5   = m5.coef()
+se5  = m5.se()
+pv5  = m5.pvalue()
+
+def stars(p):
+    return "***" if p < 0.001 else "**" if p < 0.01 else "*" if p < 0.05 else "n.s."
+
+b = b5["PostChange"]
+t = b5["PostChange:NMD"]
+se_b = se5["PostChange"]
+se_t = se5["PostChange:NMD"]
+p_b  = pv5["PostChange"]
+p_t  = pv5["PostChange:NMD"]
 
 het_df = pd.DataFrame({
-    "Group": ["Foreign replacement (β)", "Domestic advantage (θ)", "Domestic replacement (β + θ)"],
+    "Term": [
+        "PostChange (β) — foreign replacement",
+        "PostChange × Domestic (θ) — additional gain",
+        "β + θ — domestic replacement (implied)"
+    ],
     "Estimate": [f"{b:+.3f}", f"{t:+.3f}", f"{b+t:+.3f}"],
-    "Interpretation": [
-        "Baseline post-change effect (incoming manager is foreign)",
-        "Additional gain when replacement is Turkish",
-        "Total post-change effect for domestic replacement"
-    ]
-}).set_index("Group")
+    "Std. Error": [f"{se_b:.3f}", f"{se_t:.3f}", "—"],
+    "p-value":   [f"{p_b:.3f}", f"{p_t:.3f}", "—"],
+    "Sig.":      [stars(p_b), stars(p_t), ""],
+}).set_index("Term")
 het_df
 ```
 
-Domestic (Turkish) replacements are associated with a larger estimated post-change gain (+0.60 ppm) than foreign ones (+0.46 ppm), though causal interpretation is constrained by the pre-trend.
+```{python}
+#| echo: false
+# narrative numbers pulled from model
+_b, _t = m5.coef()["PostChange"], m5.coef()["PostChange:NMD"]
+_p_b, _p_t = m5.pvalue()["PostChange"], m5.pvalue()["PostChange:NMD"]
+_sig_b = "statistically significant" if _p_b < 0.05 else "not statistically significant"
+_sig_t = "statistically significant" if _p_t < 0.05 else "not statistically significant"
+print(f"Foreign baseline β = {_b:+.3f} (p = {_p_b:.3f}, {_sig_b})")
+print(f"Domestic advantage θ = {_t:+.3f} (p = {_p_t:.3f}, {_sig_t})")
+print(f"Implied domestic effect β + θ = {_b+_t:+.3f}")
+```
+
+The results suggest a directional difference: domestic (Turkish) replacements are associated with a larger estimated post-change improvement than foreign replacements. However, given the pre-trend problem identified in @sec-pretrend, these estimates should be interpreted cautiously — the differential may also partly reflect that clubs in different league positions tend to hire different types of managers.
 
 ---
 
@@ -557,9 +608,24 @@ rows4.append({"Variable":"β + θ (expected change effect)",
 pd.DataFrame(rows4).set_index("Variable")
 ```
 
+```{python}
+#| echo: false
+_b4  = m4c.coef()["PostChange"]
+_t4  = m4c.coef()["PostChange:expected_change"]
+_p4b = m4c.pvalue()["PostChange"]
+_p4t = m4c.pvalue()["PostChange:expected_change"]
+print(f"β (unexpected change): {_b4:+.3f}  (p = {_p4b:.3f})")
+print(f"θ (expected vs unexpected): {_t4:+.3f}  (p = {_p4t:.3f})")
+print(f"β + θ (expected change effect): {_b4+_t4:+.3f}")
+n_treated = int(p26[p26["PostChange"]==1]["team_season"].nunique())
+print(f"N treated team-seasons (2025-26): {n_treated}")
+```
+
 ::: {.callout-note}
 ## Anticipation hypothesis — directional support, no statistical power
-Unexpected changes show a larger estimated post-change gain (**β = +0.14 ppm**) than expected ones (**β + θ = −0.03 ppm**), consistent with the anticipation hypothesis. However, neither is statistically significant (N = 10 treated team-seasons). These results are exploratory.
+The estimates are directionally consistent with anticipation theory: **unexpected changes** (below-median pre-change media pressure) show a larger post-change improvement (β) than **expected changes** (β + θ). This aligns with the hypothesis that anticipated firing carries less informational shock — players, staff, and the market have already adjusted.
+
+However, neither coefficient is statistically significant. With only **10 treated team-seasons** in the 2025–26 sample and sparse news coverage (67% of team-weeks have zero articles), the analysis lacks statistical power. These results are strictly exploratory. Replicating across multiple seasons with richer news coverage is the clearest path to identifying anticipation effects.
 :::
 
 ---
