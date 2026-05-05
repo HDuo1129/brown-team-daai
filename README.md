@@ -67,7 +67,13 @@ We built an original pre-change expectations measure from Turkish football news.
 The pipeline then runs four steps:
 
 - **Filtering**: 5,464 raw articles → 2,524 manager-relevant, via two-pass filter (manager name token matching + keyword regex with Turkish character normalisation)
-- **Classification**: Each article scored 0–4 on an expectation-pressure scale using **Claude Haiku** (`claude-haiku-4-5-20251001`). Score 0 = routine/appointment coverage; Score 4 = confirmed firing. Prompt validated against 10 hand-labelled articles (≥ 80% agreement) before scaling.
+- **Classification**: Each article scored 0–4 on an expectation-pressure scale using **Claude Haiku** (`claude-haiku-4-5-20251001`). The classifier was developed through an iterative human-in-the-loop validation process before any large-scale scoring was run:
+  1. **Hand-labelling**: 10 articles were manually labelled by the team, deliberately spanning the full score range (confirmed resignation, fan protests, board criticism, routine quotes, appointment announcements)
+  2. **Prompt v1**: Initial prompt submitted to Claude Haiku → reviewed against hand labels → identified systematic error: appointment articles (post-change) were scored 4 instead of 0
+  3. **Prompt v2**: Added explicit rule — "appointment announcements score 0; they describe the post-change period, not pre-change pressure" → resubmitted → resolved appointment scoring; JSON parse failures remained
+  4. **Prompt v3 (final)**: Added structured JSON output requirement and `is_relevant` flag → resubmitted → ≥ 90% score agreement (±1 tolerance), ≥ 80% `is_relevant` agreement → threshold met, scaled to all 2,524 articles
+
+  Full prompt and validation details: [`news/prompt_classifier.md`](news/prompt_classifier.md), [`news/validation_interpretation.md`](news/validation_interpretation.md)
 
 | Score | Label | Definition |
 |-------|-------|------------|
