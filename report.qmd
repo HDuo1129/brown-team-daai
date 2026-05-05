@@ -724,4 +724,14 @@ In the Turkish Süper Lig, mid-season manager changes are a high-frequency, high
 
 ---
 
+## Team Contribution & Score Allocation {#sec-contributions}
+
+| Member | Programme | Score | Primary Contributions |
+|--------|-----------|:-----:|-----------------------|
+| Duo Huang | MA, 2nd year | **12** | Data collection strategy & pipeline; Transfermarkt scraping; club name mapping (65 clubs); feature engineering; data quality tests; news collection & LLM classification pipeline; full econometric analysis; report |
+| Semih Tosun | MA, 1st year | **9** | Football domain validation; Turkish-language article review; manual verification of LLM scores; data analysis support |
+| Farangiz Jurakhonova | MSBA, 1st year | **9** | Initial data exploration and descriptive analysis; data analysis support |
+
+---
+
 *Analysis pipeline: Python (pandas, pyfixest, matplotlib). Data: football-data.co.uk, Transfermarkt, Fotomaç RSS, Google News RSS.*
