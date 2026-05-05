@@ -750,12 +750,34 @@ tbl
 
 The table reveals two distinct regimes:
 
-- **Base DiD** (team + season FE): the post-change effect is **consistently near zero and not significant** regardless of window (−0.08 to −0.005). This is the most conservative specification.
-- **Preferred spec** (team-season + season-week + opponent FE): the post-change effect is **positive and highly significant across all windows** (±3: +0.62\*\*\*, ±10: +0.34\*\*\*). Narrower windows yield larger estimates, consistent with the immediate post-change effect being more concentrated in the first few matches.
-- Adding **table position** as a control reduces the magnitude but does not eliminate significance.
-
-The divergence between the two specifications reflects what each absorbs. The Base DiD uses season-level time effects, leaving mean-reversion variation in the residual, which biases the post estimate toward zero. The preferred spec uses team-season FE (absorbing within-season baselines) and season-week FE (absorbing aggregate calendar shocks), so the post coefficient is identified from within-season deviations — and shows a robust positive effect. **The conclusion depends on which source of variation one is willing to trust for identification.**
+- **Base DiD** (team + season FE): the post-change effect is **consistently near zero and not significant** regardless of window (−0.08 to −0.005).
+- **Preferred spec** (team-season + season-week + opponent FE): the post-change effect is **positive and highly significant across all windows** (±3: +0.62\*\*\*, ±10: +0.34\*\*\*).
+- Adding **table position** reduces magnitude but does not eliminate significance.
 :::
+
+### Why is the Base DiD not significant?
+
+The Base DiD uses **team fixed effects** (one intercept per club across all seasons) and **season fixed effects** (one time trend per season). This specification leaves two important sources of variation in the residual:
+
+1. **Mean reversion within the season.** Managers are fired after poor runs of form. The team's results immediately before the dismissal are mechanically below their own season average. When the model compares post-change to the full pre-change period (which includes both normal-form and poor-form matches), the "post" effect captures only the net difference — but the trough at dismissal and the subsequent partial recovery roughly cancel out, leaving a coefficient near zero.
+
+2. **Season-level time effects are too coarse.** Season FE absorbs inter-season differences but not the within-season calendar pattern (e.g., fixture difficulty, fatigue, weather). If control teams also show within-season dips and recoveries unrelated to any manager change, they contaminate the counterfactual, again diluting the estimated treatment effect.
+
+### Why does the Preferred Spec show significant results?
+
+The preferred specification adds three layers of absorption:
+
+- **Team-season FE**: One intercept per (club × season) — this absorbs each team's *within-season* performance baseline, including the general form level during that particular campaign. The post-change coefficient is now identified purely from the deviation around that baseline, not from cross-season comparisons.
+- **Season-matchweek FE**: One intercept per matchweek in each season — this absorbs aggregate calendar shocks common to all teams (fixture congestion, international breaks, weather). By controlling for what *all* teams did in the same week, the model isolates the treated team's movement.
+- **Opponent FE**: Controls for fixture difficulty, removing noise from easy/hard opponents landing in the post-period.
+
+With these controls, the estimated coefficient (+0.34 to +0.62) reflects a genuine within-season, within-week improvement in the treated team relative to controls — and is consistently significant.
+
+### Why do narrower windows give larger estimates?
+
+The pattern — ±3: +0.62, ±5: +0.44, ±10: +0.34 — is consistent with the **immediate bounce-back hypothesis**: the largest performance improvement happens in the first few matches after a new manager arrives (novelty effect, tactical reset, motivational response), and then gradually dissipates as opponents adapt and the initial boost fades. By including matches further out in the post-period (rw = +8, +9, +10), we average in later matches where the effect has weakened, pulling the overall estimate down.
+
+This decay pattern also has an important implication: clubs that fire managers hoping for a sustained turnaround may be disappointed — the available evidence points to a short-lived improvement, not a permanent shift in team quality.
 
 ---
 

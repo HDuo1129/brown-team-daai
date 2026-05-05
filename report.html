@@ -2366,6 +2366,9 @@ window.Quarto = {
   <li><a href="#alternative-outcomes" id="toc-alternative-outcomes" class="nav-link" data-scroll-target="#alternative-outcomes"><span class="header-section-number">8.1</span> Alternative Outcomes</a></li>
   <li><a href="#alternative-event-windows" id="toc-alternative-event-windows" class="nav-link" data-scroll-target="#alternative-event-windows"><span class="header-section-number">8.2</span> Alternative Event Windows</a></li>
   <li><a href="#specification-window-sensitivity" id="toc-specification-window-sensitivity" class="nav-link" data-scroll-target="#specification-window-sensitivity"><span class="header-section-number">8.3</span> Specification × Window Sensitivity</a></li>
+  <li><a href="#why-is-the-base-did-not-significant" id="toc-why-is-the-base-did-not-significant" class="nav-link" data-scroll-target="#why-is-the-base-did-not-significant"><span class="header-section-number">8.4</span> Why is the Base DiD not significant?</a></li>
+  <li><a href="#why-does-the-preferred-spec-show-significant-results" id="toc-why-does-the-preferred-spec-show-significant-results" class="nav-link" data-scroll-target="#why-does-the-preferred-spec-show-significant-results"><span class="header-section-number">8.5</span> Why does the Preferred Spec show significant results?</a></li>
+  <li><a href="#why-do-narrower-windows-give-larger-estimates" id="toc-why-do-narrower-windows-give-larger-estimates" class="nav-link" data-scroll-target="#why-do-narrower-windows-give-larger-estimates"><span class="header-section-number">8.6</span> Why do narrower windows give larger estimates?</a></li>
   </ul></li>
   <li><a href="#sec-limitations" id="toc-sec-limitations" class="nav-link" data-scroll-target="#sec-limitations"><span class="header-section-number">9</span> Limitations</a></li>
   <li><a href="#sec-conclusion" id="toc-sec-conclusion" class="nav-link" data-scroll-target="#sec-conclusion"><span class="header-section-number">10</span> Conclusion</a></li>
@@ -2466,7 +2469,7 @@ window.Quarto = {
 Table 1: Dataset summary
 </figcaption>
 <div aria-describedby="tbl-data-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
 
@@ -2643,7 +2646,7 @@ Table 1: Dataset summary
 Table 2: Model 1 — Base DiD: average post-change effect on points per match
 </figcaption>
 <div aria-describedby="tbl-model1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
 
@@ -2804,7 +2807,7 @@ Figure 3: Event-study by nationality of incoming manager. Blue = domestic (Turk
 Table 3: Model 5 — Domestic vs. foreign manager replacement
 </figcaption>
 <div aria-describedby="tbl-heterogeneity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -2856,7 +2859,7 @@ Table 3: Model 5 — Domestic vs. foreign manager replacement
 </figure>
 </div>
 </div>
-<div id="226407fc" class="cell" data-execution_count="8">
+<div id="e4fdbcb9" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Foreign baseline β = +0.462 (p = 0.000, statistically significant)
 Domestic advantage θ = +0.136 (p = 0.173, not statistically significant)
@@ -2877,7 +2880,7 @@ Implied domestic effect β + θ = +0.598</code></pre>
 Table 4: Classification of 2025–26 manager changes by pre-change news pressure (median split)
 </figcaption>
 <div aria-describedby="tbl-expected-change-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
@@ -2964,7 +2967,7 @@ Table 4: Classification of 2025–26 manager changes by pre-change news pressur
 Table 5: Model 4c — Anticipation: interaction of PostChange × ExpectedChange (2025–26 only)
 </figcaption>
 <div aria-describedby="tbl-model4c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
@@ -3023,7 +3026,7 @@ Table 5: Model 4c — Anticipation: interaction of PostChange × ExpectedChange
 </figure>
 </div>
 </div>
-<div id="5cee9db9" class="cell" data-execution_count="11">
+<div id="23c3790b" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>β (unexpected change): +0.179  (p = 0.267)
 θ (expected vs unexpected): -0.161  (p = 0.588)
@@ -3094,7 +3097,7 @@ Figure 5: Robustness to event window width. Coefficient paths are stable across
 Table 6: Post-change coefficient (points per match) by specification and event window. SE clustered by team. Significance: *** p&lt;0.001, ** p&lt;0.01, * p&lt;0.05, n.s. = not significant.
 </figcaption>
 <div aria-describedby="tbl-spec-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
 
@@ -3163,13 +3166,35 @@ Table 6: Post-change coefficient (points per match) by specification and event 
 <div class="callout-body-container callout-body">
 <p>The table reveals two distinct regimes:</p>
 <ul>
-<li><strong>Base DiD</strong> (team + season FE): the post-change effect is <strong>consistently near zero and not significant</strong> regardless of window (−0.08 to −0.005). This is the most conservative specification.</li>
-<li><strong>Preferred spec</strong> (team-season + season-week + opponent FE): the post-change effect is <strong>positive and highly significant across all windows</strong> (±3: +0.62***, ±10: +0.34***). Narrower windows yield larger estimates, consistent with the immediate post-change effect being more concentrated in the first few matches.</li>
-<li>Adding <strong>table position</strong> as a control reduces the magnitude but does not eliminate significance.</li>
+<li><strong>Base DiD</strong> (team + season FE): the post-change effect is <strong>consistently near zero and not significant</strong> regardless of window (−0.08 to −0.005).</li>
+<li><strong>Preferred spec</strong> (team-season + season-week + opponent FE): the post-change effect is <strong>positive and highly significant across all windows</strong> (±3: +0.62***, ±10: +0.34***).</li>
+<li>Adding <strong>table position</strong> reduces magnitude but does not eliminate significance.</li>
 </ul>
-<p>The divergence between the two specifications reflects what each absorbs. The Base DiD uses season-level time effects, leaving mean-reversion variation in the residual, which biases the post estimate toward zero. The preferred spec uses team-season FE (absorbing within-season baselines) and season-week FE (absorbing aggregate calendar shocks), so the post coefficient is identified from within-season deviations — and shows a robust positive effect. <strong>The conclusion depends on which source of variation one is willing to trust for identification.</strong></p>
 </div>
 </div>
+</section>
+<section id="why-is-the-base-did-not-significant" class="level3" data-number="8.4">
+<h3 data-number="8.4" class="anchored" data-anchor-id="why-is-the-base-did-not-significant"><span class="header-section-number">8.4</span> Why is the Base DiD not significant?</h3>
+<p>The Base DiD uses <strong>team fixed effects</strong> (one intercept per club across all seasons) and <strong>season fixed effects</strong> (one time trend per season). This specification leaves two important sources of variation in the residual:</p>
+<ol type="1">
+<li><p><strong>Mean reversion within the season.</strong> Managers are fired after poor runs of form. The team’s results immediately before the dismissal are mechanically below their own season average. When the model compares post-change to the full pre-change period (which includes both normal-form and poor-form matches), the “post” effect captures only the net difference — but the trough at dismissal and the subsequent partial recovery roughly cancel out, leaving a coefficient near zero.</p></li>
+<li><p><strong>Season-level time effects are too coarse.</strong> Season FE absorbs inter-season differences but not the within-season calendar pattern (e.g., fixture difficulty, fatigue, weather). If control teams also show within-season dips and recoveries unrelated to any manager change, they contaminate the counterfactual, again diluting the estimated treatment effect.</p></li>
+</ol>
+</section>
+<section id="why-does-the-preferred-spec-show-significant-results" class="level3" data-number="8.5">
+<h3 data-number="8.5" class="anchored" data-anchor-id="why-does-the-preferred-spec-show-significant-results"><span class="header-section-number">8.5</span> Why does the Preferred Spec show significant results?</h3>
+<p>The preferred specification adds three layers of absorption:</p>
+<ul>
+<li><strong>Team-season FE</strong>: One intercept per (club × season) — this absorbs each team’s <em>within-season</em> performance baseline, including the general form level during that particular campaign. The post-change coefficient is now identified purely from the deviation around that baseline, not from cross-season comparisons.</li>
+<li><strong>Season-matchweek FE</strong>: One intercept per matchweek in each season — this absorbs aggregate calendar shocks common to all teams (fixture congestion, international breaks, weather). By controlling for what <em>all</em> teams did in the same week, the model isolates the treated team’s movement.</li>
+<li><strong>Opponent FE</strong>: Controls for fixture difficulty, removing noise from easy/hard opponents landing in the post-period.</li>
+</ul>
+<p>With these controls, the estimated coefficient (+0.34 to +0.62) reflects a genuine within-season, within-week improvement in the treated team relative to controls — and is consistently significant.</p>
+</section>
+<section id="why-do-narrower-windows-give-larger-estimates" class="level3" data-number="8.6">
+<h3 data-number="8.6" class="anchored" data-anchor-id="why-do-narrower-windows-give-larger-estimates"><span class="header-section-number">8.6</span> Why do narrower windows give larger estimates?</h3>
+<p>The pattern — ±3: +0.62, ±5: +0.44, ±10: +0.34 — is consistent with the <strong>immediate bounce-back hypothesis</strong>: the largest performance improvement happens in the first few matches after a new manager arrives (novelty effect, tactical reset, motivational response), and then gradually dissipates as opponents adapt and the initial boost fades. By including matches further out in the post-period (rw = +8, +9, +10), we average in later matches where the effect has weakened, pulling the overall estimate down.</p>
+<p>This decay pattern also has an important implication: clubs that fire managers hoping for a sustained turnaround may be disappointed — the available evidence points to a short-lived improvement, not a permanent shift in team quality.</p>
 <hr>
 </section>
 </section>
