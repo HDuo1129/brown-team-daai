@@ -691,6 +691,72 @@ fig.tight_layout()
 plt.show()
 ```
 
+### Specification × Window Sensitivity
+
+A key concern is whether our conclusions depend on the combination of fixed-effect specification and event window width. We fit a binary `post` DiD model (pre vs. post manager change) under three specifications and five window widths, and report the post-change coefficient with significance.
+
+```{python}
+#| label: tbl-spec-window
+#| tbl-cap: "Post-change coefficient (points per match) by specification and event window. SE clustered by team. Significance: *** p<0.001, ** p<0.01, * p<0.05, n.s. = not significant."
+#| echo: false
+
+def build_window_panel(win):
+    mask_t = panel["relative_week"].notna() & panel["relative_week"].between(-win, win)
+    mask_c = panel["relative_week"].isna()
+    pev = panel[mask_t | mask_c].copy()
+    pev["season_week"] = pev["season"] + "_W" + pev["match_n"].astype(str).str.zfill(2)
+    pev = pev.merge(opp_str, on=["opponent","season","match_date"], how="left")
+    pev = pev.merge(
+        table_pts[["team","season","match_n","table_position"]],
+        on=["team","season","match_n"], how="left")
+    pev["post"] = np.where(pev["relative_week"].isna(), 0,
+                  (pev["relative_week"] >= 0).astype(int))
+    for col in ["team_season","season_week","opponent","team","season"]:
+        pev[col] = pev[col].astype(str)
+    return pev
+
+def fmt(b, p):
+    s = "***" if p < 0.001 else "**" if p < 0.01 else "*" if p < 0.05 else " n.s."
+    return f"{b:+.3f}{s}"
+
+WINDOWS = [3, 5, 6, 8, 10]
+rows = {}
+spec_defs = {
+    "Base DiD (Team + Season FE)":
+        "points ~ post + home + opponent_strength | team + season",
+    "Preferred (Team-Season + Week + Opp FE)":
+        "points ~ post + home + opponent_strength | team_season + season_week + opponent",
+    "Preferred + Table Position":
+        "points ~ post + home + opponent_strength + table_position | team_season + season_week + opponent",
+}
+
+for spec_label, formula in spec_defs.items():
+    row = {}
+    for win in WINDOWS:
+        pev = build_window_panel(win)
+        m = pf.feols(formula, data=pev, vcov={"CRV1":"team"})
+        b = m.coef()["post"]
+        p = m.pvalue()["post"]
+        row[f"±{win}"] = fmt(b, p)
+    rows[spec_label] = row
+
+tbl = pd.DataFrame(rows).T
+tbl.index.name = "Specification"
+tbl
+```
+
+::: {.callout-important}
+## Key takeaway — specification matters more than window width
+
+The table reveals two distinct regimes:
+
+- **Base DiD** (team + season FE): the post-change effect is **consistently near zero and not significant** regardless of window (−0.08 to −0.005). This is the most conservative specification.
+- **Preferred spec** (team-season + season-week + opponent FE): the post-change effect is **positive and highly significant across all windows** (±3: +0.62\*\*\*, ±10: +0.34\*\*\*). Narrower windows yield larger estimates, consistent with the immediate post-change effect being more concentrated in the first few matches.
+- Adding **table position** as a control reduces the magnitude but does not eliminate significance.
+
+The divergence between the two specifications reflects what each absorbs. The Base DiD uses season-level time effects, leaving mean-reversion variation in the residual, which biases the post estimate toward zero. The preferred spec uses team-season FE (absorbing within-season baselines) and season-week FE (absorbing aggregate calendar shocks), so the post coefficient is identified from within-season deviations — and shows a robust positive effect. **The conclusion depends on which source of variation one is willing to trust for identification.**
+:::
+
 ---
 
 ## Limitations {#sec-limitations}

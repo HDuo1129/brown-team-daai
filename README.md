@@ -32,6 +32,8 @@ Beyond the standard "does it work?" question, we introduce a novel second layer:
 |---------|--------|
 | Average post-change effect (Base DiD, 30 seasons) | **−0.005 ppm, p = 0.90** — effectively zero |
 | Pre-trend (mean reversion test) | Strong — all rw = −10 to −2 significant at p < 0.01 |
+| Preferred spec (Team-Season + Week + Opp FE) | **+0.34 to +0.62 ppm, p < 0.001** — significant across all windows |
+| Specification sensitivity | Base DiD: n.s. across all windows (±3 to ±10); Preferred spec: *** across all windows |
 | Domestic vs. foreign replacement | Domestic: +0.60 ppm; Foreign: +0.46 ppm (differential θ not significant) |
 | Anticipation hypothesis (2025–26 only, N = 10) | Directional — unexpected changes rebound more; no statistical power |
 
@@ -113,6 +115,7 @@ A treatment event is a **mid-season manager dismissal** satisfying:
 | M5 | M2 + PostChange × Domestic | Domestic vs. foreign heterogeneity |
 | M4a | Points ~ PostChange + exp_lag1 + Home \| Team + matchweek | Continuous expectations, 2025–26 |
 | M4c | Points ~ PostChange + PostChange × ExpectedChange + Home \| Team + matchweek | Binary anticipation split, 2025–26 |
+| Spec × Window | 3 specs × 5 windows (±3/±5/±6/±8/±10) with binary post | Sensitivity: shows Base DiD n.s. always; preferred spec *** always |
 
 ---
 
