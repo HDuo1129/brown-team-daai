@@ -1,6 +1,12 @@
-# Turkey Süper Lig Dataset
+# Does Changing a Manager Improve Team Performance?
+### Evidence from the Turkish Süper Lig, 1994–2026
 
-Match-level data and manager history for the Turkish Süper Lig (T1), sourced from [football-data.co.uk](https://www.football-data.co.uk/turkeym.php) and [Transfermarkt](https://www.transfermarkt.com).
+**Team Brown — CEU | Course: Data Analysis with AI: Research Support**  
+Duo Huang · Semih Tosun · Farangiz Jurakhonova
+
+## 📄 [View Full Report](https://hduo1129.github.io/brown-team-daai/report.html)
+
+> Match-level data and manager history for the Turkish Süper Lig (T1), sourced from [football-data.co.uk](https://www.football-data.co.uk/turkeym.php) and [Transfermarkt](https://www.transfermarkt.com).
 
 ---
 
