@@ -42,18 +42,42 @@ The headline result is that **on average, firing the manager does not measurably
 ## Data
 
 ### Match Results
-Season-by-season CSV files from [football-data.co.uk](https://www.football-data.co.uk/turkeym.php), covering 30 of 32 seasons (2002–03 and 2006–07 excluded due to source file parse errors). Each row is one match with full-time result, goals, and — for post-2017 seasons — shots, cards, and fouls.
+**Source:** [football-data.co.uk](https://www.football-data.co.uk/turkeym.php) — a free, publicly available archive of European football results. Files follow the URL pattern `https://www.football-data.co.uk/mmz4281/{SEASON_CODE}/T1.csv`. Downloaded manually season by season and stored on the `turkey-data` branch.
+
+Coverage: 30 of 32 seasons (2002–03 and 2006–07 excluded due to source file parse errors). Each row is one match with full-time result, goals, and — for post-2017 seasons — shots, cards, and fouls.
+
+| Era | Seasons | Content |
+|-----|---------|---------|
+| 1994/95–2000/01 | 7 seasons | Results + basic odds |
+| 2001/02–2016/17 | 16 seasons | Results + full bookmaker odds |
+| 2017/18–2025/26 | 7 seasons | Results + match stats (shots, cards, fouls) + extended odds |
 
 ### Manager Data
-All coaching stints scraped from [Transfermarkt](https://www.transfermarkt.com): 3,884 stints across 65 clubs, enriched with manager profiles (nationality, date of birth, career history). Club name inconsistencies between the two sources were resolved manually for all 65 clubs via `managers/team_mapping.csv`.
+**Source:** [Transfermarkt](https://www.transfermarkt.com) — the most comprehensive structured database of football manager stints, with exact appointment and departure dates, nationalities, and career histories. Scraped programmatically via `managers/scrape_managers.py` and `managers/scrape_manager_profiles.py` (4-second delay between requests; Chrome User-Agent headers).
+
+3,884 stints across 65 clubs. Club name inconsistencies between the two sources were resolved manually for all 65 clubs via `managers/team_mapping.csv`. Five 1990s-era clubs (e.g. A. Sebatspor, Oftasspor) have no Transfermarkt profile and are excluded from manager-level analyses.
 
 ### News & Expectations *(2025–26 season only)*
-We built an original pre-change expectations measure from Turkish football news:
+We built an original pre-change expectations measure from Turkish football news. No off-the-shelf dataset exists for this — the pipeline was designed and built from scratch for this project.
 
-- **Collection**: 5,464 articles from Fotomaç RSS (Turkish football tabloid) and Google News RSS, covering all 18 current Süper Lig teams from 2025-W27 to 2026-W17
-- **Filtering**: 2,524 articles retained after two-pass manager-relevance filter (name token matching + keyword regex with Turkish character normalisation)
-- **Classification**: Each article scored 0–4 on an expectation-pressure scale using **Claude Haiku** (`claude-haiku-4-5-20251001`). Score 0 = routine/appointment coverage; Score 4 = confirmed firing. Validated against 10 hand-labelled articles (≥ 80% agreement) before scaling.
-- **Aggregation**: `out/expectations.csv` — one row per (team, ISO week) with `avg_grade` (mean normalised score) and `n_news`. The 1-week lagged value `exp_lag1` is used in regression to avoid same-week contamination.
+**Source 1 — Fotomaç RSS** (`fotomac.com.tr`): Turkey's leading football tabloid with team-specific RSS feeds for all Süper Lig clubs. Provides timely managerial rumour and criticism coverage in Turkish. Full article body retrievable via `trafilatura` scraping (101 articles, median 860 characters of body text).
+
+**Source 2 — Google News RSS** (`news.google.com/rss`): Aggregates coverage from multiple Turkish and English-language outlets. Queried with 5 Turkish + 1 English search term per team (*teknik direktör, hoca ayrılık, istifa, görevden, manager*). Note: GDPR consent redirects block full-text retrieval for these articles — classification uses headline text only.
+
+The pipeline then runs four steps:
+
+- **Filtering**: 5,464 raw articles → 2,524 manager-relevant, via two-pass filter (manager name token matching + keyword regex with Turkish character normalisation)
+- **Classification**: Each article scored 0–4 on an expectation-pressure scale using **Claude Haiku** (`claude-haiku-4-5-20251001`). Score 0 = routine/appointment coverage; Score 4 = confirmed firing. Prompt validated against 10 hand-labelled articles (≥ 80% agreement) before scaling.
+
+| Score | Label | Definition |
+|-------|-------|------------|
+| 0 | No signal | Routine content or post-change appointment coverage |
+| 1 | Mild | Manager fielding departure questions, unresolved rumours |
+| 2 | Moderate | Explicit board criticism; poor results blamed on manager |
+| 3 | Strong | Fan protests, named replacements, credible board meetings |
+| 4 | Confirmed | Firing or resignation explicitly confirmed |
+
+- **Aggregation**: `out/expectations.csv` — one row per (team, ISO week) with `avg_grade` (mean normalised score over relevant articles) and `n_news`. The 1-week lagged value `exp_lag1` is used in regression to avoid same-week contamination.
 
 ---
 
