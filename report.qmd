@@ -745,6 +745,67 @@ tbl.index.name = "Specification"
 tbl
 ```
 
+```{python}
+#| label: fig-spec-window
+#| fig-cap: "Post-change DiD coefficient (points per match) by specification and event window, with 95% confidence intervals. SE clustered by team. The Base DiD (grey) is consistently near zero and insignificant across all windows. Both preferred specifications (blue, orange) are positive, significant, and show a clear decay from narrower to wider windows — consistent with an immediate but short-lived post-change bounce."
+#| echo: false
+
+spec_plot = {
+    "Base DiD\n(Team + Season FE)":
+        ("points ~ post + home + opponent_strength | team + season",
+         "#999999", "o"),
+    "Preferred\n(Team-Season + Week + Opp FE)":
+        ("points ~ post + home + opponent_strength | team_season + season_week + opponent",
+         "#2166ac", "s"),
+    "Preferred + Table Position":
+        ("points ~ post + home + opponent_strength + table_position | team_season + season_week + opponent",
+         "#d6604d", "^"),
+}
+
+WINDOWS_PLOT = [3, 5, 6, 8, 10]
+x = np.arange(len(WINDOWS_PLOT))
+width = 0.25
+offsets = [-width, 0, width]
+
+fig, ax = plt.subplots(figsize=(11, 5.5))
+ax.axhline(0, color="black", lw=0.8, ls="--", zorder=0)
+
+for idx, (label, (formula, color, marker)) in enumerate(spec_plot.items()):
+    coefs, ses, pvals = [], [], []
+    for win in WINDOWS_PLOT:
+        pev = build_window_panel(win)
+        m   = pf.feols(formula, data=pev, vcov={"CRV1":"team"})
+        coefs.append(m.coef()["post"])
+        ses.append(m.se()["post"])
+        pvals.append(m.pvalue()["post"])
+
+    coefs = np.array(coefs)
+    ses   = np.array(ses)
+    xi    = x + offsets[idx]
+
+    ax.errorbar(xi, coefs, yerr=1.96*ses,
+                fmt=marker, color=color, label=label,
+                capsize=4, ms=7, lw=1.5, elinewidth=1.5, zorder=3)
+    ax.plot(xi, coefs, color=color, lw=1.0, ls=":", alpha=0.5, zorder=2)
+
+    # Significance stars above each point
+    for j, (xi_i, b, se_i, p) in enumerate(zip(xi, coefs, ses, pvals)):
+        star = "***" if p < 0.001 else "**" if p < 0.01 else "*" if p < 0.05 else ""
+        if star:
+            ax.text(xi_i, b + 1.96*se_i + 0.04,
+                    star, ha="center", va="bottom", fontsize=9, color=color)
+
+ax.set_xticks(x)
+ax.set_xticklabels([f"±{w}" for w in WINDOWS_PLOT], fontsize=11)
+ax.set_xlabel("Event Window (matches either side of change)", fontsize=11)
+ax.set_ylabel("Post-Change Coefficient (ppm)", fontsize=11)
+ax.set_title("Specification × Window Sensitivity: Post-Change Effect", fontsize=12)
+ax.legend(loc="lower right", fontsize=9, framealpha=0.9)
+ax.yaxis.set_major_locator(mticker.MultipleLocator(0.1))
+fig.tight_layout()
+plt.show()
+```
+
 ::: {.callout-important}
 ## Key takeaway — specification matters more than window width
 
