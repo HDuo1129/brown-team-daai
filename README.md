@@ -6,181 +6,141 @@ Duo Huang · Semih Tosun · Farangiz Jurakhonova
 
 ## 📄 [View Full Report](https://hduo1129.github.io/brown-team-daai/report.html)
 
-> Match-level data and manager history for the Turkish Süper Lig (T1), sourced from [football-data.co.uk](https://www.football-data.co.uk/turkeym.php) and [Transfermarkt](https://www.transfermarkt.com).
+---
+
+## Research Question
+
+Does replacing a manager mid-season causally improve team performance? And does the effect differ depending on whether the change was *anticipated* (high pre-change media pressure) or unexpected?
+
+We answer these questions using 30 seasons of Süper Lig data (1994–2026), a difference-in-differences / event-study design, and an original LLM-based expectations measure built from Turkish football news.
 
 ---
 
-## Repository structure
+## Key Findings
+
+| Finding | Result |
+|---------|--------|
+| Average post-change effect (Base DiD) | **−0.005 ppm, p = 0.90** — effectively zero |
+| Pre-trend (mean reversion) | Strong — all dm2–dm10 significant at p < 0.01 |
+| Domestic vs. foreign replacement | Domestic: +0.60 ppm; Foreign: +0.46 ppm (θ not significant) |
+| Anticipation hypothesis (2025–26 only) | Directional support — unexpected changes rebound more; N = 10, no statistical power |
+
+---
+
+## Repository Structure
 
 ```
 brown-team-daai/
-├── data/                   # Match CSV files (one per season) — see turkey-data branch
-│   ├── 1994-1995.csv
-│   ├── ...
-│   └── 2025-2026.csv
-├── managers/               # Manager data collection
-│   ├── team_mapping.csv    # football-data ↔ Transfermarkt mapping for all 65 clubs
-│   ├── scrape_managers.py  # Script to scrape manager history from Transfermarkt
-│   └── managers.csv        # Output of the script (generated, not committed)
-└── README.md
+│
+├── report.qmd                  # ← Main deliverable (Quarto source)
+├── report.html                 # ← Rendered HTML report (self-contained)
+│
+├── data/                       # Match CSVs (turkey-data branch) — 30 seasons
+│
+├── managers/
+│   ├── managers.csv            # 3,884 coaching stints (Transfermarkt)
+│   ├── manager_profiles.csv    # 1,082 manager profiles (DOB, nationality)
+│   ├── manager_characteristics.csv  # Age & experience at appointment
+│   ├── team_mapping.csv        # football-data ↔ Transfermarkt name mapping (65 clubs)
+│   ├── scrape_managers.py      # Scraper: manager history
+│   └── scrape_manager_profiles.py   # Scraper: profile enrichment
+│
+├── features/
+│   ├── team_home_away.csv      # Home/away PPG, win rate, GD by season × team
+│   └── team_location.csv       # Team → city → Turkish regional category
+│
+├── news/
+│   ├── collect_rss.py          # RSS collection (Fotomaç + Google News)
+│   ├── filter_manager_articles.py   # Two-pass name + keyword filter
+│   ├── scrape_text.py          # Full-text scraper (Fotomaç)
+│   ├── classify_articles.py    # Claude Haiku classification pipeline
+│   ├── classify_validate.py    # Prompt validation (10 hand-labelled articles)
+│   ├── build_expectations.py   # Aggregates to (team, ISO week) panel
+│   ├── prompt_classifier.md    # Full LLM prompt with scale & examples
+│   ├── articles_raw.csv        # 5,464 raw RSS articles
+│   ├── articles_managers.csv   # 2,524 manager-relevant articles
+│   ├── articles_classified.csv # + LLM scores (0–4) and is_relevant flag
+│   ├── hand_label_sample.csv   # 10 hand-labelled articles for validation
+│   └── validation_results.csv  # Human vs. LLM comparison
+│
+├── analysis/
+│   ├── build_panel_full.py     # Builds out/panel_full.csv from all seasons
+│   ├── did_analysis.py         # Full econometric pipeline (M1–M7 + robustness)
+│   ├── data_description.py     # Descriptive stats
+│   └── expectations_descriptive.py  # News panel diagnostics
+│
+├── out/
+│   ├── panel_full.csv          # Full (team, match) panel — all seasons
+│   ├── panel_full_events.csv   # Restricted ±10 window panel
+│   ├── change_events.csv       # One row per treatment event
+│   ├── expectations.csv        # (team, ISO week) → avg_grade, n_news
+│   └── figures/                # All output figures (fig1–fig5)
+│
+├── tests/
+│   └── test_data.py            # 17 pytest data + code tests
+│
+├── PANEL.md                    # Analysis panel design decisions
+├── DATA.md                     # Full data schema
+├── METHODS-AI.md               # AI usage documentation (course requirement)
+├── reflections.md              # Individual reflections (course requirement)
+├── week01.md                   # Session 1 write-up
+└── week02.md                   # Session 2 write-up
 ```
-
-> **Note:** The match CSV files live on the `turkey-data` branch. This `main` branch contains documentation and collection scripts.
 
 ---
 
-## 1. Match Data
+## Data Sources
 
-### Source
-
-**football-data.co.uk** — `https://www.football-data.co.uk/turkeym.php`
-
-All files follow the URL pattern:
-```
-https://www.football-data.co.uk/mmz4281/{SEASON_CODE}/T1.csv
-```
-e.g. `mmz4281/2526/T1.csv` for the 2025/26 season.
-
-### Coverage
-
-| Era | Seasons | Content |
-|-----|---------|---------|
-| 1994/95 – 1996/97 | 3 seasons | Full-time results only |
-| 1997/98 – 2000/01 | 4 seasons | Results + basic betting odds |
-| 2001/02 – 2016/17 | 16 seasons | Results + full bookmaker odds (B365, BW, IW, PS, WH, VC …) |
-| 2017/18 – 2025/26 | 9 seasons | Results + match stats (shots, fouls, cards) + extended odds (Asian handicap, O/U 2.5) |
-
-### Key columns
-
-| Column | Description |
-|--------|-------------|
-| `Date` | Match date (DD/MM/YYYY) |
-| `HomeTeam` / `AwayTeam` | Club names as used on football-data.co.uk |
-| `FTHG` / `FTAG` | Full-time home / away goals |
-| `FTR` | Full-time result: H / D / A |
-| `HTHG` / `HTAG` / `HTR` | Half-time equivalents |
-| `HS` / `AS` | Home / away shots (modern seasons) |
-| `HST` / `AST` | Home / away shots on target (modern seasons) |
-| `B365H/D/A` | Bet365 odds — home win / draw / away win |
-
-Full column reference: [football-data.co.uk notes](https://www.football-data.co.uk/notes.txt)
+| Source | What we get | Coverage |
+|--------|-------------|----------|
+| [football-data.co.uk](https://www.football-data.co.uk/turkeym.php) | Match results (FTHG, FTAG, FTR, odds, shots) | 1994–2026, 30 seasons |
+| [Transfermarkt](https://www.transfermarkt.com) | Manager stints, profiles, nationality, age | 3,884 stints, 1,082 managers |
+| Fotomaç RSS + Google News RSS | Turkish football manager news | 2025-W27 to 2026-W17 |
 
 ---
 
-## 2. Manager Data
+## Analysis Pipeline
 
-### Purpose
+### Session 1 — Data Collection & Feature Engineering
+- Downloaded 30 seasons of Süper Lig match results
+- Scraped Transfermarkt for all manager stints (3,884) and profiles (1,082)
+- Resolved 65 club name inconsistencies between sources
+- Built home/away performance features and team location table
+- 17 pytest data quality tests, all passing
 
-To enrich each match row with the manager in charge of each club on that date, enabling analysis of managerial impact on results, home/away performance, tactical trends, etc.
+### Session 2 — News Collection & LLM Classification
+- Collected 5,464 RSS articles across 18 teams via Fotomaç + Google News
+- Filtered to 2,524 manager-relevant articles (name + keyword two-pass filter)
+- Classified all articles with **Claude Haiku** (`claude-haiku-4-5-20251001`) on a 0–4 expectation-pressure scale
+- Validated against 10 hand-labelled articles (≥ 80% agreement) before scaling
+- Produced `out/expectations.csv`: 506 rows × (team, ISO week)
 
-### Source
+### Session 3 — Panel Construction & Econometric Analysis
+- Built full (team, match) panel across all 30 seasons
+- Identified 531 mid-season treatment events; defined ±10 match event window
+- Estimated Base DiD (M1), preferred event-study (M2), heterogeneity (M5, M7), and anticipation models (M4a/4c)
+- Pre-trend confirmed as mean reversion; `table_position` control does not resolve it
+- Full results and robustness checks in [`report.html`](https://hduo1129.github.io/brown-team-daai/report.html)
 
-**Transfermarkt** — manager history pages at:
-```
-https://www.transfermarkt.com/{club-slug}/trainer/verein/{club-id}
-```
+---
 
-Transfermarkt records: manager name, nationality, exact appointment and departure dates, and win/draw/loss statistics per spell.
+## Econometric Specifications
 
-### Files
+**Base DiD:**
+$$\text{Points}_{it} = \alpha_i + \mu_s + \beta \cdot \text{PostChange}_{it} + \gamma \cdot \text{Home}_{it} + \delta \cdot \text{OppStrength}_{it} + \varepsilon_{it}$$
 
-#### `managers/team_mapping.csv`
+**Preferred Event-Study (M2):**
+$$\text{Points}_{it} = \alpha_{is} + \lambda_{sw} + \delta_o + \sum_{k \neq -1} \beta_k \cdot \mathbf{1}[\text{rw}_{it}=k] + \gamma \cdot \text{Home}_{it} + \delta \cdot \text{OppStrength}_{it} + \varepsilon_{it}$$
 
-Maps every club name used in football-data.co.uk to its Transfermarkt equivalent.
+Fixed effects: team-season + season-matchweek + opponent. SE clustered by team.
 
-| Column | Description |
-|--------|-------------|
-| `football_data_name` | Exact team name string in the CSV files |
-| `transfermarkt_name` | Official name on Transfermarkt |
-| `transfermarkt_id` | Numeric club ID (`NEEDS_MANUAL` = no confirmed TM profile) |
-| `transfermarkt_trainer_url` | Direct URL to the manager history page |
-| `seasons_in_data` | Season range where this name variant appears (if restricted) |
-| `notes` | Name disambiguation and historical notes |
+---
 
-**Important naming ambiguities handled:**
+## Known Limitations
 
-| football-data name | Situation |
-|--------------------|-----------|
-| `Ankaraspor` | Appears 2004–2009; Transfermarkt tracks this lineage under ID 2944 (same entity later renamed Osmanlıspor, then SB Ankaraspor) |
-| `Osmanlispor` | 2015–2018 era of the same club (TM ID 2944) |
-| `Antalya` | 1994–95 only; same club as `Antalyaspor` (TM ID 589) |
-| `Kayseri` | 1994–98; refers to Kayseri Erciyesspor (TM ID 6894), not Kayserispor |
-| `Erzurum` / `Erzurumspor` | Old Erzurumspor club (TM ID 1766) |
-| `Erzurum BB` | 2018–2021; BB Erzurumspor / Erzurumspor FK (TM ID 39722) |
-| `Malatyaspor` | 2001–2006; the original Malatyaspor (TM ID 1264), distinct from Yeni Malatyaspor |
-| `Yeni Malatyaspor` | 2017–2022; separate club founded 2000 (TM ID 19789) |
-| `Buyuksehyr` | Istanbul Büyükşehir Belediyespor → now Başakşehir FK (TM ID 6890) |
-| `Gaziantep` | Gaziantep FK, founded 2011 (TM ID 2832), distinct from defunct Gaziantepspor |
-| `Gaziantepspor` | Original club, dissolved 2020 (TM ID 524) |
-| `A. Sebatspor`, `Oftasspor`, `Sekerspor`, `Siirt Jet-PA`, `P. Ofisi` | Very old 1990s clubs with no confirmed Transfermarkt profile (`NEEDS_MANUAL`) |
-
-#### `managers/scrape_managers.py`
-
-Scrapes all coaching spells from Transfermarkt for every club in `team_mapping.csv` (skipping `NEEDS_MANUAL` entries) and writes `managers.csv`.
-
-**Requirements:**
-```bash
-pip install beautifulsoup4
-```
-
-**Run:**
-```bash
-# Full scrape (all clubs, ~4 s delay between requests)
-python managers/scrape_managers.py
-
-# Test run — first 5 clubs only
-python managers/scrape_managers.py --limit 5
-
-# Adjust delay
-python managers/scrape_managers.py --delay 6
-```
-
-**Output — `managers/managers.csv`:**
-
-| Column | Description |
-|--------|-------------|
-| `football_data_name` | Club name as in match CSVs |
-| `transfermarkt_name` | Official TM name |
-| `manager` | Manager full name |
-| `nationality` | Manager nationality |
-| `start_date` | Appointment date (YYYY-MM-DD) |
-| `end_date` | Departure date (YYYY-MM-DD), empty if still in charge |
-
-### Joining managers to match data
-
-```python
-import pandas as pd
-import glob
-
-# Load all match files
-dfs = [pd.read_csv(f, encoding='latin-1') for f in sorted(glob.glob('data/*.csv'))]
-matches = pd.concat(dfs, ignore_index=True)
-matches['Date'] = pd.to_datetime(matches['Date'], dayfirst=True)
-
-# Load manager data
-mgr = pd.read_csv('managers/managers.csv', parse_dates=['start_date', 'end_date'])
-
-def get_manager(team_name: str, match_date: pd.Timestamp) -> str:
-    """Return the manager in charge of team_name on match_date."""
-    club_spells = mgr[mgr['football_data_name'] == team_name]
-    in_charge = club_spells[
-        (club_spells['start_date'] <= match_date) &
-        (club_spells['end_date'].isna() | (club_spells['end_date'] >= match_date))
-    ]
-    if in_charge.empty:
-        return ''
-    return in_charge.iloc[-1]['manager']
-
-matches['HomeManager'] = matches.apply(
-    lambda r: get_manager(r['HomeTeam'], r['Date']), axis=1
-)
-matches['AwayManager'] = matches.apply(
-    lambda r: get_manager(r['AwayTeam'], r['Date']), axis=1
-)
-```
-
-### Limitations
-
-- Transfermarkt may block automated requests (HTTP 403). Running with `--delay 6` or higher reduces this risk.
-- For the 5 very old clubs (`A. Sebatspor`, `Oftasspor`, `Sekerspor`, `Siirt Jet-PA`, `P. Ofisi`) no Transfermarkt profile was found. Manager data for matches involving these clubs (all in the 1994–1998 era) will require manual collection from Wikipedia or contemporary sources.
-- Date precision for spells in the 1990s–early 2000s may be month-level rather than day-level on Transfermarkt.
+1. **Parallel trends violation** — mean reversion dominates the pre-period; causal interpretation is limited
+2. **2 seasons missing** (2002–03, 2006–07) — source file parse errors; 30/32 seasons covered
+3. **442 unassigned matches** (2.3%) — historical clubs with no Transfermarkt data
+4. **Expectations layer N = 10** — single-season sample lacks statistical power
+5. **Sparse news coverage** — 67% of team-weeks have zero articles (Google News GDPR blocks full-text)
+6. **Staggered treatment** — TWFE may be biased under heterogeneous effects (Callaway–Sant'Anna 2021)
