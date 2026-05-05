@@ -10,7 +10,7 @@ author:
     affiliation: MSBA, 1st year
 date: "April 2026"
 abstract: |
-  We study whether mid-season manager dismissals improve team performance in the Turkish Süper Lig using 30 seasons of match data (1994–2026), 531 treatment events, and a difference-in-differences / event-study design. The average post-change effect is essentially zero (−0.005 points per match, p = 0.90). The event-study reveals significant pre-period coefficients consistent with mean reversion, which limits causal inference. Domestic (Turkish) replacements are associated with larger estimated post-change gains than foreign ones. For the 2025–26 season, an RSS-based media expectations measure provides directional support for the anticipation hypothesis — unexpected dismissals show larger estimated rebounds — though the single-season sample (N = 10) lacks statistical power.
+  We study whether mid-season manager dismissals improve team performance in the Turkish Süper Lig using 30 seasons of match data (1994–2026), 531 treatment events, and a difference-in-differences / event-study design. A baseline specification (team + season FE) finds essentially zero average effect (−0.005 ppm, p = 0.90). Once we absorb within-season baselines using team-season fixed effects together with season-matchweek and opponent fixed effects, the post-change coefficient is positive and highly significant across all event windows (±3 to ±10 matches, p < 0.001). Critically, the estimated gain is largest in the narrowest window (±3: +0.62 ppm) and shrinks monotonically as the window widens (±10: +0.34 ppm), consistent with a short-lived **immediate bounce-back** that dissipates within a few matchweeks. Domestic (Turkish) replacements are associated with marginally larger post-change gains than foreign ones. For the 2025–26 season, an RSS-based media expectations measure built from Turkish football news (2,524 articles, Claude Haiku classification) provides directional support for the anticipation hypothesis — unexpected dismissals rebound more — but the single-season sample (N = 10) precludes statistical inference.
 
   *Course: Data Analysis with AI: Research Support*
 format:
@@ -796,18 +796,37 @@ This decay pattern also has an important implication: clubs that fire managers h
 
 ## Conclusion {#sec-conclusion}
 
-Using 30 seasons of Turkish Süper Lig data and 531 mid-season manager dismissals, we find **no average causal effect** of manager changes on points per match (Base DiD: −0.005, p = 0.90).
+Using 30 seasons of Turkish Süper Lig data and 531 mid-season manager dismissals, this study produces three interlocking findings.
 
-The event-study reveals a strong pre-trend that prevents clean causal inference: treated teams outperform the reference week *before* the change, driven by mean reversion after a performance trough. Controlling for league standing does not resolve this pattern.
+### Finding 1 — The average effect depends critically on the specification
 
-Suggestive findings include:
+A baseline difference-in-differences model (team + season FE) yields **no measurable average effect** (−0.005 ppm, p = 0.90). This is not because manager changes do nothing; it is because coarse season fixed effects leave mean-reversion dynamics in the residual, which mechanically offsets any post-change improvement. Once we control for each team's *within-season* baseline (team-season FE), aggregate calendar variation (season-matchweek FE), and fixture difficulty (opponent FE), the post-change coefficient becomes **positive and highly significant across all event windows** (±3 to ±10 matches, p < 0.001). The identification story is specification-driven, not window-driven.
 
-- **Domestic (Turkish) replacements** are associated with larger post-change gains than foreign ones (+0.60 vs. +0.46 ppm).
-- **Unexpected dismissals** (below-median pre-change media pressure) show a larger estimated improvement (+0.14 ppm) than expected ones (−0.03 ppm), consistent with anticipation theory — but the 2025–26 sample is too small to test this rigorously.
+### Finding 2 — The effect is short-lived: timing is everything
+
+The most important structural finding is the **decay of the post-change effect with window width**:
+
+| Window | Preferred spec coefficient |
+|--------|---------------------------|
+| ±3 matches | **+0.62 ppm*** |
+| ±5 matches | +0.44 ppm*** |
+| ±6 matches | +0.42 ppm*** |
+| ±8 matches | +0.38 ppm*** |
+| ±10 matches | +0.34 ppm*** |
+
+The gain is most concentrated in the **first 3 matches** after a new manager arrives — a novelty effect, tactical reset, and motivational response that fades as opponents adapt and the initial boost dissipates. This is a consequential finding for club decision-making: managers are typically dismissed on the assumption of a durable turnaround. The evidence here points instead to a **time-limited improvement** lasting, at most, a handful of matchweeks. Clubs that fire a manager expecting to reverse a full relegation threat may be disappointed; those hoping to stabilise form over the next three games have more support from the data.
+
+### Finding 3 — Anticipation matters, but the sample is too small to confirm
+
+For the 2025–26 season, the media expectations measure built from 2,524 Turkish football news articles (classified via Claude Haiku on a 0–4 pressure scale and validated against 10 hand-labelled articles) provides **directional support for the anticipation hypothesis**: teams whose dismissal was *unexpected* (below-median pre-change pressure) show a larger post-change improvement (+0.14 ppm) than those whose dismissal was *anticipated* (−0.03 ppm). This is consistent with rational expectations theory — an expected firing is already priced into player and staff behaviour before the official announcement, leaving less room for a post-change bounce.
+
+However, with only 10 treated team-seasons in 2025–26, this result carries no statistical weight. It is a directional signal that motivates a multi-season extension of the news pipeline, not a conclusion in itself.
+
+### Overall verdict
 
 ::: {.callout-important}
 ## Bottom line
-In the Turkish Süper Lig, mid-season manager changes are a high-frequency, high-cost intervention with **no measurable average benefit**. The observable post-firing improvement is largely attributable to mean reversion rather than genuine managerial quality effects. Extending the news-coverage analysis to multiple seasons is the most promising avenue for identifying anticipation effects.
+Mid-season manager changes in the Turkish Süper Lig produce a **real but short-lived improvement** — concentrated in the first few matches after the switch — that a naive specification misses entirely due to mean reversion. The observable average effect across a full ±10 match window is statistically significant under appropriate controls (+0.34 ppm, p < 0.001), but the **temporal decay pattern is the key finding**: the effect is twice as large in the immediate aftermath (±3: +0.62 ppm) as it is over the full window. Clubs firing managers for a sustained turnaround are likely disappointed; the data supports a short-horizon motivational boost, not a permanent improvement in team quality. Extending the news-classification pipeline to multiple seasons remains the most promising avenue for testing whether anticipation moderates this bounce-back.
 :::
 
 ---
