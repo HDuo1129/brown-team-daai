@@ -185,20 +185,25 @@ brown-team-daai/
 
 All pre-processed panel data (`out/panel_full.csv`, `out/change_events.csv`, `out/expectations.csv`) and the classified news articles (`news/articles_classified.csv`) are committed to the repository. **No scraping or API calls are needed to reproduce the report.**
 
-### Quickstart (recommended)
+### Quickstart
 ```bash
 git clone https://github.com/HDuo1129/brown-team-daai.git
 cd brown-team-daai
 pip install pandas numpy matplotlib pyfixest
-quarto render report.qmd       # → report.html (all figures and tables reproduced inline)
+make all          # → report.html
 ```
 
-Or equivalently:
-```bash
-bash run.sh
-```
+`make all` runs two steps in order:
+1. `python news/build_expectations.py` — aggregates `news/articles_classified.csv` → `out/expectations.csv`
+2. `quarto render report.qmd` — runs all regressions and figures inline → `report.html`
 
 Quarto 1.9+ and Python 3.12+ are required. Install Quarto from [quarto.org](https://quarto.org/docs/get-started/).
+
+```bash
+make test         # run 17 data quality tests
+make clean        # remove report.html and out/expectations.csv
+make panel        # optional: rebuild panel from turkey-data branch
+```
 
 ### Rebuilding the panel from raw match data (optional)
 The match CSVs live on the `turkey-data` branch. Run the following only if you need to regenerate `out/panel_full.csv`:
