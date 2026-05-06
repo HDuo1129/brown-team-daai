@@ -1,4 +1,10 @@
-# Core analysis
+# Requirements for reproducing the report
+# Python 3.12.7 | Quarto 1.9.37
+#
+# Install Quarto: https://quarto.org/docs/get-started/
+# Then: pip install -r requirements.txt && bash run.sh
+
+# Core — needed to reproduce report.html
 pandas==3.0.2
 numpy==1.26.4
 matplotlib==3.10.8
@@ -7,17 +13,16 @@ pyfixest==0.50.1
 # Tests
 pytest==7.4.4
 
-# Web / data fetching (used by news pipeline scrapers)
-requests==2.32.3
-beautifulsoup4==4.12.3
-lxml==5.2.1
-
-# News pipeline (2025-26 only; not required to reproduce report.html)
-# Install these only if re-running the RSS collection and classification steps:
-#   pip install anthropic trafilatura feedparser
-anthropic>=0.40.0
-trafilatura>=1.9.0
-feedparser>=6.0.11
-
-# Quarto 1.9.37 + Python 3.12.7 required for report rendering
-# Install Quarto from: https://quarto.org/docs/get-started/
+# ── News pipeline (NOT needed to reproduce report.html) ─────────────────────
+# The classified articles (news/articles_classified.csv) and aggregated
+# expectations panel (out/expectations.csv) are committed to the repo.
+# Install below only if re-running data collection or classification from scratch.
+#
+#   pip install anthropic>=0.40.0 trafilatura>=1.9.0 feedparser>=6.0.11
+#   export ANTHROPIC_API_KEY=sk-ant-...
+#   python news/collect_rss.py
+#   python news/filter_manager_articles.py
+#   python news/scrape_text.py
+#   python news/classify_validate.py   # validate prompt on 10 hand-labelled articles
+#   python news/classify_articles.py   # classify all 2,524 articles (~90 min)
+#   python news/build_expectations.py

@@ -183,26 +183,43 @@ brown-team-daai/
 
 ## Reproducing the Analysis
 
-### Requirements
+All pre-processed panel data (`out/panel_full.csv`, `out/change_events.csv`, `out/expectations.csv`) and the classified news articles (`news/articles_classified.csv`) are committed to the repository. **No scraping or API calls are needed to reproduce the report.**
+
+### Quickstart (recommended)
 ```bash
-pip install pandas numpy pyfixest matplotlib
-# For news classification:
-pip install anthropic feedparser trafilatura
+git clone https://github.com/HDuo1129/brown-team-daai.git
+cd brown-team-daai
+pip install pandas numpy matplotlib pyfixest
+quarto render report.qmd       # → report.html (all figures and tables reproduced inline)
 ```
 
-### Run order
+Or equivalently:
 ```bash
-# 1. Build the full panel (requires match CSVs on turkey-data branch)
+bash run.sh
+```
+
+Quarto 1.9+ and Python 3.12+ are required. Install Quarto from [quarto.org](https://quarto.org/docs/get-started/).
+
+### Rebuilding the panel from raw match data (optional)
+The match CSVs live on the `turkey-data` branch. Run the following only if you need to regenerate `out/panel_full.csv`:
+```bash
+git fetch origin turkey-data
 python analysis/build_panel_full.py
-
-# 2. Run all econometric models
-python analysis/did_analysis.py
-
-# 3. Render the report
-quarto render report.qmd
+python analysis/did_analysis.py   # saves standalone figures to out/figures/
 ```
 
-The rendered report is self-contained — all figures and tables are generated inline from `out/panel_full.csv` and `out/change_events.csv`.
+### Re-running the news pipeline (optional)
+The classified articles are committed as raw input. Re-running requires an `ANTHROPIC_API_KEY` and approximately 90 minutes of API time:
+```bash
+pip install anthropic feedparser trafilatura
+export ANTHROPIC_API_KEY=sk-ant-...
+python news/collect_rss.py
+python news/filter_manager_articles.py
+python news/scrape_text.py
+python news/classify_validate.py   # validate on 10 hand-labelled articles first
+python news/classify_articles.py
+python news/build_expectations.py
+```
 
 ---
 
