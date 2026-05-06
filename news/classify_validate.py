@@ -6,7 +6,7 @@ Prints a comparison table and agreement rate.
 Writes: news/validation_results.csv  news/validation_interpretation.md
 
 Usage:
-    export GROQ_API_KEY=gsk_...
+    export ANTHROPIC_API_KEY=sk-ant-...
     python news/classify_validate.py
 """
 
@@ -14,7 +14,7 @@ import json
 import os
 import re
 import time
-import groq
+import anthropic
 import pandas as pd
 from pathlib import Path
 
@@ -207,11 +207,11 @@ def write_results_csv(results: list[dict]) -> None:
 
 
 def main() -> None:
-    api_key = os.environ.get("GROQ_API_KEY")
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
-        raise EnvironmentError("GROQ_API_KEY not set. Get a free key at console.groq.com")
+        raise EnvironmentError("ANTHROPIC_API_KEY not set.")
 
-    client = groq.Groq(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key)
     print(f"Validating {len(HAND_SCORES)} hand-labelled articles via {MODEL}...\n")
     print(f"{'#':<3} {'Team':<18} {'Date':<12} {'Human':>6} {'LLM':>4} {'':>5}  Reason")
     print("-" * 95)

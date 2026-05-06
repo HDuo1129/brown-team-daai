@@ -1,0 +1,23 @@
+# Core analysis
+pandas==3.0.2
+numpy==1.26.4
+matplotlib==3.10.8
+pyfixest==0.50.1
+
+# Tests
+pytest==7.4.4
+
+# Web / data fetching (used by news pipeline scrapers)
+requests==2.32.3
+beautifulsoup4==4.12.3
+lxml==5.2.1
+
+# News pipeline (2025-26 only; not required to reproduce report.html)
+# Install these only if re-running the RSS collection and classification steps:
+#   pip install anthropic trafilatura feedparser
+anthropic>=0.40.0
+trafilatura>=1.9.0
+feedparser>=6.0.11
+
+# Quarto 1.9.37 + Python 3.12.7 required for report rendering
+# Install Quarto from: https://quarto.org/docs/get-started/
